@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #627D98;
+    font-family:  "Merriweather", serif;
+}
+.vinculo-home{
+    text-decoration: none;
+}
+.contenedor-logo{
+    display: flex;
+    align-items: center;
+}
+.contenedor-logo h1{
+    color: #FFFF;
+}
+.logo{
+    width: 5rem;
+    border-radius: 2rem;
+    margin-right: 1rem;
+}
+.btn-iniciar{
+    margin-right: 1rem;
+}
+.btn-iniciar,.btn-registrarse{
+    text-decoration: none;
+    font-weight: 300;
+    color: #F8F3EC;
+}
+
+.btns-login{
+    margin-right: 1rem;
+}
+main{
+    height: calc(100vh - 4.4rem - 5.7rem);
+    font-family: "Roboto", sans-serif;
+    display: flex;
+}
+.contenedor-publicacion{
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 2rem;
+    height: 33rem;
+   
+}
+.contenedor-publicacion h2{
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.info-publicacion{
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+.info-publicacion h4{
+    margin-bottom: 1rem;
+}
+.btns-publicacion{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.postulante{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1.5px solid black;
+    border-radius: 10px;
+}
+.lista-postulantes{
+    border: 1px solid black;
+    padding: 0.5rem;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+.btn{
+    padding: 5px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #D9D9D9; 
+}
+footer{
+    padding: 1rem;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    background-color: #D9D9D9;
+}

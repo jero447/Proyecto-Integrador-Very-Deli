@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #627D98;
+    font-family:  "Merriweather", serif;
+}
+.contenedor-logo{
+    display: flex;
+    align-items: center;
+}
+.contenedor-logo h1{
+    color: #FFFF;
+}
+.logo{
+    width: 5rem;
+    border-radius: 2rem;
+    margin-right: 1rem;
+}
+.btn-iniciar{
+    margin-right: 1rem;
+}
+.btn-iniciar,.btn-registrarse{
+    text-decoration: none;
+    font-weight: 300;
+    color: #F8F3EC;
+}
+
+.btns-login{
+    margin-right: 1rem;
+}
+main{
+    display: flex;
+    font-family: "Roboto", sans-serif;
+}
+.contenedor-filtro{
+    width: 30%;
+    padding: 1.5rem;
+    padding-top: 2rem;
+    border: 1px;
+}
+
+.filtro-zona{
+    margin: 1.5rem 0 1.5rem 0;
+}
+.filtro-zona select{
+    width: 12rem;
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 3px;
+    background-color: #E0E0E0;
+    border: 2px solid #D9D9D9;
+}
+.filtro-descripcion input{
+    width: 12rem;
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 4px;
+    background-color: #EBEBEB;
+    border: 2px solid #D9D9D9;
+}
+
+
+.contenedor-lista{
+    background-color: beige;
+    width: 70%;
+    height: calc(100vh - 4.4rem - 5.7rem);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+}
+.publicacion{
+    display: flex;
+    flex-direction:column;
+    padding: 1.5rem;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.contenedor-lista a{
+    text-decoration: none;
+    color:  black;
+}
+footer{
+    padding: 1rem;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    background-color: #D9D9D9;
+}
+
