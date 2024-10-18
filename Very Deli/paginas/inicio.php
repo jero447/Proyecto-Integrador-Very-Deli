@@ -19,7 +19,6 @@
         </a>
              
         <div class="btns-login">
-            <p class="btn-iniciar">Iniciar Sesion</p>
             <a class="btn-registrarse" href="./registro.php">Registrarse</a>
         </div>
     </header>
@@ -27,8 +26,8 @@
         <div class = "formulario-login">
             <h2>Iniciar Sesion</h2>
             <div class = "contenedor-correo">
-                <label for="">Correo Electronico</label>
-                <input type="text" placeholder="usuario@gmail.com">
+                <label for="">Usuario o Correo Electronico</label>
+                <input type="text" placeholder="usuario o usuario@gmail.com">
             </div>
             <div class= "contenedor-contraseña">
                 <label for="">Contraseña</label>
