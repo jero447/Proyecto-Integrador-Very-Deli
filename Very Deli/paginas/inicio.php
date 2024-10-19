@@ -25,17 +25,82 @@
     <main>
         <div class = "formulario-login">
             <h2>Iniciar Sesion</h2>
-            <div class = "contenedor-correo">
-                <label for="">Usuario o Correo Electronico</label>
-                <input type="text" placeholder="usuario o usuario@gmail.com">
-            </div>
-            <div class= "contenedor-contraseña">
-                <label for="">Contraseña</label>
-                <input type="text">
-            </div>
-            <div>
-                <input type="submit" value="Iniciar">
-            </div>
+
+            <?php 
+
+                session_start();
+                $msjError = array();
+                $correoUser = "";
+                $claveLogin = "";
+
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    if (empty($_POST['correoUser'])) {
+                        $msjError['correoUser'] = "Ingrese un email o nombre de usuario valido.";
+                    } else {
+                        $correoUser = $_POST['correoUser'];
+                    }
+                    
+                    if (empty($_POST['claveLogin'])) {
+                        $msjError['claveLogin'] = "El campo contraseña es obligatorio.";
+                    } elseif (strlen($_POST['claveLogin']) < 8 || !preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])/', $_POST['claveLogin'])) {
+                        $msjError['claveLogin'] = "La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.";
+                    } else {
+                        $claveLogin = $_POST['claveLogin'];
+                    }
+        
+                    if (empty($msjError)) {
+                        $servername = "localhost";
+                        $username_db = "user_delivery";
+                        $password_db = "user";
+                        $dbname = "delivery";
+        
+                        $conexion = new mysqli($servername, $username_db, $password_db, $dbname);
+        
+                        if ($conexion->connect_error) {
+                            die("Conexión fallida: " . $conexion->connect_error);
+                        }
+
+                            $sqlLOG = "SELECT COUNT(*) AS count FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
+                            $result = $conexion->query($sqlLOG);
+                            $row = $result->fetch_assoc();
+
+                        if ($row['count'] == 0) {
+                                $msjError['correoUser'] = "El correo o nombre de usuario no existe.";
+                        }else {
+                            $sqlClave = "SELECT clave FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
+                            $resultClave = $conexion->query($sqlClave);
+                            $rowClave = $resultClave->fetch_assoc();
+                        
+                            if (password_verify($claveLogin, $rowClave['clave'])) {
+                                $_SESSION['correoUser'] = $correoUser;
+                                header("Location: index.php");
+                                exit();
+                            } else {
+                                $msjError['claveLogin'] = "Contraseña incorrecta.";
+                            }
+                        }
+                    }
+                }
+            ?>
+
+            <form action="inicio.php" method="post">
+
+                <div class = "contenedor-correo">
+                    <label for="correoUser">Email o Usuario</label>
+                    <input type="text" id="correoUser" name="correoUser" placeholder="usuario@gmail.com o usuario" value="<?php echo htmlspecialchars($correoUser); ?>">
+                    <?php if (isset($msjError['correoUser'])) { echo "<span class='msjError'>{$msjError['correoUser']}</span>"; } ?>
+                </div>
+                <div class= "contenedor-contraseña">
+                    <label for="claveLogin">Contraseña</label>
+                    <input type="password" id="claveLogin" name="claveLogin" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
+                    title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial" 
+                    value="<?php echo htmlspecialchars($claveLogin); ?>">
+                    <?php if (isset($msjError['claveLogin'])) { echo "<span class='msjError'>{$msjError['claveLogin']}</span>"; } ?>
+                </div>
+                <div>
+                    <input type="submit" value="Siguiente">
+                </div>
+            </form>
             
         </div>
     </main>
