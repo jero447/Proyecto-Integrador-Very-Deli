@@ -30,12 +30,12 @@
         <!--CAMBIOS: CAMPOS DNI, CAMPO NOMBRE DE USUARIO, CONTROLES DE CAMPOS VACIOS, CONTROLES CORRESPONDIENTES A CADA CAMPO, QUITADO BOTON REGISTRAR DEL HEADER, CONTROL VALORES REPETIDOS(DNI, CORREO, USUARIO) -->
 
         <?php
-        $msjError = array();
-        $nombre = "";
-        $dni = "";
-        $email = "";
-        $nombreUsuario = "";
-        $clave = "";
+            $msjError = array();
+            $nombre = "";
+            $dni = "";
+            $email = "";
+            $nombreUsuario = "";
+            $clave = "";
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (empty($_POST['nombre'])) {
@@ -132,25 +132,25 @@
             <div class="contenedor-correo">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" value="<?php echo htmlspecialchars($nombre); ?>">
-                <?php if (isset($msjError['nombre'])) { echo "<span style='color:red'>{$msjError['nombre']}</span>"; } ?>
+                <?php if (isset($msjError['nombre'])) { echo "<span class='msjError'>{$msjError['nombre']}</span>"; } ?>
             </div>
 
             <div class="contenedor-correo">
                 <label for="dni">DNI:</label>
                 <input type="number" id="dni" name="dni" min=10000000 max=99999999 placeholder="Número de DNI" value="<?php echo htmlspecialchars($dni); ?>">
-                <?php if (isset($msjError['dni'])) { echo "<span style='color:red'>{$msjError['dni']}</span>"; } ?>
+                <?php if (isset($msjError['dni'])) { echo "<span class='msjError'>{$msjError['dni']}</span>"; } ?>
             </div>
 
             <div class="contenedor-correo">
                 <label for="email">Correo Electrónico:</label>
                 <input type="email" id="email" name="email" placeholder="usuario@gmail.com" value="<?php echo htmlspecialchars($email); ?>">
-                <?php if (isset($msjError['email'])) { echo "<span style='color:red'>{$msjError['email']}</span>"; } ?>
+                <?php if (isset($msjError['email'])) { echo "<span class='msjError'>{$msjError['email']}</span>"; } ?>
             </div>
 
             <div class="contenedor-correo">
                 <label for="nombre_usuario">Nombre de Usuario:</label>
                 <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre de usuario" value="<?php echo htmlspecialchars($nombreUsuario); ?>">
-                <?php if (isset($msjError['nombre_usuario'])) { echo "<span style='color:red'>{$msjError['nombre_usuario']}</span>"; } ?>
+                <?php if (isset($msjError['nombre_usuario'])) { echo "<span class='msjError'>{$msjError['nombre_usuario']}</span>"; } ?>
             </div>
 
             <div class="contenedor-contraseña">
@@ -159,7 +159,7 @@
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
                     title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial" 
                     value="<?php echo htmlspecialchars($clave); ?>">
-                <?php if (isset($msjError['clave'])) { echo "<span style='color:red'>{$msjError['clave']}</span>"; } ?>
+                <?php if (isset($msjError['clave'])) { echo "<span class='msjError'>{$msjError['clave']}</span>"; } ?>
             </div>
 
             <div>
