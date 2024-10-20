@@ -19,7 +19,7 @@
         </a>
              
         <div class="btns-login">
-            <a class="btn-registrarse" href="./registro.php">Registrarse</a>
+            <a class="animated-button-login" href="./registro.php">Registrarse</a>
         </div>
     </header>
     <main>

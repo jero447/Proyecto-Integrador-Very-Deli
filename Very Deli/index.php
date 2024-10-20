@@ -16,10 +16,13 @@
             <h1>Very Deli</h1>  
         </div>       
         <div class="btns-login">
-            <a class="btn-iniciar" href="./paginas/inicio.php">Iniciar Sesion</a>
-            <a class="btn-registrarse" href="./paginas/registro.php">Registrarse</a>
+            <a class="animated-button-login" href="./paginas/inicio.php">Iniciar Sesion</a>
+            <a class="animated-button-login" href="./paginas/registro.php">Registrarse</a>
         </div>
     </header>
+    <div class="contenedor-main">
+            HOLA
+    </div>
     <main>
         <div class="contenedor-filtro">
             <h3>Buscar publicacion por:</h3>
