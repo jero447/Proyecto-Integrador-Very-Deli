@@ -1,3 +1,7 @@
+<?php
+        session_start();
+        $nombreUsuario = isset($_SESSION['correoUser']) ? $_SESSION['correoUser'] : null;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +20,19 @@
             <h1>Very Deli</h1>  
         </div>       
         <div class="btns-login">
-            <a class="btn-iniciar" href="./paginas/inicio.php">Iniciar Sesion</a>
+        <div class="btns-login">
+        <?php if ($nombreUsuario): ?>
+            <div class="dropdown">
+                <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
+                <div class="dropdown-content">
+                    <a href="./paginas/salir.php">Salir</a>
+                </div>
+            </div>
+        <?php else: ?>
+            <a class="btn-iniciar" href="./paginas/inicio.php">Iniciar Sesión</a>
             <a class="btn-registrarse" href="./paginas/registro.php">Registrarse</a>
+        <?php endif; ?>
+    </div>
         </div>
     </header>
     <main>

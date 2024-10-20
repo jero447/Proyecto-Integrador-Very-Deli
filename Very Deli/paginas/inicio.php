@@ -65,7 +65,7 @@
                             $row = $result->fetch_assoc();
 
                         if ($row['count'] == 0) {
-                                $msjError['correoUser'] = "El correo o nombre de usuario no existe.";
+                                $msjError['correoUser'] = "Email o nombre de usuario no existente.";
                         }else {
                             $sqlClave = "SELECT clave FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
                             $resultClave = $conexion->query($sqlClave);
@@ -73,7 +73,7 @@
                         
                             if (password_verify($claveLogin, $rowClave['clave'])) {
                                 $_SESSION['correoUser'] = $correoUser;
-                                header("Location: index.php");
+                                header("Location: ../index.php");
                                 exit();
                             } else {
                                 $msjError['claveLogin'] = "Contraseña incorrecta.";

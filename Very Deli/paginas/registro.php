@@ -116,7 +116,7 @@
                     $sql = "INSERT INTO usuario (nombre, email, nombre_usuario, clave, dni) VALUES ('$nombre', '$email', '$nombreUsuario', '$clave', '$dni')";
             
                     if ($conexion->query($sql) === TRUE) {
-                        header("Location: index.php");
+                        header("Location: ../index.php");
                         exit();
                     } else {
                         echo "Error: " . $sql . "<br>" . $conexion->error;

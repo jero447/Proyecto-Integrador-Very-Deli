@@ -1,3 +1,7 @@
+<?php
+        session_start();
+        $nombreUsuario = isset($_SESSION['correoUser']) ? $_SESSION['correoUser'] : null;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,16 +15,24 @@
 </head>
 <body>
     <header>
-        <a href="../index.php" class = "vinculo-home">
-            <div class="contenedor-logo">
-                <img src="../imagenes/LogoDery.png" alt="logo" class="logo">
-                <h1>Very Deli</h1>  
-            </div>  
-        </a>
-             
+        <div class="contenedor-logo">
+            <img src="../imagenes/LogoDery.png" alt="logo" class="logo">
+            <h1>Very Deli</h1>  
+        </div>       
         <div class="btns-login">
-            <a class="btn-iniciar" href="./inicio.php">Iniciar Sesion</a>
+        <div class="btns-login">
+        <?php if ($nombreUsuario): ?>
+            <div class="dropdown">
+                <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
+                <div class="dropdown-content">
+                    <a href="./salir.php">Salir</a>
+                </div>
+            </div>
+        <?php else: ?>
+            <a class="btn-iniciar" href="./inicio.php">Iniciar Sesión</a>
             <a class="btn-registrarse" href="./registro.php">Registrarse</a>
+        <?php endif; ?>
+    </div>
         </div>
     </header>
     <main>
