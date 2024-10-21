@@ -32,7 +32,7 @@ header{
     padding: 12px 10px;
     border: none;
     font-size: 16px;
-    background-color: #224870; /* Añadir un color inicial */
+    background-color: #224870;
     border-radius: 100px;
     font-weight: 400;
     color: white;
@@ -87,7 +87,7 @@ main{
     flex-direction: column;
     width: 25rem;
     margin: auto;
-    background-color: #627D98;
+    background-color: #224870;
     padding: 3rem;
     border-radius: 20px;
 }

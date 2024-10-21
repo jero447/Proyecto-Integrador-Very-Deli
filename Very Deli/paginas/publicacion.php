@@ -15,6 +15,7 @@
 </head>
 <body>
     <header>
+        <a href="../index.php" class = "vinculo-home">
         <div class="contenedor-logo">
             <img src="../imagenes/LogoDery.png" alt="logo" class="logo">
             <h1>Very Deli</h1>  

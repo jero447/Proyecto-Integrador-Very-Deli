@@ -20,28 +20,19 @@
             <h1>Very Deli</h1>  
         </div>       
         <div class="btns-login">
-<<<<<<< HEAD
-        <div class="btns-login">
-        <?php if ($nombreUsuario): ?>
-            <div class="dropdown">
-                <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
-                <div class="dropdown-content">
-                    <a href="./paginas/salir.php">Salir</a>
+            <?php if ($nombreUsuario): ?>
+                <div class="dropdown">
+                    <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
+                    <div class="dropdown-content">
+                        <a href="./paginas/salir.php">Salir</a>
+                    </div>
                 </div>
-            </div>
-        <?php else: ?>
-            <a class="animated-button-login" href="./paginas/inicio.php">Iniciar Sesion</a>
-            <a class="animated-button-login" href="./paginas/registro.php">Registrarse</a>
-        <?php endif; ?>
-    </div>
-=======
-            
->>>>>>> 61cd729615004d50abca553162240815836e31e6
+            <?php else: ?>
+                <a class="animated-button-login" href="./paginas/inicio.php">Iniciar Sesión</a>
+                <a class="animated-button-login" href="./paginas/registro.php">Registrarse</a>
+            <?php endif; ?>
         </div>
     </header>
-    <div class="contenedor-main">
-            HOLA
-    </div>
     <main>
         <div class="contenedor-filtro">
             <h3>Buscar publicacion por:</h3>
