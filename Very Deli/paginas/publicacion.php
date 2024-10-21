@@ -20,7 +20,6 @@
             <h1>Very Deli</h1>  
         </div>       
         <div class="btns-login">
-        <div class="btns-login">
         <?php if ($nombreUsuario): ?>
             <div class="dropdown">
                 <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
@@ -29,11 +28,10 @@
                 </div>
             </div>
         <?php else: ?>
-            <a class="btn-iniciar" href="./inicio.php">Iniciar Sesión</a>
-            <a class="btn-registrarse" href="./registro.php">Registrarse</a>
+            <a class="animated-button-login" href="./inicio.php">Iniciar Sesion</a>
+            <a class="animated-button-login" href="./registro.php">Registrarse</a>
         <?php endif; ?>
     </div>
-        </div>
     </header>
     <main>
         <div class="contenedor-publicacion">

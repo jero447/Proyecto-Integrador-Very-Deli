@@ -19,7 +19,7 @@
         </div>  
     </a>
     <div class="btns-login">
-        <a class="btn-iniciar" href="./inicio.php">Iniciar Sesión</a>
+        <a class="animated-button-login" href="./inicio.php">Iniciar Sesión</a>
     </div>
 </header>
 

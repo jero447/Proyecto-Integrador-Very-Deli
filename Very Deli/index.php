@@ -20,6 +20,7 @@
             <h1>Very Deli</h1>  
         </div>       
         <div class="btns-login">
+<<<<<<< HEAD
         <div class="btns-login">
         <?php if ($nombreUsuario): ?>
             <div class="dropdown">
@@ -29,12 +30,18 @@
                 </div>
             </div>
         <?php else: ?>
-            <a class="btn-iniciar" href="./paginas/inicio.php">Iniciar Sesión</a>
-            <a class="btn-registrarse" href="./paginas/registro.php">Registrarse</a>
+            <a class="animated-button-login" href="./paginas/inicio.php">Iniciar Sesion</a>
+            <a class="animated-button-login" href="./paginas/registro.php">Registrarse</a>
         <?php endif; ?>
     </div>
+=======
+            
+>>>>>>> 61cd729615004d50abca553162240815836e31e6
         </div>
     </header>
+    <div class="contenedor-main">
+            HOLA
+    </div>
     <main>
         <div class="contenedor-filtro">
             <h3>Buscar publicacion por:</h3>
