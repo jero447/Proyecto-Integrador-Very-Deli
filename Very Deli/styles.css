@@ -11,9 +11,25 @@ header{
     font-family:  "Merriweather", serif;
     position: fixed;
     width: 100%;
-    z-index: 1000; /* Asegura que el header esté sobre el contenido */
+    top: 0;
+    left: 0;
+    z-index: 1000; 
 }
-
+body{
+    padding-top: 45px;
+}
+main{
+    margin-top: 45px;
+    display: flex;
+    font-family: "Roboto", sans-serif;
+}
+footer{
+    padding: 1rem;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    background-color: #D9D9D9;
+}
 .contenedor-main{
     display: flex;
     background-color: #224870;
@@ -44,10 +60,7 @@ header{
 .btns-login{
     margin-right: 1rem;
 }
-main{
-    display: flex;
-    font-family: "Roboto", sans-serif;
-}
+
 .contenedor-filtro{
     width: 30%;
     padding: 1.5rem;
@@ -77,7 +90,6 @@ main{
     border: 2px solid #D9D9D9;
 }
 
-
 .contenedor-lista{
     background-color: beige;
     width: 70%;
@@ -99,21 +111,61 @@ main{
     text-decoration: none;
     color:  black;
 }
-footer{
-    padding: 1rem;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    background-color: #D9D9D9;
+
+/* ESTILOS DEL BOTON DESPLEGABLE */
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
 
+.dropbtn {
+    background-color: beige;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.dropdown-content {
+    font-size: small;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: beige;
+}
+/* ESTILOS DEL BOTON ANIMADO */
 .animated-button-login {
     position: relative;
     display: inline-block;
     padding: 12px 10px;
     border: none;
     font-size: 16px;
-    background-color: #224870; /* Añadir un color inicial */
+    background-color: #224870;
     border-radius: 100px;
     font-weight: 400;
     color: white;
@@ -145,7 +197,7 @@ footer{
 .animated-button-login:hover {
     box-shadow: 0 0 0 5px #2195f360;
     color: #ffffff;
-    background-color: #17183B; /* Color al hacer hover */
+    background-color: #17183B;
 }
 
 .animated-button-login:active {
