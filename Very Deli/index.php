@@ -1,6 +1,6 @@
 <?php
         session_start();
-        $nombreUsuario = isset($_SESSION['correoUser']) ? $_SESSION['correoUser'] : null;
+        $nombreUsuario = isset($_SESSION['nombre_usuario']) ? $_SESSION['nombre_usuario'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +25,7 @@
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
                     <div class="dropdown-content">
                         <a href="./paginas/salir.php">Salir</a>
+                        <a href="./paginas/registroVehiculo.php">Registrar vehiculo</a>
                     </div>
                 </div>
             <?php else: ?>

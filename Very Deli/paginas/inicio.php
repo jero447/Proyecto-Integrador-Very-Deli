@@ -32,6 +32,12 @@
                 $msjError = array();
                 $correoUser = "";
                 $claveLogin = "";
+                $idUsuario = "";
+                $nombre = "";
+                $email = "";
+                $nombre_usuario = "";
+                $clave = "";
+                $dni = "";
 
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if (empty($_POST['correoUser'])) {
@@ -67,12 +73,16 @@
                         if ($row['count'] == 0) {
                                 $msjError['correoUser'] = "Email o nombre de usuario no existente.";
                         }else {
-                            $sqlClave = "SELECT clave FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
+                            $sqlClave = "SELECT idUsuario, nombre, email, nombre_usuario, clave, dni FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
                             $resultClave = $conexion->query($sqlClave);
                             $rowClave = $resultClave->fetch_assoc();
                         
                             if (password_verify($claveLogin, $rowClave['clave'])) {
-                                $_SESSION['correoUser'] = $correoUser;
+                                $_SESSION['idUsuario'] = $rowClave['idUsuario'];
+                                $_SESSION['nombre'] = $rowClave['nombre'];
+                                $_SESSION['email'] = $rowClave['email'];
+                                $_SESSION['nombre_usuario'] = $rowClave['nombre_usuario'];
+                                $_SESSION['dni'] = $rowClave['dni'];
                                 header("Location: ../index.php");
                                 exit();
                             } else {
