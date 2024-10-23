@@ -48,68 +48,6 @@
             </div>
         </div>
         <div class="contenedor-lista">
-<<<<<<< Updated upstream
-            <a href="./paginas/publicacion.php">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-=======
             <?php
 
             require("./conexionBD.php");
@@ -158,7 +96,6 @@
                 }
             ?>
            
->>>>>>> Stashed changes
         </div>
     </main>
     <footer>
