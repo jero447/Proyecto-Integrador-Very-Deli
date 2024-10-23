@@ -105,7 +105,7 @@ INSERT INTO `usuario` (`idUsuario`, `nombre`, `email`, `nombre_usuario`, `clave`
 
 CREATE TABLE `vehiculo` (
   `idVehiculo` int(11) NOT NULL,
-  `matricula` varchar(6) NOT NULL,
+  `matricula` varchar(9) NOT NULL,
   `modelo` varchar(20) NOT NULL,
   `color` varchar(20) NOT NULL,
   `idUsuario` int(11) DEFAULT NULL
@@ -151,6 +151,7 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `vehiculo`
   ADD PRIMARY KEY (`idVehiculo`),
+  ADD UNIQUE KEY `matricula` (`matricula`),
   ADD KEY `idUsuario` (`idUsuario`);
 
 --
