@@ -138,7 +138,7 @@ DROP TABLE IF EXISTS `vehiculo`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vehiculo` (
   `idVehiculo` int(11) NOT NULL AUTO_INCREMENT,
-  `matricula` varchar(6) NOT NULL,
+  `matricula` varchar(9) NOT NULL,
   `modelo` varchar(20) NOT NULL,
   `color` varchar(20) NOT NULL,
   `idUsuario` int(11) DEFAULT NULL,
