@@ -48,66 +48,38 @@
             </div>
         </div>
         <div class="contenedor-lista">
-            <a href="./paginas/publicacion.php">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="publicacion">
-                    <h4>Nombre Necesidad</h4>
-                    <p>Descripcion</p>
-                </div>
-            </a>
+            <?php
+
+            require("./conexionBD.php");
+            $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
+            
+            if(mysqli_connect_errno()){
+                echo "Fallo al conectar con la base de datos";
+                exit();
+            }
+
+            mysqli_set_charset($conexion,"utf8");
+            $consulta = "SELECT titulo,descripcion FROM publicacion";
+            $resultado = mysqli_query($conexion,$consulta);
+
+            while($fila = mysqli_fetch_array($resultado)){
+                echo "<div class='publicacion'>";
+                echo "<h4>" . $fila["titulo"] . "</h4>";
+                echo "<p>". $fila["descripcion"] . "</p>";
+                echo "</div>";
+            }
+
+            ?>
+            <?php
+                if($nombreUsuario){
+                    echo " <a href='./paginas/creacion-publicacion/formCrearPublicacion.php'>
+                    <div class='crear'>
+                    <h4>Crear publicacion</h4>
+                    </div>
+                    </a>";
+                }
+            ?>
+           
         </div>
     </main>
     <footer>
