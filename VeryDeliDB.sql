@@ -116,7 +116,7 @@ CREATE TABLE `usuario` (
   UNIQUE KEY `dni` (`dni`),
   UNIQUE KEY `nombre_usuario_UNIQUE` (`nombre_usuario`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,6 +144,7 @@ CREATE TABLE `vehiculo` (
   `idUsuario` int(11) DEFAULT NULL,
   PRIMARY KEY (`idVehiculo`),
   KEY `idUsuario` (`idUsuario`),
+  UNIQUE KEY `matricula` (`matricula`),
   CONSTRAINT `vehiculo_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
