@@ -48,6 +48,7 @@
             </div>
         </div>
         <div class="contenedor-lista">
+<<<<<<< Updated upstream
             <a href="./paginas/publicacion.php">
                 <div class="publicacion">
                     <h4>Nombre Necesidad</h4>
@@ -108,6 +109,56 @@
                     <p>Descripcion</p>
                 </div>
             </a>
+=======
+            <?php
+
+            require("./conexionBD.php");
+            $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
+            
+            if(mysqli_connect_errno()){
+                echo "Fallo al conectar con la base de datos";
+                exit();
+            }
+
+            mysqli_set_charset($conexion,"utf8");
+            $consulta = "SELECT titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino FROM publicacion";
+            $resultado = mysqli_query($conexion,$consulta);
+
+            while($fila = mysqli_fetch_array($resultado)){
+                echo "<div class='publicacion'>";
+                echo    "<div class='titulo-desc'>";
+                echo        "<h3>" . $fila["titulo"] . "</h3>";
+                echo        "<h4>Descripcion:</h4>";
+                echo        "<p>" . $fila["descripcion"] ."</p>";
+                echo    "</div>";
+                echo    "<div class='datos-publicacion'>";
+                echo        "<div>";
+                echo            "<p>Provincia de origen: " . $fila["provincia_origen"] . "</p>";
+                echo            "<p>Provincia de destino: " . $fila["provincia_destino"] ."</p>";
+                echo        "</div>";
+                echo        "<div>";
+                echo            "<p>Localidad de origen: " . $fila["localidad_origen"] . "</p>";
+                echo            "<p>Localidad de destino: " . $fila["localidad_destino"] ."</p>";
+                echo        "</div>";
+                echo    "</div>";
+                echo    "<div>";
+                echo        "<input type='submit' value='Postularme'>";
+                echo    "</div>";
+                echo "</div>";
+            }
+
+            ?>
+            <?php
+                if($nombreUsuario){
+                    echo " <a href='./paginas/creacion-publicacion/formCrearPublicacion.php'>
+                    <div class='crear'>
+                    <h4>Crear publicacion</h4>
+                    </div>
+                    </a>";
+                }
+            ?>
+           
+>>>>>>> Stashed changes
         </div>
     </main>
     <footer>
