@@ -32,12 +32,6 @@
                 $msjError = array();
                 $correoUser = "";
                 $claveLogin = "";
-                $idUsuario = "";
-                $nombre = "";
-                $email = "";
-                $nombre_usuario = "";
-                $clave = "";
-                $dni = "";
 
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if (empty($_POST['correoUser'])) {
@@ -76,13 +70,18 @@
                             $sqlClave = "SELECT idUsuario, nombre, email, nombre_usuario, clave, dni FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
                             $resultClave = $conexion->query($sqlClave);
                             $rowClave = $resultClave->fetch_assoc();
+                            $idUsuario = $rowClave["idUsuario"];
+                            $nombre = $rowClave["nombre"];
+                            $email = $rowClave["email"];
+                            $nombreUsuario = $rowClave["nombre_usuario"];
+                            $dni = $rowClave["dni"];
                         
                             if (password_verify($claveLogin, $rowClave['clave'])) {
-                                $_SESSION['idUsuario'] = $rowClave['idUsuario'];
-                                $_SESSION['nombre'] = $rowClave['nombre'];
-                                $_SESSION['email'] = $rowClave['email'];
-                                $_SESSION['nombre_usuario'] = $rowClave['nombre_usuario'];
-                                $_SESSION['dni'] = $rowClave['dni'];
+                                $_SESSION['idUsuario'] = $idUsuario;
+                                $_SESSION["nombre"] = $nombre;
+                                $_SESSION["email"] = $email;
+                                $_SESSION["nombreUsuario"] = $nombreUsuario;
+                                $_SESSION["dni"] = $dni;
                                 header("Location: ../index.php");
                                 exit();
                             } else {
