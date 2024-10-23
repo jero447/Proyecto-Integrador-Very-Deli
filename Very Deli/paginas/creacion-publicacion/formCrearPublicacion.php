@@ -66,6 +66,7 @@
             </div>
             <div class="cont-campos-par">
                 <div class="cont-input">
+<<<<<<< HEAD
                     <label>Provincia de origen</label>
                     <input type='text' name='prov-origen'>
                 </div>
@@ -94,6 +95,16 @@
                     <input type='text' name='calle-destino'>
                 </div>
             </div>             
+=======
+                    <label>Lugar de origen</label>
+                    <input type='text' name='origen'>
+                </div>
+            <div class="cont-input">
+                <label>Lugar de destino</label>
+                <input type='text' name='destino'>
+            </div>
+            </div>
+>>>>>>> Development
         </div>
         <input type='submit' value='ENVIAR' class="btn-enviar">
     </form>
