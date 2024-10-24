@@ -127,6 +127,10 @@
                         $_SESSION['email'] = $emailNuevo;
                         $_SESSION['nombreUsuario'] = $nombreUsuarioNuevo;
                         $_SESSION['dni'] = $dniNuevo;
+                        $nombreActual = $nombreNuevo;
+                        $dniActual = $dniNuevo;
+                        $emailActual = $emailNuevo;
+                        $nombreUsuarioActual = $nombreUsuarioNuevo;
                         $msjExito = "Cambios guardados con exito.";
                     } else {
                         echo "Error: " . $sql . "<br>" . $conexion->error;
