@@ -70,6 +70,7 @@
                             $sqlClave = "SELECT idUsuario, nombre, email, nombre_usuario, clave, dni FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
                             $resultClave = $conexion->query($sqlClave);
                             $rowClave = $resultClave->fetch_assoc();
+                            
                             $idUsuario = $rowClave["idUsuario"];
                             $nombre = $rowClave["nombre"];
                             $email = $rowClave["email"];
