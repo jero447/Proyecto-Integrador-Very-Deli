@@ -52,8 +52,8 @@
                         $servername = "localhost";
                         $username_db = "user_delivery";
                         $password_db = "user";
-                        $dbname = "delivery-development";
-        
+                        $dbname = "feature";
+                      
                         $conexion = new mysqli($servername, $username_db, $password_db, $dbname);
         
                         if ($conexion->connect_error) {
@@ -67,7 +67,7 @@
                         if ($row['count'] == 0) {
                                 $msjError['correoUser'] = "Email o nombre de usuario no existente.";
                         }else {
-                            $sqlClave = "SELECT idUsuario,nombre,email,nombre_usuario,clave,dni FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
+                            $sqlClave = "SELECT idUsuario, nombre, email, nombre_usuario, clave, dni FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
                             $resultClave = $conexion->query($sqlClave);
                             $rowClave = $resultClave->fetch_assoc();
                             $idUsuario = $rowClave["idUsuario"];
@@ -77,14 +77,11 @@
                             $dni = $rowClave["dni"];
                         
                             if (password_verify($claveLogin, $rowClave['clave'])) {
-                                $_SESSION['correoUser'] = $correoUser;
                                 $_SESSION['idUsuario'] = $idUsuario;
                                 $_SESSION["nombre"] = $nombre;
                                 $_SESSION["email"] = $email;
                                 $_SESSION["nombreUsuario"] = $nombreUsuario;
                                 $_SESSION["dni"] = $dni;
-
-                               
                                 header("Location: ../index.php");
                                 exit();
                             } else {
