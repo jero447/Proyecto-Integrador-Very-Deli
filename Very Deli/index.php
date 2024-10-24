@@ -24,6 +24,8 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
                     <div class="dropdown-content">
+                        <a href="./paginas/perfil.php">Perfil</a>
+                        <a href="./paginas/publicaciones-filtradas.php">Mis publicaciones</a>
                         <a href="./paginas/salir.php">Salir</a>
                         <a href="./paginas/registroVehiculo.php">Registrar vehiculo</a>
                     </div>
