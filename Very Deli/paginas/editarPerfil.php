@@ -35,6 +35,7 @@
 
         <?php
             $msjError = array();
+            $msjExito = null;
             $nombreNuevo = "";
             $dniNuevo = "";
             $emailNuevo = "";
@@ -70,6 +71,10 @@
                 $msjError['nombreUsuario'] = "El campo nombre de usuario es obligatorio.";
             } else {
                 $nombreUsuarioNuevo = $_POST['nombreUsuario'];
+            }
+
+            if (($nombreNuevo === $nombreActual) && ($dniNuevo === $dniActual) && ($emailNuevo === $emailActual) && ($nombreUsuarioNuevo === $nombreUsuarioActual)) {
+                $msjError['cambiosNULL'] = "No se han realizado cambios.";
             }
 
             if (empty($msjError)) {
@@ -114,10 +119,6 @@
                     }    
                 }
 
-                if ($nombreNuevo === $nombreActual) {
-                    $msjError['cambiosNULL'] = "No se han realizado cambios.";
-                }
-
                 if (empty($msjError)) {
                     $sql = "UPDATE usuario SET nombre='$nombreNuevo', email='$emailNuevo', nombre_usuario='$nombreUsuarioNuevo', dni='$dniNuevo' WHERE idUsuario='$idUsuario'";
             
@@ -126,9 +127,7 @@
                         $_SESSION['email'] = $emailNuevo;
                         $_SESSION['nombreUsuario'] = $nombreUsuarioNuevo;
                         $_SESSION['dni'] = $dniNuevo;
-                        
-                        header("Location: ../index.php");
-                        exit();
+                        $msjExito = "Cambios guardados con exito.";
                     } else {
                         echo "Error: " . $sql . "<br>" . $conexion->error;
                     }
@@ -168,7 +167,9 @@
                 <a href="editarClave.php">
                     <input type="button" value="Cambiar Contraseña">
                 </a>
+                <br><br>
                 <?php if (isset($msjError['cambiosNULL'])) { echo "<span class='msjError'>{$msjError['cambiosNULL']}</span>"; } ?>
+                <?php if (isset($msjExito)) { echo "<span class='msjExito'>{$msjExito}</span>"; } ?>
             </div>
         </form>
     </div>

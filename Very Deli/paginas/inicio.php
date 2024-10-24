@@ -75,13 +75,15 @@
                             $email = $rowClave["email"];
                             $nombreUsuario = $rowClave["nombre_usuario"];
                             $dni = $rowClave["dni"];
+                            $clave = $rowClave['clave'];
                         
-                            if (password_verify($claveLogin, $rowClave['clave'])) {
+                            if (password_verify($claveLogin, $clave)) {
                                 $_SESSION['idUsuario'] = $idUsuario;
                                 $_SESSION["nombre"] = $nombre;
                                 $_SESSION["email"] = $email;
                                 $_SESSION["nombreUsuario"] = $nombreUsuario;
                                 $_SESSION["dni"] = $dni;
+                                $_SESSION['clave'] = $clave;
                                 header("Location: ../index.php");
                                 exit();
                             } else {
