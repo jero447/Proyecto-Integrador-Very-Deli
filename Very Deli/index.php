@@ -26,6 +26,7 @@
                     <div class="dropdown-content">
                         <a href="./paginas/salir.php">Salir</a>
                         <a href="./paginas/registroVehiculo.php">Registrar vehiculo</a>
+                        <a href="./paginas/editarPerfil.php">Editar perfil</a>
                     </div>
                 </div>
             <?php else: ?>
