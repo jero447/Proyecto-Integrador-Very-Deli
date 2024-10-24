@@ -60,15 +60,40 @@
             }
 
             mysqli_set_charset($conexion,"utf8");
-            $consulta = "SELECT titulo,descripcion FROM publicacion";
+            $consulta = "SELECT idPublicacion,titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino FROM publicacion";
             $resultado = mysqli_query($conexion,$consulta);
 
             while($fila = mysqli_fetch_array($resultado)){
                 echo "<div class='publicacion'>";
-                echo "<h4>" . $fila["titulo"] . "</h4>";
-                echo "<p>". $fila["descripcion"] . "</p>";
+                echo    "<div class='titulo-desc'>";
+                echo        "<h3>" . $fila["titulo"] . "</h3>";
+                echo        "<h4>Descripcion:</h4>";
+                echo        "<p>" . $fila["descripcion"] ."</p>";
+                echo    "</div>";
+                echo    "<div class='datos-publicacion'>";
+                echo        "<div>";
+                echo            "<p>Provincia de origen: " . $fila["provincia_origen"] . "</p>";
+                echo            "<p>Provincia de destino: " . $fila["provincia_destino"] ."</p>";
+                echo        "</div>";
+                echo        "<div>";
+                echo            "<p>Localidad de origen: " . $fila["localidad_origen"] . "</p>";
+                echo            "<p>Localidad de destino: " . $fila["localidad_destino"] ."</p>";
+                echo        "</div>";
+                echo    "</div>";
+                if($nombreUsuario){
+                    echo    "<div>";
+                    echo        "<form class='form-monto' method='POST' action='./paginas/creacion-postulacion/insertar-postulacion.php'>";
+                    echo            "<label>Monto de cobro</label>";
+                    echo            "<input type='text' name='monto'>";
+                    echo            "<input type='hidden' name='idPublicacion' value = '" . $fila['idPublicacion'] . "'>";
+                    echo            "<input type='submit' value='Postularme'>";
+                    echo        "</form>";
+                    echo    "</div>";
+                }
                 echo "</div>";
+                
             }
+            mysqli_close($conexion);
 
             ?>
             <?php

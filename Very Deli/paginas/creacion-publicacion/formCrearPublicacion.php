@@ -66,14 +66,34 @@
             </div>
             <div class="cont-campos-par">
                 <div class="cont-input">
-                    <label>Lugar de origen</label>
-                    <input type='text' name='origen'>
+                    <label>Provincia de origen</label>
+                    <input type='text' name='prov-origen'>
                 </div>
-            <div class="cont-input">
-                <label>Lugar de destino</label>
-                <input type='text' name='destino'>
+                <div class="cont-input">
+                    <label>Provincia de destino</label>
+                    <input type='text' name='prov-destino'>
+                </div>
             </div>
+            <div class="cont-campos-par">
+                <div class="cont-input">
+                    <label>Localidad de origen</label>
+                    <input type='text' name='local-origen'>
+                </div>
+                <div class="cont-input">
+                    <label>Localidad de destino</label>
+                    <input type='text' name='local-destino'>
+                </div>
             </div>
+            <div class="cont-campos-par">
+                <div class="cont-input">
+                    <label>Calle de origen</label>
+                    <input type='text' name='calle-origen'>
+                </div>
+                <div class="cont-input">
+                    <label>Calle de destino</label>
+                    <input type='text' name='calle-destino'>
+                </div>
+            </div>             
         </div>
         <input type='submit' value='ENVIAR' class="btn-enviar">
     </form>
