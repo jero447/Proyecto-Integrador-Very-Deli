@@ -91,8 +91,8 @@
                     echo    "</div>";
                 }
                 echo "</div>";
+                
             }
-
             mysqli_close($conexion);
 
             ?>

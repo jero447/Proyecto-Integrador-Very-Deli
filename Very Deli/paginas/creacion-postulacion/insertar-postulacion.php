@@ -28,7 +28,8 @@
     if($resultado = false){
         echo "Error en la consulta";
     }else{
-        echo "Se inserto correctamente la postulacion";
+        header("Location: ../../index.php");
+        exit();
     }
 
     mysqli_close($conexion);
