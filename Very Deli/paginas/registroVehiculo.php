@@ -33,16 +33,13 @@
     <div class="formulario-login">
         <?php
 
-        $servername = "localhost";
-        $username_db = "user_delivery";
-        $password_db = "user";
-        $dbname = "delivery";
+        require("../conexionBD.php");
+        $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
 
-        $conexion = new mysqli($servername, $username_db, $password_db, $dbname);
-
-        if ($conexion->connect_error) {
-            die("Conexión fallida: " . $conexion->connect_error);
+        if(mysqli_connect_errno()){
+            die("Fallo al conectar con la base de datos");
         }
+        mysqli_set_charset($conexion,"utf8");
 
         $sqlCountVehiculo = "SELECT COUNT(*) AS vehiculo FROM vehiculo WHERE idUsuario = '$idUsuario'";
         $resultCountVehiculo = $conexion->query($sqlCountVehiculo);
@@ -50,6 +47,7 @@
         $numVehiculo = $rowCountVehiculo['vehiculo'];
 
             $msjError = array();
+            $msjExito = null;
             $idVehiculo = "";
             $matricula = "";
             $modelo = "";
@@ -91,8 +89,10 @@
                     $sql = "INSERT INTO vehiculo (matricula, modelo, color, idUsuario) VALUES ('$matricula', '$modelo', '$color', '$idUsuario')";
                 
                     if ($conexion->query($sql) === TRUE) {
-                        header("Location: ../index.php");
-                        exit();
+                        $matricula = "";
+                        $modelo = "";
+                        $color = "";
+                        $msjExito = "Vehiculo registrado con exito.";
                     } else {
                         echo "Error: " . $sql . "<br>" . $conexion->error;
                     }
@@ -130,6 +130,7 @@
                 <div>
                     <input type="submit" value="Registrar">
                 </div>
+                <?php if (isset($msjExito)) { echo "<span class='msjExito'>{$msjExito}</span>"; } ?>
             </form>
         <?php endif; ?>
     </div>

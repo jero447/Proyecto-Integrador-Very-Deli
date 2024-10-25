@@ -26,16 +26,15 @@
 <main>
     <div class="formulario-login">
         <h2>Crea tu cuenta</h2>
-
-        <!--CAMBIOS: CAMPOS DNI, CAMPO NOMBRE DE USUARIO, CONTROLES DE CAMPOS VACIOS, CONTROLES CORRESPONDIENTES A CADA CAMPO, QUITADO BOTON REGISTRAR DEL HEADER, CONTROL VALORES REPETIDOS(DNI, CORREO, USUARIO) -->
-
         <?php
+            session_start();
             $msjError = array();
             $nombre = "";
             $dni = "";
             $email = "";
             $nombreUsuario = "";
             $clave = "";
+            $confirmClave = "";
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (empty($_POST['nombre'])) {
@@ -75,17 +74,22 @@
                 $clave = $_POST['clave'];
             }
 
+            if (empty($_POST['confirmClave'])) {
+                $msjError['confirmClave'] = "Por favor repita la contraseña.";
+            } elseif ($clave !== ($_POST['confirmClave'])) {
+                $msjError['confirmClave'] = "Las contraseñas no coinciden.";
+            } else {
+                $confirmClave = $_POST['confirmClave'];
+            }
+
             if (empty($msjError)) {
-                $servername = "localhost";
-                $username_db = "user_delivery";
-                $password_db = "user";
-                $dbname = "delivery-development";
+                require("../conexionBD.php");
+                $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
 
-                $conexion = new mysqli($servername, $username_db, $password_db, $dbname);
-
-                if ($conexion->connect_error) {
-                    die("Conexión fallida: " . $conexion->connect_error);
+                if(mysqli_connect_errno()){
+                    die("Fallo al conectar con la base de datos");
                 }
+                mysqli_set_charset($conexion,"utf8");
 
                 $sqlEmail = "SELECT COUNT(*) AS count FROM usuario WHERE email = '$email'";
                 $resultEmail = $conexion->query($sqlEmail);
@@ -116,6 +120,13 @@
                     $sql = "INSERT INTO usuario (nombre, email, nombre_usuario, clave, dni) VALUES ('$nombre', '$email', '$nombreUsuario', '$clave', '$dni')";
             
                     if ($conexion->query($sql) === TRUE) {
+                        $idUsuario = $conexion->insert_id;
+                        $_SESSION['idUsuario'] = $idUsuario;
+                        $_SESSION["nombre"] = $nombre;
+                        $_SESSION["email"] = $email;
+                        $_SESSION["nombreUsuario"] = $nombreUsuario;
+                        $_SESSION["dni"] = $dni;
+                        $_SESSION['clave'] = $clave;
                         header("Location: ../index.php");
                         exit();
                     } else {
@@ -161,7 +172,14 @@
                     value="<?php echo htmlspecialchars($clave); ?>">
                 <?php if (isset($msjError['clave'])) { echo "<span class='msjError'>{$msjError['clave']}</span>"; } ?>
             </div>
-
+            <div class="contenedor-contraseña">
+                    <label for="confirmClave">Confirmar contraseña:</label>
+                    <input type="password" id="confirmClave" name="confirmClave" minlength="8"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
+                        title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial"
+                        value="<?php echo htmlspecialchars($confirmClave); ?>">
+                    <?php if (isset($msjError['confirmClave'])) { echo "<span class='msjError'>{$msjError['confirmClave']}</span>"; } ?>
+                </div>
             <div>
                 <input type="submit" value="Registrarse">
             </div>

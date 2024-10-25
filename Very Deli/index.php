@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Very Deli</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,10 +24,10 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
                     <div class="dropdown-content">
-                        <a href="./paginas/perfil.php">Perfil</a>
+                        <a href="./paginas/perfil-usuario/editarPerfil.php">Editar perfil</a>
                         <a href="./paginas/publicaciones-filtradas.php">Mis publicaciones</a>
-                        <a href="./paginas/salir.php">Salir</a>
                         <a href="./paginas/registroVehiculo.php">Registrar vehiculo</a>
+                        <a href="./paginas/salir.php">Salir</a>
                     </div>
                 </div>
             <?php else: ?>
