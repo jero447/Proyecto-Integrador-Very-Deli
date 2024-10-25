@@ -86,7 +86,7 @@
                 $servername = "localhost";
                 $username_db = "user_delivery";
                 $password_db = "user";
-                $dbname = "delivery";
+                $dbname = "delivery-development";
 
                 $conexion = new mysqli($servername, $username_db, $password_db, $dbname);
 

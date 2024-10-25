@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-10-2024 a las 17:38:53
+-- Tiempo de generación: 23-10-2024 a las 23:57:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `delivery`
+-- Base de datos: `delivery-development`
 --
 
 -- --------------------------------------------------------
@@ -58,20 +58,23 @@ CREATE TABLE `publicacion` (
   `idPublicacion` int(11) NOT NULL,
   `volumen` float NOT NULL,
   `peso` float NOT NULL,
-  `origen` varchar(30) NOT NULL,
-  `destino` varchar(30) NOT NULL,
   `idUsuario` int(11) DEFAULT NULL,
   `titulo` varchar(30) DEFAULT NULL,
-  `descripcion` varchar(70) DEFAULT NULL
+  `descripcion` varchar(70) DEFAULT NULL,
+  `localidad_destino` varchar(30) DEFAULT NULL,
+  `localidad_origen` varchar(30) DEFAULT NULL,
+  `provincia_origen` varchar(30) DEFAULT NULL,
+  `provincia_destino` varchar(30) DEFAULT NULL,
+  `calle_origen` varchar(30) DEFAULT NULL,
+  `calle_destino` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `publicacion`
 --
 
-INSERT INTO `publicacion` (`idPublicacion`, `volumen`, `peso`, `origen`, `destino`, `idUsuario`, `titulo`, `descripcion`) VALUES
-(9, 12, 45, 'Cordoba', 'Mendoza', 5, 'Flete ', 'Flete de un armario'),
-(10, 1231, 1231, 'Cordoba', 'Chau', 5, 'chau', 'demasiado texto');
+INSERT INTO `publicacion` (`idPublicacion`, `volumen`, `peso`, `idUsuario`, `titulo`, `descripcion`, `localidad_destino`, `localidad_origen`, `provincia_origen`, `provincia_destino`, `calle_origen`, `calle_destino`) VALUES
+(13, 12, 45, 5, 'Flete ', 'Flete de un armario', 'General Paz', 'Juana Koslay', 'San Luis', 'Cordoba', 'Av.Sarmiento 323', 'Pasaje Colon 245');
 
 -- --------------------------------------------------------
 
@@ -110,6 +113,14 @@ CREATE TABLE `vehiculo` (
   `color` varchar(20) NOT NULL,
   `idUsuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `vehiculo`
+--
+
+INSERT INTO `vehiculo` (`idVehiculo`, `matricula`, `modelo`, `color`, `idUsuario`) VALUES
+(1, 'ABC 123', 'Corsa', 'Negro', 5),
+(2, 'BCA 321', 'Corolla', 'Gris', 5);
 
 --
 -- Índices para tablas volcadas
@@ -174,7 +185,7 @@ ALTER TABLE `postulacion`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -186,7 +197,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
-  MODIFY `idVehiculo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idVehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
