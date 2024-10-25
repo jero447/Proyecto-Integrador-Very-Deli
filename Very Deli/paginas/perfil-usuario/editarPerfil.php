@@ -1,6 +1,12 @@
 <?php
         session_start();
         $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : null;
+
+        if (!$idUsuario) {
+            header("Location: ../index.php");
+            exit();
+        }
+
         $nombreActual = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : null;
         $dniActual = isset($_SESSION['dni']) ? $_SESSION['dni'] : null;
         $emailActual = isset($_SESSION['email']) ? $_SESSION['email'] : null;
@@ -12,8 +18,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse</title>
-    <link rel="stylesheet" href="./estilos-iniciar-registro.css">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="./estilos-editar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -21,9 +27,9 @@
 <body>
 
 <header>
-    <a href="../index.php" class="vinculo-home">
+    <a href="../../index.php" class="vinculo-home">
         <div class="contenedor-logo">
-            <img src="../imagenes/LogoDery.png" alt="logo" class="logo">
+            <img src="../../imagenes/LogoDery.png" alt="logo" class="logo">
             <h1>Very Deli</h1>  
         </div>  
     </a>
@@ -78,16 +84,13 @@
             }
 
             if (empty($msjError)) {
-                $servername = "localhost";
-                $username_db = "user_delivery";
-                $password_db = "user";
-                $dbname = "delivery";
-
-                $conexion = new mysqli($servername, $username_db, $password_db, $dbname);
-
-                if ($conexion->connect_error) {
-                    die("Conexión fallida: " . $conexion->connect_error);
+                require("../../conexionBD.php");
+                $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
+        
+                if(mysqli_connect_errno()){
+                    die("Fallo al conectar con la base de datos");
                 }
+                mysqli_set_charset($conexion,"utf8");
                 
                 if ($emailNuevo !== $emailActual) {
                     $sqlEmail = "SELECT COUNT(*) AS count FROM usuario WHERE email = '$emailNuevo'";

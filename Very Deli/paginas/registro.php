@@ -83,16 +83,13 @@
             }
 
             if (empty($msjError)) {
-                $servername = "localhost";
-                $username_db = "user_delivery";
-                $password_db = "user";
-                $dbname = "delivery-development";
+                require("../conexionBD.php");
+                $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
 
-                $conexion = new mysqli($servername, $username_db, $password_db, $dbname);
-
-                if ($conexion->connect_error) {
-                    die("Conexión fallida: " . $conexion->connect_error);
+                if(mysqli_connect_errno()){
+                    die("Fallo al conectar con la base de datos");
                 }
+                mysqli_set_charset($conexion,"utf8");
 
                 $sqlEmail = "SELECT COUNT(*) AS count FROM usuario WHERE email = '$email'";
                 $resultEmail = $conexion->query($sqlEmail);

@@ -120,7 +120,7 @@ main{
     padding: 10px;
     border: none;
 }
-input[value="Siguiente"],input[value="Registrarse"], input[value="Registrar"], input[value="Guardar"],input[value="Cambiar Contraseña"]{
+input[value="Siguiente"],input[value="Registrarse"], input[value="Registrar"], input[value="Recuperar Contraseña"]{
  background-color: #F5F5F5; 
   color: #333333; 
   border: none;
@@ -130,7 +130,7 @@ input[value="Siguiente"],input[value="Registrarse"], input[value="Registrar"], i
   cursor: pointer;
   
 }
-input[value="Siguiente"]:hover, input[value="Registrarse"]:hover, input[value="Registrar"]:hover,input[value="Guardar"]:hover,input[value="Cambiar Contraseña"]:hover{
+input[value="Siguiente"]:hover, input[value="Registrarse"]:hover, input[value="Registrar"]:hover, input[value="Recuperar Contraseña"]:hover{
     background-color: #D9D9D9; 
 }
 
