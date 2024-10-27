@@ -33,6 +33,21 @@
             <h1>Very Deli</h1>  
         </div>  
     </a>
+    <div class="btns-login">
+            <?php if ($nombreUsuarioActual): ?>
+                <div class="dropdown">
+                    <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuarioActual); ?></button>
+                    <div class="dropdown-content">
+                        <a href="../publicaciones-filtradas.php">Mis publicaciones</a>
+                        <a href="../registroVehiculo.php">Registrar vehiculo</a>
+                        <a href="../salir.php">Salir</a>
+                    </div>
+                </div>
+            <?php else: ?>
+                <a class="animated-button-login" href="./paginas/inicio.php">Iniciar Sesión</a>
+                <a class="animated-button-login" href="./paginas/registro.php">Registrarse</a>
+            <?php endif; ?>
+    </div>
 </header>
 
 <main>

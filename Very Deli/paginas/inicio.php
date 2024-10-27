@@ -109,10 +109,10 @@
                 <div>
                     <input type="submit" value="Siguiente">
                 </div>
-                <!-- <br>
+                <br>
                 <a href="./perfil-usuario/recuperar-clave-token.php">
                         <input type="button" value="Recuperar Contraseña">
-                </a> -->
+                </a>
             </form>
             
         </div>
