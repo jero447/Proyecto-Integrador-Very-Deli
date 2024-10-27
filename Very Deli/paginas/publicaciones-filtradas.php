@@ -1,6 +1,12 @@
 <?php
     session_start();
-    $nombreUsuario = isset($_SESSION['correoUser']) ? $_SESSION['correoUser'] : null;
+    $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : null;
+
+    if (!$idUsuario) {
+        header("Location: ../index.php");
+        exit();
+    }
+    $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
 ?>
 
 <!DOCTYPE html>
@@ -20,20 +26,23 @@
         <div class="contenedor-logo">
             <img src="../imagenes/LogoDery.png" alt="logo" class="logo">
             <h1>Very Deli</h1>  
-        </div>       
+        </div>
+        </a>
         <div class="btns-login">
-        <?php if ($nombreUsuario): ?>
-            <div class="dropdown">
-                <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
-                <div class="dropdown-content">
-                    <a href="./salir.php">Salir</a>
+            <?php if ($nombreUsuario): ?>
+                <div class="dropdown">
+                    <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
+                    <div class="dropdown-content">
+                        <a href="./perfil-usuario/editarPerfil.php">Editar perfil</a>
+                        <a href="./registroVehiculo.php">Registrar vehiculo</a>
+                        <a href="./salir.php">Salir</a>
+                    </div>
                 </div>
-            </div>
-        <?php else: ?>
-            <a class="animated-button-login" href="./inicio.php">Iniciar Sesion</a>
-            <a class="animated-button-login" href="./registro.php">Registrarse</a>
-        <?php endif; ?>
-    </div>
+            <?php else: ?>
+                <a class="animated-button-login" href="./paginas/inicio.php">Iniciar Sesión</a>
+                <a class="animated-button-login" href="./paginas/registro.php">Registrarse</a>
+            <?php endif; ?>
+        </div>       
     </header>
 
 <?php

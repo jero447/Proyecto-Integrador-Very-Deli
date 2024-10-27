@@ -6,6 +6,7 @@
             header("Location: ../index.php");
             exit();
         }
+        $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +28,21 @@
             <h1>Very Deli</h1>  
         </div>  
     </a>
+    <div class="btns-login">
+            <?php if ($nombreUsuario): ?>
+                <div class="dropdown">
+                    <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
+                    <div class="dropdown-content">
+                        <a href="./perfil-usuario/editarPerfil.php">Editar perfil</a>
+                        <a href="./publicaciones-filtradas.php">Mis publicaciones</a>
+                        <a href="./salir.php">Salir</a>
+                    </div>
+                </div>
+            <?php else: ?>
+                <a class="animated-button-login" href="./paginas/inicio.php">Iniciar Sesión</a>
+                <a class="animated-button-login" href="./paginas/registro.php">Registrarse</a>
+            <?php endif; ?>
+        </div>      
 </header>
 
 <main>
