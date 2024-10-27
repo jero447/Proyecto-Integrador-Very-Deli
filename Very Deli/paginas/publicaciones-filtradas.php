@@ -69,8 +69,8 @@
             echo "<p><strong>Volumen:</strong> " . $row['volumen'] . "</p>";
             echo "<p><strong>Provincia de origen:</strong> " . $row['provincia_origen'] . "</p>";
             echo "<p><strong>Provincia de destino:</strong> " . $row['provincia_destino'] . "</p>";
-            echo "<p><strong>Localidad de origen:</strong> " . $row['localidad_destino'] . "</p>";
-            echo "<p><strong>Localidad de destino:</strong> " . $row['destino'] . "</p>";
+            echo "<p><strong>Localidad de origen:</strong> " . $row['localidad_origen'] . "</p>";
+            echo "<p><strong>Localidad de destino:</strong> " . $row['localidad_destino'] . "</p>";
             echo "<p><strong>Calle de origen:</strong> " . $row['calle_origen'] . "</p>";
             echo "<p><strong>Calle de destino:</strong> " . $row['calle_destino'] . "</p>";
             echo "</div>";
