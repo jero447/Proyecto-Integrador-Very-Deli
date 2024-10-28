@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    $nombreUsuario = isset($_SESSION['correoUser']) ? $_SESSION['correoUser'] : null;
+        session_start();
+        $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
 ?>
 
 <!DOCTYPE html>
@@ -21,64 +21,109 @@
             <img src="../imagenes/LogoDery.png" alt="logo" class="logo">
             <h1>Very Deli</h1>  
         </div>       
-        <div class="btns-login">
-        <?php if ($nombreUsuario): ?>
             <div class="dropdown">
                 <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
                 <div class="dropdown-content">
-                    <a href="./salir.php">Salir</a>
+                    <a href="perfil.php">Perfil</a>
+                    <a href="./paginas/registroVehiculo.php">Registrar vehiculo</a>
+                    <a href="salir.php">Salir</a>
                 </div>
             </div>
-        <?php else: ?>
-            <a class="animated-button-login" href="./inicio.php">Iniciar Sesion</a>
-            <a class="animated-button-login" href="./registro.php">Registrarse</a>
-        <?php endif; ?>
-    </div>
+        </div>
     </header>
 
 <?php
-    require("../conexionBD.php");
-    $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
-            
-    if(mysqli_connect_errno()){
-        echo "Fallo al conectar con la base de datos";
-        exit();
-    }
+require("../conexionBD.php");
+$conexion = mysqli_connect($db_host, $db_usuario, $db_contra, $db_nombre);
 
-    if (isset($_SESSION['idUsuario']))
-        $idUsuario = $_SESSION['idUsuario'];
+if (mysqli_connect_errno()) {
+    echo "Fallo al conectar con la base de datos";
+    exit();
+}
 
-    $sql = "SELECT idPublicacion, volumen, peso, localidad_origen, localidad_destino, provincia_origen, provincia_destino, calle_origen, calle_destino, titulo, descripcion
-            FROM publicacion
-            WHERE idUsuario = ?";
+if (isset($_SESSION['idUsuario'])) {
+    $idUsuario = $_SESSION['idUsuario'];
+}
 
-    $stmt = $conexion->prepare($sql);
-    $stmt->bind_param("i", $idUsuario);
-    $stmt->execute();
-    $result = $stmt->get_result();
+$sql = "SELECT idPublicacion, volumen, peso, localidad_origen, localidad_destino, provincia_origen, provincia_destino, calle_origen, calle_destino, titulo, descripcion
+        FROM publicacion
+        WHERE idUsuario = ?";
+$stmt = $conexion->prepare($sql);
+$stmt->bind_param("i", $idUsuario);
+$stmt->execute();
+$result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        echo "<div style='display: flex; justify-content: space-between;'>"; 
-    
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo '<main>';
+        echo '<div class="contenedor-publicacion">';
+        echo '<h2>' . $row['titulo'] . '</h2>';
+        echo '<div class="info-publicacion">';
+        echo '<div>';
+        echo '<h4>Usuario dueño de la publicacion</h4>';
+        echo '<p><strong>Descripción:</strong> ' . $row['descripcion'] . '</p>';
+        echo '<p><strong>Lugar de origen:</strong> ' . $row['provincia_origen'] . ', ' . $row['localidad_origen'] . ', ' . $row['calle_origen'] . '</p>';
+        echo '<p><strong>Lugar de destino:</strong> ' . $row['provincia_destino'] . ', ' . $row['localidad_destino'] . ', ' . $row['calle_destino'] . '</p>';
+        echo '<p><strong>Volumen:</strong> ' . $row['volumen'] . '</p>';
+        echo '<p><strong>Peso:</strong> ' . $row['peso'] . '</p>';
+        echo '</div>';
+        echo '</div>';
         
-        while ($row = $result->fetch_assoc()) {
-            echo "<div style='border: 1px solid black; padding: 10px; margin: 5px; width: 30%;'>"; 
-            echo "<h3>" . $row['titulo'] . "</h3>";
-            echo "<p><strong>Descripción:</strong> " . $row['descripcion'] . "</p>";
-            echo "<p><strong>Peso:</strong> " . $row['peso'] . "</p>";
-            echo "<p><strong>Volumen:</strong> " . $row['volumen'] . "</p>";
-            echo "<p><strong>Provincia de origen:</strong> " . $row['provincia_origen'] . "</p>";
-            echo "<p><strong>Provincia de destino:</strong> " . $row['provincia_destino'] . "</p>";
-            echo "<p><strong>Localidad de origen:</strong> " . $row['localidad_origen'] . "</p>";
-            echo "<p><strong>Localidad de destino:</strong> " . $row['localidad_destino'] . "</p>";
-            echo "<p><strong>Calle de origen:</strong> " . $row['calle_origen'] . "</p>";
-            echo "<p><strong>Calle de destino:</strong> " . $row['calle_destino'] . "</p>";
-            echo "</div>";
-        }
-    
-        echo "</div>"; 
-    } else {
-        echo "No se encontraron publicaciones.";
-    }
+        echo '<h4>Lista de postulantes</h4>';
+        echo '<div class="lista-postulantes">';
 
+        // Bucle para mostrar postulantes (ejemplo estático)
+        for ($i = 0; $i < 3; $i++) {
+            echo '<a href="">';
+            echo '<div class="postulante">';
+            echo '<h5>Nombre Postulante</h5>';
+            echo '<p>Monto de cobro</p>';
+            echo '</div>';
+            echo '</a>';
+        }
+
+        echo '</div>'; // Cierra lista-postulantes
+
+        // Sección de comentarios para esta publicación
+        echo '<div class="seccion-comentarios">';
+        echo '<h4>Comentarios</h4>';
+        
+        // Ejemplo de comentario principal y respuestas
+        echo '<div class="comentario">';
+        echo '<p><strong>Usuario1</strong> - 2024-10-26 10:30</p>';
+        echo '<p>Este es un comentario de ejemplo para la publicación.</p>';
+        
+        echo '<div class="respuestas">';
+        echo '<div class="comentario respuesta">';
+        echo '<p><strong>Usuario2</strong> - 2024-10-26 10:45</p>';
+        echo '<p>Esta es una respuesta al comentario de ejemplo.</p>';
+        echo '</div>';
+        
+        echo '<div class="comentario respuesta">';
+        echo '<p><strong>Usuario3</strong> - 2024-10-26 11:00</p>';
+        echo '<p>Otra respuesta a este comentario.</p>';
+        echo '</div>';
+        echo '</div>'; // Cierra respuestas
+
+        // Formulario para responder a un comentario
+        echo '<form method="POST" action="agregarComentario.php">';
+        echo '<textarea name="comentario" placeholder="Escribe una respuesta..."></textarea>';
+        echo '<button type="submit">Responder</button>';
+        echo '</form>';
+        echo '</div>'; // Cierra comentario principal
+
+        // Formulario para agregar un nuevo comentario
+        echo '<form method="POST" action="agregarComentario.php">';
+        echo '<textarea name="comentario" placeholder="Escribe un comentario..."></textarea>';
+        echo '<button type="submit">Comentar</button>';
+        echo '</form>';
+
+        echo '</div>'; // Cierra seccion-comentarios
+        echo '</div>'; // Cierra contenedor-publicacion
+        echo '</main>'; // Cierra main
+    }
+} else {
+    echo "No se encontraron publicaciones.";
+}
 ?>
+
