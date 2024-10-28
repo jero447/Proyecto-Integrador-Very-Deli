@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="estilos-publicacion.css">
+    <link rel="stylesheet" href="./estilos-publicacion.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -78,8 +78,8 @@
             echo "<p><strong>Volumen:</strong> " . $row['volumen'] . "</p>";
             echo "<p><strong>Provincia de origen:</strong> " . $row['provincia_origen'] . "</p>";
             echo "<p><strong>Provincia de destino:</strong> " . $row['provincia_destino'] . "</p>";
-            echo "<p><strong>Localidad de origen:</strong> " . $row['localidad_destino'] . "</p>";
-            echo "<p><strong>Localidad de destino:</strong> " . $row['destino'] . "</p>";
+            echo "<p><strong>Localidad de origen:</strong> " . $row['localidad_origen'] . "</p>";
+            echo "<p><strong>Localidad de destino:</strong> " . $row['localidad_destino'] . "</p>";
             echo "<p><strong>Calle de origen:</strong> " . $row['calle_origen'] . "</p>";
             echo "<p><strong>Calle de destino:</strong> " . $row['calle_destino'] . "</p>";
             echo "</div>";

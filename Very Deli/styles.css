@@ -80,15 +80,6 @@ footer{
     background-color: #E0E0E0;
     border: 2px solid #D9D9D9;
 }
-.filtro-descripcion input{
-    width: 12rem;
-    text-align: center;
-    border-radius: 5px;
-    margin-left: 10px;
-    padding: 4px;
-    background-color: #EBEBEB;
-    border: 2px solid #D9D9D9;
-}
 
 .contenedor-lista{
     background-color: beige;
@@ -119,6 +110,7 @@ footer{
     display: flex;
     gap: 20px;
 }
+
 input[value="Postularme"]{
     padding: 10px;
     border-radius: 5px;

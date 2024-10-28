@@ -9,13 +9,13 @@ header{
     padding: 0.5rem;
     background-color: #224870;
     font-family:  "Merriweather", serif;
-}
-.vinculo-home{
-    text-decoration: none;
+    width: 100%;
 }
 .contenedor-logo{
     display: flex;
     align-items: center;
+}
+.vinculo-home{
     text-decoration: none;
 }
 .contenedor-logo h1{
@@ -26,56 +26,19 @@ header{
     border-radius: 2rem;
     margin-right: 1rem;
 }
-.animated-button-login {
-    position: relative;
-    display: inline-block;
-    padding: 12px 10px;
-    border: none;
-    font-size: 16px;
-    background-color: #224870;
-    border-radius: 100px;
-    font-weight: 400;
-    color: white;
-    box-shadow: 0 0 0 2px #ffffff40;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+.btn-iniciar{
+    margin-right: 1rem;
+}
+.btn-iniciar,.btn-registrarse{
     text-decoration: none;
+    font-weight: 300;
+    color: #F8F3EC;
 }
 
-.animated-button-login span:last-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background-color: #2196F3;
-    border-radius: 50%;
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+.btns-login{
+    margin-right: 1rem;
 }
-
-.animated-button-login span:first-child {
-    position: relative;
-    z-index: 1;
-}
-
-.animated-button-login:hover {
-    box-shadow: 0 0 0 5px #2195f360;
-    color: #ffffff;
-    background-color: #17183B; /* Color al hacer hover */
-}
-
-.animated-button-login:active {
-    scale: 0.95;
-}
-
-.animated-button-login:hover span:last-child {
-    width: 150px;
-    height: 150px;
-    opacity: 1;
-}.dropdown {
+.dropdown {
     position: relative;
     display: inline-block;
 }
@@ -95,7 +58,7 @@ header{
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 80px;
+    min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
@@ -171,62 +134,8 @@ header{
     height: 150px;
     opacity: 1;
 }
-.formularioCreacion{
-    background-color: #2196F3;
-    padding: 2rem;
-    border-radius: 15px;
-}   
-
-.formularioCreacion label{
-    margin-bottom: 5px;
-}
-
-.formularioCreacion input[type = "text"], .formularioCreacion input[type = "number"], .formularioCreacion select{
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #D9D9D9;
-    margin-bottom: 7px;
-    width: 250px;
-}
-
-.cont-input{
-    display: flex;
-    flex-direction: column;
-}
-
-.cont-campos-par{
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-    font-size: 17px;
-}
-
-.titulo-crear{
-    padding: 1rem;
-    background-color: #0e0236;
-    color: #ffff;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.btn-enviar{
-    width: 100%;
-    margin-top: 30px;
-    padding: 10px;
-    background-color: #07ab71;  
-    color: #ffff;
-    font-size: medium;
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
-}
-
 main{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 4.4rem - 5.7rem);
     font-family: "Roboto", sans-serif;
 }
 footer{
@@ -235,4 +144,30 @@ footer{
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     background-color: #D9D9D9;
+}
+.publicacion{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.datos-publicacion{
+    display: flex;
+    gap: 20px;
+}
+.contenedor-lista{
+    background-color: beige;
+    width: 100%;
+    height: calc(100vh - 4.4rem - 5.7rem);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+}
+.enlacePostulacion{
+    text-decoration: none;
+    color: #000000;
 }

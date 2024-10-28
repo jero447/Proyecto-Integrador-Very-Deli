@@ -1,6 +1,6 @@
 <?php
         session_start();
-        $nombreUsuario = isset($_SESSION['correoUser']) ? $_SESSION['correoUser'] : null;
+        $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +43,76 @@
             <h3>Crear Publicacion</h3>
         </div>
         <div>
+        <script>
+            const API_BASE_URL = "https://apis.datos.gob.ar/georef/api";
+
+            function cargarProvincias() {
+                    fetch(`${API_BASE_URL}/provincias`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const provincias = data.provincias;
+                            const provinciasSelect = document.querySelectorAll(".provincias");
+
+                            provincias.forEach(provincia => {
+                                const option = document.createElement("option");
+                                option.value = provincia.nombre;
+                                option.textContent = provincia.nombre;
+                                provinciasSelect.forEach(select =>{
+                                    select.appendChild(option.cloneNode(true));
+                                });
+                            });
+                        })
+                        .catch(error => console.error("Error al cargar las provincias:", error));
+                }
+
+            function cargarLocalidadesOrigen(){
+                const provinciaOrigen = document.getElementById("prov-origen").value;
+                const localidadSelect = document.getElementById("local-origen");
+
+                localidadSelect.innerHTML = "<option>Seleccione una localidad</option>";
+                if (provinciaOrigen) {
+                        fetch(`${API_BASE_URL}/localidades?provincia=${encodeURIComponent(provinciaOrigen)}&max=100`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const localidades = data.localidades;
+
+                                localidades.forEach(localidad => {
+                                    const option = document.createElement("option");
+                                    option.value = localidad.nombre;
+                                    option.textContent = localidad.nombre;
+                                    localidadSelect.appendChild(option);
+                                });
+                            })
+                            .catch(error => console.error("Error al cargar localidades:", error));
+                    }
+
+            }
+
+            function cargarLocalidadesDestino(){
+                const provinciaDestino = document.getElementById("prov-destino").value;
+                const localidadSelect = document.getElementById("local-destino");
+
+                localidadSelect.innerHTML = "<option>Seleccione una localidad</option>";
+                if (provinciaDestino) {
+                        fetch(`${API_BASE_URL}/localidades?provincia=${encodeURIComponent(provinciaDestino)}&max=100`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const localidades = data.localidades;
+
+                                localidades.forEach(localidad => {
+                                    const option = document.createElement("option");
+                                    option.value = localidad.nombre;
+                                    option.textContent = localidad.nombre;
+                                    localidadSelect.appendChild(option);
+                                });
+                            })
+                            .catch(error => console.error("Error al cargar localidades:", error));
+                    }
+            }
+
+
+                window.onload = cargarProvincias;
+        </script>
             <div class="cont-campos-par">
                 <div class="cont-input">
                     <label for="">Titulo de la publicacion</label>
@@ -67,21 +137,29 @@
             <div class="cont-campos-par">
                 <div class="cont-input">
                     <label>Provincia de origen</label>
-                    <input type='text' name='prov-origen'>
+                    <select name="prov-origen" class="provincias" id="prov-origen" onchange="cargarLocalidadesOrigen()">
+                        <option value="" selected disabled>Seleccione una provincia</option>
+                    </select>
                 </div>
                 <div class="cont-input">
                     <label>Provincia de destino</label>
-                    <input type='text' name='prov-destino'>
+                    <select name="prov-destino" class="provincias" id="prov-destino" onchange="cargarLocalidadesDestino()">
+                        <option value="" selected disabled>Seleccione una provincia</option>
+                    </select>
                 </div>
             </div>
             <div class="cont-campos-par">
                 <div class="cont-input">
                     <label>Localidad de origen</label>
-                    <input type='text' name='local-origen'>
+                    <select name="local-origen" id="local-origen">
+                        <option value="" selected disabled>Seleccione una localidad</option>
+                    </select>
                 </div>
                 <div class="cont-input">
                     <label>Localidad de destino</label>
-                    <input type='text' name='local-destino'>
+                    <select name="local-destino" id="local-destino" >
+                        <option value="" selected disabled>Seleccione una localidad</option>
+                    </select>
                 </div>
             </div>
             <div class="cont-campos-par">
@@ -96,6 +174,9 @@
             </div>             
         </div>
         <input type='submit' value='ENVIAR' class="btn-enviar">
+
+        
+
     </form>
     </main>
     <footer>
