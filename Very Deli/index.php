@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Very Deli</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,10 +24,11 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
                     <div class="dropdown-content">
-                        <a href="./paginas/perfil.php">Perfil</a>
+                        <a href="./paginas/perfil-usuario/editarPerfil.php">Editar perfil</a>
                         <a href="./paginas/publicaciones-filtradas.php">Mis publicaciones</a>
-                        <a href="./paginas/salir.php">Salir</a>
+                        <a href="./paginas/creacion-postulacion/miPostulaciones.php">Mis postulaciones</a>
                         <a href="./paginas/registroVehiculo.php">Registrar vehiculo</a>
+                        <a href="./paginas/salir.php">Salir</a>
                     </div>
                 </div>
             <?php else: ?>
@@ -38,17 +39,64 @@
     </header>
     <main>
         <div class="contenedor-filtro">
-            <h3>Buscar publicacion por:</h3>
+            <h3>Buscar publicacion por zona:</h3>
             <div class="filtro-zona">
-                <label for="">Zona:</label>
-                <select name="" id="">
-                    <option value="" selected disabled>Seleccione una zona</option>
+                <label>Provincia:</label>
+                <select id="provincia" onchange="cargarLocalidades()">
+                    <option value="" selected disabled>Seleccione una provincia</option>
                 </select>
             </div>
-            <div class="filtro-descripcion">
-                <label for="">Descripcion:</label>
-                <input type="text" name="" id="" placeholder="Ingrese la descripcion">
+            <div class="filtro-zona">
+                <label>Localidad:</label>
+                <select id="localidad">
+                    <option value="" selected disabled>Seleccione una localidad</option>
+                </select>
             </div>
+            <script>
+                const API_BASE_URL = "https://apis.datos.gob.ar/georef/api";
+
+                function cargarProvincias() {
+                    fetch(`${API_BASE_URL}/provincias`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const provincias = data.provincias;
+                            const provinciasSelect = document.getElementById("provincia");
+
+                            provincias.forEach(provincia => {
+                                const option = document.createElement("option");
+                                option.value = provincia.nombre;
+                                option.textContent = provincia.nombre;
+                                provinciasSelect.appendChild(option);
+                            });
+                        })
+                        .catch(error => console.error("Error al cargar las provincias:", error));
+                }
+
+                function cargarLocalidades() {
+                    const provincia = document.getElementById("provincia").value;
+                    const localidadSelect = document.getElementById("localidad");
+
+                    localidadSelect.innerHTML = "<option>Seleccione una localidad</option>";
+
+                    if (provincia) {
+                        fetch(`${API_BASE_URL}/localidades?provincia=${encodeURIComponent(provincia)}&max=100`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const localidades = data.localidades;
+
+                                localidades.forEach(localidad => {
+                                    const option = document.createElement("option");
+                                    option.value = localidad.nombre;
+                                    option.textContent = localidad.nombre;
+                                    localidadSelect.appendChild(option);
+                                });
+                            })
+                            .catch(error => console.error("Error al cargar localidades:", error));
+                    }
+                }
+
+                window.onload = cargarProvincias;
+            </script>
         </div>
         <div class="contenedor-lista">
             <?php

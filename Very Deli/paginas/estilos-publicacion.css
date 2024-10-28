@@ -15,6 +15,22 @@ header{
     left: 0;
     z-index: 1000; 
 }
+main{
+    height: calc(100vh - 4.4rem - 5.7rem);
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex: 1;
+}
+footer{
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    background-color: #D9D9D9;
+}
 .vinculo-home{
     text-decoration: none;
 }
@@ -36,7 +52,7 @@ header{
     padding: 12px 10px;
     border: none;
     font-size: 16px;
-    background-color: #224870; /* Añadir un color inicial */
+    background-color: #224870;
     border-radius: 100px;
     font-weight: 400;
     color: white;
@@ -115,7 +131,7 @@ header{
 .animated-button-login:hover {
     box-shadow: 0 0 0 5px #2195f360;
     color: #ffffff;
-    background-color: #17183B; /* Color al hacer hover */
+    background-color: #17183B;
 }
 
 .animated-button-login:active {
@@ -127,13 +143,10 @@ header{
     height: 150px;
     opacity: 1;
 }
-main{
-    height: calc(100vh - 4.4rem - 5.7rem);
-    font-family: "Roboto", sans-serif;
-    display: flex;
-}
 .contenedor-publicacion {
     background-color: #f5f5dc; /* beige */
+.contenedor-publicacion{
+    background-color: beige;
     display: flex;
     flex-direction: column;
     margin: 2rem auto;
@@ -260,18 +273,22 @@ main{
     border: none;
     transition: background-color 0.3s ease;
 }
-
-.btn:hover {
-    background-color: #d0d0d0;
-}
-
 /* Estilos para la sección de comentarios */
 .seccion-comentarios {
     margin-top: 1.5rem;
     padding-top: 1rem;
     border-top: 1px solid #ddd;
     max-height: 300px; 
-    overflow-y: auto; 
+    overflow-y: auto;
+}
+  
+.btn:hover{
+    background-color: #D9D9D9; 
+}
+/* ESTILOS DEL BOTON DESPLEGABLE */
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
 
 .seccion-comentarios h4 {

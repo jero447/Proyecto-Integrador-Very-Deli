@@ -49,20 +49,17 @@
                     }
         
                     if (empty($msjError)) {
-                        $servername = "localhost";
-                        $username_db = "user_delivery";
-                        $password_db = "user";
-                        $dbname = "feature";
-                      
-                        $conexion = new mysqli($servername, $username_db, $password_db, $dbname);
-        
-                        if ($conexion->connect_error) {
-                            die("Conexión fallida: " . $conexion->connect_error);
-                        }
+                        require("../conexionBD.php");
+                        $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
 
-                            $sqlLOG = "SELECT COUNT(*) AS count FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
-                            $result = $conexion->query($sqlLOG);
-                            $row = $result->fetch_assoc();
+                        if(mysqli_connect_errno()){
+                            die("Fallo al conectar con la base de datos");
+                        }
+                        mysqli_set_charset($conexion,"utf8");
+
+                        $sqlLOG = "SELECT COUNT(*) AS count FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
+                        $result = $conexion->query($sqlLOG);
+                        $row = $result->fetch_assoc();
 
                         if ($row['count'] == 0) {
                                 $msjError['correoUser'] = "Email o nombre de usuario no existente.";
@@ -70,18 +67,21 @@
                             $sqlClave = "SELECT idUsuario, nombre, email, nombre_usuario, clave, dni FROM usuario WHERE email = '$correoUser' OR nombre_usuario = '$correoUser'";
                             $resultClave = $conexion->query($sqlClave);
                             $rowClave = $resultClave->fetch_assoc();
+                            
                             $idUsuario = $rowClave["idUsuario"];
                             $nombre = $rowClave["nombre"];
                             $email = $rowClave["email"];
                             $nombreUsuario = $rowClave["nombre_usuario"];
                             $dni = $rowClave["dni"];
+                            $clave = $rowClave['clave'];
                         
-                            if (password_verify($claveLogin, $rowClave['clave'])) {
+                            if (password_verify($claveLogin, $clave)) {
                                 $_SESSION['idUsuario'] = $idUsuario;
                                 $_SESSION["nombre"] = $nombre;
                                 $_SESSION["email"] = $email;
                                 $_SESSION["nombreUsuario"] = $nombreUsuario;
                                 $_SESSION["dni"] = $dni;
+                                $_SESSION['clave'] = $clave;
                                 header("Location: ../index.php");
                                 exit();
                             } else {
@@ -109,6 +109,10 @@
                 <div>
                     <input type="submit" value="Siguiente">
                 </div>
+                <br>
+                <a href="./perfil-usuario/recuperar-clave-token.php">
+                        <input type="button" value="Recuperar Contraseña">
+                </a>
             </form>
             
         </div>
