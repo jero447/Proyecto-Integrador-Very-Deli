@@ -73,7 +73,6 @@
             } else {
                 $clave = $_POST['clave'];
             }
-
             if (empty($_POST['confirmClave'])) {
                 $msjError['confirmClave'] = "Por favor repita la contraseña.";
             } elseif ($clave !== ($_POST['confirmClave'])) {
