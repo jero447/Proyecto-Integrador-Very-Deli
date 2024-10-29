@@ -143,8 +143,6 @@ footer{
     height: 150px;
     opacity: 1;
 }
-.contenedor-publicacion {
-    background-color: #f5f5dc; /* beige */
 .contenedor-publicacion{
     background-color: beige;
     display: flex;
