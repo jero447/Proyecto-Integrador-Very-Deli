@@ -27,7 +27,7 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
                     <div class="dropdown-content">
-                        <a href="../perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i>Editar perfil</a>
+                        <a href="../perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i>Mi perfil</a>
                         <a href="../publicaciones-filtradas.php"><i class="fas fa-book"></i>Mis publicaciones</a>
                         <a href="../registroVehiculo.php"><i class="fas fa-car"></i>Registrar vehiculo</a>
                         <a href="./paginas/salir.php"><i class="fas fa-sign-out-alt"></i>Salir</a>

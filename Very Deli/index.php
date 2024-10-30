@@ -13,6 +13,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <?php
+    
+        function filtrarPublicaciones($prov_origen,$prov_destino,$local_origen,$local_destino){
+            require("./conexionBD.php");
+            $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
+            
+            if(mysqli_connect_errno()){
+                echo "Fallo al conectar con la base de datos";
+                exit();
+            }
+            mysqli_set_charset($conexion,"utf8");
+
+            $consulta = "SELECT idPublicacion,titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino FROM publicacion WHERE provincia_origen = '$prov_origen' AND provincia_destino = '$prov_destino'";
+            $resultado = mysqli_query($conexion,$consulta);
+        }
+
+    ?>
 </head>
 <body>
     <header>
@@ -40,19 +58,35 @@
     </header>
     <main>
         <div class="contenedor-filtro">
-            <h3>Buscar publicacion por zona:</h3>
-            <div class="filtro-zona">
-                <label>Provincia:</label>
-                <select id="provincia" onchange="cargarLocalidades()">
-                    <option value="" selected disabled>Seleccione una provincia</option>
-                </select>
-            </div>
-            <div class="filtro-zona">
-                <label>Localidad:</label>
-                <select id="localidad">
-                    <option value="" selected disabled>Seleccione una localidad</option>
-                </select>
-            </div>
+            <form method="POST">
+                <h3>Buscar publicacion por zona:</h3>
+                <div class="filtro-zona">
+                    <label>Provincia:</label>
+                    <select id="provincia" onchange="cargarLocalidades()" name="provincia" >
+                        <option value="" selected disabled>Seleccione una provincia</option>
+                    </select>
+                </div>
+                <div class="filtro-zona">
+                    <label>Localidad:</label>
+                    <select id="localidad" name="localidad">
+                        <option value="" selected disabled>Seleccione una localidad</option>
+                    </select>
+                </div>
+                <input type="submit" value="Filtrar" name="filtrar" class="btn-filtrar">
+            </form>
+
+            <form method="POST">
+                <h3>Buscar publicacion por descripcion</h3>
+                <div class="filtro-desc">
+                    <label for="">Descripcion</label>
+                    <input type="text" name="descripcion" placeholder="Ingrese su descripcion">
+                </div>
+                <div class="contendor-btn-filtro">
+                    <input type="submit" value="Filtrar" name="filtrar-desc" class="btn-filtrar">
+                    <input type="submit" value="Mostrar todas las publicaciones" name="mostrar" class="btn-mostrar">
+                </div>
+            </form>
+            
             <script>
                 const API_BASE_URL = "https://apis.datos.gob.ar/georef/api";
 
@@ -101,6 +135,9 @@
         </div>
         <div class="contenedor-lista">
             <?php
+            
+
+
 
             require("./conexionBD.php");
             $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
@@ -111,7 +148,29 @@
             }
 
             mysqli_set_charset($conexion,"utf8");
-            $consulta = "SELECT idPublicacion,titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino FROM publicacion";
+
+            $where = "";
+
+            if(isset($_POST["filtrar"])){
+                $provincia = isset($_POST["provincia"]) ? mysqli_real_escape_string($conexion, $_POST["provincia"]) : "";
+                $localidad = isset($_POST["localidad"]) ? mysqli_real_escape_string($conexion, $_POST["localidad"]) : "";
+                if ($provincia && $localidad) {
+                    $where = "WHERE provincia_origen = '$provincia' AND localidad_origen = '$localidad'";
+                }
+            }
+
+            if(isset($_POST["filtrar-desc"])){
+                $descripcion = isset($_POST["descripcion"]) ? mysqli_real_escape_string($conexion, $_POST["descripcion"]) : "";
+                if($descripcion){
+                    $where = "WHERE titulo LIKE '%$descripcion%' OR descripcion LIKE '%$descripcion%'" ;
+                }
+            }
+
+            if(isset($_POST["mostrar"])){
+                $where = "";
+            }
+
+            $consulta = "SELECT idPublicacion,titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino FROM publicacion  $where";
             $resultado = mysqli_query($conexion,$consulta);
 
             while($fila = mysqli_fetch_array($resultado)){
