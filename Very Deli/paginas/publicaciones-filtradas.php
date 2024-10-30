@@ -33,7 +33,8 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
                     <div class="dropdown-content">
-                        <a href="./perfil-usuario/editarPerfil.php">Editar perfil</a>
+                        <a href="./perfil-usuario/editarPerfil.php">Mi perfil</a>
+                        <a href="./creacion-postulacion/miPostulaciones.php">Mis postulaciones</a>
                         <a href="./registroVehiculo.php">Registrar vehiculo</a>
                         <a href="./salir.php">Salir</a>
                     </div>

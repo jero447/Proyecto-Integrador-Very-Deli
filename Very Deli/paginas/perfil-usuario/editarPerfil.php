@@ -21,6 +21,7 @@
     <title>Editar Perfil</title>
     <link rel="stylesheet" href="./estilos-editar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -39,9 +40,10 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuarioActual); ?></button>
                     <div class="dropdown-content">
-                        <a href="../publicaciones-filtradas.php">Mis publicaciones</a>
-                        <a href="../registroVehiculo.php">Registrar vehiculo</a>
-                        <a href="../salir.php">Salir</a>
+                        <a href="../publicaciones-filtradas.php"><i class="fas fa-user"></i>Mis publicaciones</a>
+                        <a href="../creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i>Mis postulaciones</a>
+                        <a href="../registroVehiculo.php"><i class="fas fa-car"></i>Registrar vehiculo</a>
+                        <a href="../salir.php"><i class="fas fa-sign-out-alt"></i>Salir</a>
                     </div>
                 </div>
             <?php else: ?>
@@ -180,28 +182,28 @@
             <div class="contenedor-correo">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($nombreActual); ?>" disabled>
-                <i class="fas fa-paint-brush icono-editar" onclick="habilitarCampo('nombre')" title="Editar"></i>
+                <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('nombre')" title="Editar"></i>
                 <?php if (isset($msjError['nombre'])) { echo "<span class='msjError'>{$msjError['nombre']}</span>"; } ?>
             </div>
 
             <div class="contenedor-correo">
                 <label for="dni">DNI:</label>
                 <input type="number" id="dni" name="dni" min=10000000 max=99999999 value="<?php echo htmlspecialchars($dniActual); ?>" disabled>
-                <i class="fas fa-paint-brush icono-editar" onclick="habilitarCampo('dni')" title="Editar"></i>
+                <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('dni')" title="Editar"></i>
                 <?php if (isset($msjError['dni'])) { echo "<span class='msjError'>{$msjError['dni']}</span>"; } ?>
             </div>
 
             <div class="contenedor-correo">
                 <label for="email">Correo Electrónico:</label>
                 <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($emailActual); ?>" disabled>
-                <i class="fas fa-paint-brush icono-editar" onclick="habilitarCampo('email')" title="Editar"></i>
+                <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('email')" title="Editar"></i>
                 <?php if (isset($msjError['email'])) { echo "<span class='msjError'>{$msjError['email']}</span>"; } ?>
             </div>
 
             <div class="contenedor-correo">
                 <label for="nombreUsuario">Nombre de Usuario:</label>
                 <input type="text" id="nombreUsuario" name="nombreUsuario" value="<?php echo htmlspecialchars($nombreUsuarioActual); ?>" disabled>
-                <i class="fas fa-paint-brush icono-editar" onclick="habilitarCampo('nombreUsuario')" title="Editar"></i>
+                <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('nombreUsuario')" title="Editar"></i>
                 <?php if (isset($msjError['nombreUsuario'])) { echo "<span class='msjError'>{$msjError['nombreUsuario']}</span>"; } ?>
             </div>
 
