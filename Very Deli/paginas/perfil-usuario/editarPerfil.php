@@ -3,7 +3,7 @@
         $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : null;
 
         if (!$idUsuario) {
-            header("Location: ../index.php");
+            header("Location: ../../index.php");
             exit();
         }
 
@@ -20,6 +20,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
     <link rel="stylesheet" href="./estilos-editar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -38,9 +40,10 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuarioActual); ?></button>
                     <div class="dropdown-content">
-                        <a href="../publicaciones-filtradas.php">Mis publicaciones</a>
-                        <a href="../registroVehiculo.php">Registrar vehiculo</a>
-                        <a href="../salir.php">Salir</a>
+                        <a href="../publicaciones-filtradas.php"><i class="fas fa-user"></i>Mis publicaciones</a>
+                        <a href="../creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i>Mis postulaciones</a>
+                        <a href="../registroVehiculo.php"><i class="fas fa-car"></i>Registrar vehiculo</a>
+                        <a href="../salir.php"><i class="fas fa-sign-out-alt"></i>Salir</a>
                     </div>
                 </div>
             <?php else: ?>
@@ -61,40 +64,56 @@
             $dniNuevo = "";
             $emailNuevo = "";
             $nombreUsuarioNuevo = "";
-            $cambiosNULL = "";
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nombreNuevo = $nombreActual;
+            $dniNuevo = $dniActual;
+            $emailNuevo = $emailActual;
+            $nombreUsuarioNuevo = $nombreUsuarioActual;
 
-            if (empty($_POST['nombre'])) {
-                $msjError['nombre'] = "El campo nombre es obligatorio.";
-            } elseif (!preg_match("/^[A-Za-zÀ-ÿ\s\.,'-]+$/", $_POST['nombre'])) {
-                $msjError['nombre'] = "El nombre solo puede contener letras y caracteres especiales.";
-            } else {
-                $nombreNuevo = $_POST['nombre'];
-            }
-            
+            $cambiosRealizados = false;
 
-            if (empty($_POST['dni'])) {
-                $msjError['dni'] = "El campo DNI es obligatorio.";
-            } else {
-                $dniNuevo = $_POST['dni'];
-            }
-
-            if (empty($_POST['email'])) {
-                $msjError['email'] = "El campo correo es obligatorio.";
-            } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                $msjError['email'] = "El correo no es válido.";
-            } else {
-                $emailNuevo = $_POST['email'];
+            if (isset($_POST['nombre']) && $_POST['nombre'] !== $nombreActual) {
+                if (empty($_POST['nombre'])) {
+                    $msjError['nombre'] = "El campo nombre es obligatorio.";
+                } elseif (!preg_match("/^[A-Za-zÀ-ÿ\s\.,'-]+$/", $_POST['nombre'])) {
+                    $msjError['nombre'] = "El nombre solo puede contener letras y caracteres especiales.";
+                } else {
+                    $nombreNuevo = $_POST['nombre'];
+                    $cambiosRealizados = true;
+                }
             }
 
-            if (empty($_POST['nombreUsuario'])) {
-                $msjError['nombreUsuario'] = "El campo nombre de usuario es obligatorio.";
-            } else {
-                $nombreUsuarioNuevo = $_POST['nombreUsuario'];
+            if (isset($_POST['dni']) && $_POST['dni'] !== $dniActual) {
+                if (empty($_POST['dni'])) {
+                    $msjError['dni'] = "El campo DNI es obligatorio.";
+                } else {
+                    $dniNuevo = $_POST['dni'];
+                    $cambiosRealizados = true;
+                }
             }
 
-            if (($nombreNuevo === $nombreActual) && ($dniNuevo === $dniActual) && ($emailNuevo === $emailActual) && ($nombreUsuarioNuevo === $nombreUsuarioActual)) {
+            if (isset($_POST['email']) && $_POST['email'] !== $emailActual) {
+                if (empty($_POST['email'])) {
+                    $msjError['email'] = "El campo correo es obligatorio.";
+                } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                    $msjError['email'] = "El correo no es válido.";
+                } else {
+                    $emailNuevo = $_POST['email'];
+                    $cambiosRealizados = true;
+                }
+            }
+
+            if (isset($_POST['nombreUsuario']) && $_POST['nombreUsuario'] !== $nombreUsuarioActual) {
+                if (empty($_POST['nombreUsuario'])) {
+                    $msjError['nombreUsuario'] = "El campo nombre de usuario es obligatorio.";
+                } else {
+                    $nombreUsuarioNuevo = $_POST['nombreUsuario'];
+                    $cambiosRealizados = true;
+                }
+            }
+
+            if (!$cambiosRealizados) {
                 $msjError['cambiosNULL'] = "No se han realizado cambios.";
             }
 
@@ -162,25 +181,29 @@
         <form action="editarPerfil.php" method="post">
             <div class="contenedor-correo">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($nombreActual); ?>">
+                <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($nombreActual); ?>" disabled>
+                <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('nombre')" title="Editar"></i>
                 <?php if (isset($msjError['nombre'])) { echo "<span class='msjError'>{$msjError['nombre']}</span>"; } ?>
             </div>
 
             <div class="contenedor-correo">
                 <label for="dni">DNI:</label>
-                <input type="number" id="dni" name="dni" min=10000000 max=99999999 value="<?php echo htmlspecialchars($dniActual); ?>">
+                <input type="number" id="dni" name="dni" min=10000000 max=99999999 value="<?php echo htmlspecialchars($dniActual); ?>" disabled>
+                <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('dni')" title="Editar"></i>
                 <?php if (isset($msjError['dni'])) { echo "<span class='msjError'>{$msjError['dni']}</span>"; } ?>
             </div>
 
             <div class="contenedor-correo">
                 <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($emailActual); ?>">
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($emailActual); ?>" disabled>
+                <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('email')" title="Editar"></i>
                 <?php if (isset($msjError['email'])) { echo "<span class='msjError'>{$msjError['email']}</span>"; } ?>
             </div>
 
             <div class="contenedor-correo">
                 <label for="nombreUsuario">Nombre de Usuario:</label>
-                <input type="text" id="nombreUsuario" name="nombreUsuario" value="<?php echo htmlspecialchars($nombreUsuarioActual); ?>">
+                <input type="text" id="nombreUsuario" name="nombreUsuario" value="<?php echo htmlspecialchars($nombreUsuarioActual); ?>" disabled>
+                <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('nombreUsuario')" title="Editar"></i>
                 <?php if (isset($msjError['nombreUsuario'])) { echo "<span class='msjError'>{$msjError['nombreUsuario']}</span>"; } ?>
             </div>
 
@@ -190,7 +213,7 @@
                     <input type="button" value="Cambiar Contraseña">
                 </a>
                 <br><br>
-                <?php if (isset($msjError['cambiosNULL'])) { echo "<span class='msjError'>{$msjError['cambiosNULL']}</span>"; } ?>
+                <?php if (isset($msjError['cambiosNULL'])) { echo "<span class='msjErrorGeneral'>{$msjError['cambiosNULL']}</span>"; }?>
                 <?php if (isset($msjExito)) { echo "<span class='msjExito'>{$msjExito}</span>"; } ?>
             </div>
         </form>
@@ -201,6 +224,13 @@
     <p>Universidad Nacional de San Luis</p>
     <p>Programación III</p>
 </footer>
+
+<script>
+    function habilitarCampo(idCampo) {
+        const campo = document.getElementById(idCampo);
+        campo.removeAttribute('disabled');
+    }
+</script>
 
 </body>
 </html>
