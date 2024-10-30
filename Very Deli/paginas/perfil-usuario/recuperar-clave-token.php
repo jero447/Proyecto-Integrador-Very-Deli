@@ -37,9 +37,9 @@
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 
                 if (empty($_POST['email'])) {
-                    $msjError['email'] = "El campo correo es obligatorio.";
+                    $msjError['errores'] = "El campo correo es obligatorio.";
                 } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                    $msjError['email'] = "El correo no es válido.";
+                    $msjError['errores'] = "El correo no es válido.";
                 } else {
                     $email = $_POST['email'];
                 }
@@ -59,7 +59,7 @@
                 $emailExists = mysqli_fetch_row($resultadoEmail)[0] > 0;
 
                 if (!$emailExists) {
-                    $msjError['email'] = "Este correo no está registrado.";
+                    $msjError['errores'] = "Este correo no está registrado.";
                 } else {
 
                     $token = bin2hex(random_bytes(16));
@@ -109,13 +109,12 @@
             <div class="contenedor-contraseña">
                 <label for="email">Correo Electrónico:</label>
                 <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>">
-                <?php if (isset($msjError['email'])) { echo "<span class='msjError'>{$msjError['email']}</span>"; } ?>
             </div>
             <div>
             <input type="submit" value="Recuperar Contraseña">
-            </div>
+            </div><br>
             <?php 
-                if (isset($msjError['errores'])) { echo "<span class='msjError'>{$msjError['errores']}</span>"; } 
+                if (isset($msjError['errores'])) { echo "<span class='msjErrorGeneral'>{$msjError['errores']}</span>"; } 
                 if ($msjExito) { echo "<span class='msjExito'>{$msjExito}</span>"; }
             ?>
         </form>

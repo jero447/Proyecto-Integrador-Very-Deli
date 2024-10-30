@@ -107,7 +107,7 @@
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
                         title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial"
                         value="<?php echo htmlspecialchars($claveNueva); ?>">
-                    <?php if (isset($msjError['claveNueva'])) { echo "<span class='msjError'>{$msjError['claveNueva']}</span>"; } ?>
+                    <?php if (isset($msjError['claveNueva'])) { echo "<span class='msjErrorGeneral'>{$msjError['claveNueva']}</span>"; } ?>
                 </div>
 
                 <div class="contenedor-contraseña">
@@ -116,12 +116,12 @@
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
                         title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial"
                         value="<?php echo htmlspecialchars($confirmClave); ?>">
-                    <?php if (isset($msjError['confirmClave'])) { echo "<span class='msjError'>{$msjError['confirmClave']}</span>"; } ?>
+                    <?php if (isset($msjError['confirmClave'])) { echo "<span class='msjErrorGeneral'>{$msjError['confirmClave']}</span>"; } ?>
                 </div>
             <div><input type="submit" value="Cambiar Contraseña"></div>
             <br>
             <?php 
-                if (isset($msjError['password'])) { echo "<span class='msjError'>{$msjError['password']}</span>"; }
+                if (isset($msjError['password'])) { echo "<span class='msjErrorGeneral'>{$msjError['password']}</span>"; }
                 if ($msjExito) { echo "<span class='msjExito'>{$msjExito}</span>"; }
             ?>
         </form>

@@ -77,7 +77,7 @@
                 if (empty($_POST['nombre'])) {
                     $msjError['nombre'] = "El campo nombre es obligatorio.";
                 } elseif (!preg_match("/^[A-Za-zÀ-ÿ\s\.,'-]+$/", $_POST['nombre'])) {
-                    $msjError['nombre'] = "El nombre solo puede contener letras y caracteres especiales.";
+                    $msjError['nombre'] = "Ingrese un nombre valido.";
                 } else {
                     $nombreNuevo = $_POST['nombre'];
                     $cambiosRealizados = true;

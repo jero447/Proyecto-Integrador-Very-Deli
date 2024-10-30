@@ -9,7 +9,6 @@ header{
     padding: 0.5rem;
     background-color: #224870;
     font-family:  "Merriweather", serif;
-    position: fixed;
     width: 100%;
 }
 main{
@@ -20,9 +19,6 @@ main{
 }
 footer{
     padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
     text-align: center;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
@@ -192,7 +188,6 @@ input[type="number"]::-webkit-outer-spin-button {
     color: black; 
 }
 
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -230,4 +225,22 @@ input[type="number"]::-webkit-outer-spin-button {
 @keyframes slideDown {
     0% { opacity: 0; transform: translateY(-10px); }
     100% { opacity: 1; transform: translateY(0); }
+}
+.pregunta-inicio{
+    color: darkblue;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+}
+.pregunta-inicio2 {
+    text-align: center;
+    text-decoration: none;
+}
+.pregunta-inicio2 a{
+    color: darkblue;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline;
 }

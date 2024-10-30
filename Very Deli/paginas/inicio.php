@@ -17,10 +17,6 @@
                 <h1>Very Deli</h1>  
             </div>  
         </a>
-             
-        <div class="btns-login">
-            <a class="animated-button-login" href="./registro.php">Registrarse</a>
-        </div>
     </header>
     <main>
         <div class = "formulario-login">
@@ -109,17 +105,16 @@
                 <div>
                     <input type="submit" value="Siguiente">
                 </div>
-                <br>
-                <a href="./perfil-usuario/recuperar-clave-token.php">
-                        <input type="button" value="Recuperar Contraseña">
-                </a>
+                <br><br>
+                <a href="./perfil-usuario/recuperar-clave-token.php" class="pregunta-inicio">
+                        ¿Olvidó su contraseña?
+                </a><br>
+                <div class="pregunta-inicio2">
+                    <p>¿No tiene cuenta?  <a href="./registro.php">Registrese</a></p>
+                </div>
             </form>
             
         </div>
     </main>
-    <footer>
-        <p>Universidad Nacional de San Luis</p>
-        <p>Programacion III</p>
-    </footer>
 </body>
 </html>

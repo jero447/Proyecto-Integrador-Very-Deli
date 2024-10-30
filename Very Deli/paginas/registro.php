@@ -186,10 +186,5 @@
     </div>
 </main>
 
-<footer>
-    <p>Universidad Nacional de San Luis</p>
-    <p>Programación III</p>
-</footer>
-
 </body>
 </html>
