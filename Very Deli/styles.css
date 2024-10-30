@@ -151,6 +151,10 @@ footer{
     border: 1px solid black;
     border-radius: 10px;
 }
+.imagen-publicacion{
+    width: 15rem;
+}
+
 .titulo-desc{
     display: flex;
     flex-direction: column;
