@@ -23,6 +23,7 @@ $local_origen = $_POST["local-origen"];
 $local_destino = $_POST["local-destino"];
 $calle_origen = $_POST["calle-origen"];
 $calle_destino = $_POST["calle-destino"];
+$imagen = $_FILES["imagen"];
 
 require("../../conexionBD.php");
 $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
