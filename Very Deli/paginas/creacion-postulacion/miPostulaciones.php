@@ -55,13 +55,14 @@
             }
             mysqli_set_charset($conexion,"utf8");
 
-            $consulta = "SELECT publicacion.titulo, publicacion.descripcion, publicacion.provincia_origen, publicacion.provincia_destino, publicacion.localidad_origen, publicacion.localidad_destino, monto FROM postulacion JOIN publicacion ON postulacion.idPublicacion = publicacion.idPublicacion";
+            $consulta = "SELECT publicacion.titulo, publicacion.descripcion, publicacion.provincia_origen, publicacion.provincia_destino, publicacion.localidad_origen, publicacion.localidad_destino,publicacion.imagen, monto FROM postulacion JOIN publicacion ON postulacion.idPublicacion = publicacion.idPublicacion";
             $resultado = mysqli_query($conexion,$consulta);
 
             while($fila = mysqli_fetch_array($resultado)){
                 {
                     echo "<a href='' class = 'enlacePostulacion'>";
                     echo "<div class='publicacion'>";
+                    echo    "<img src='../../". $fila["imagen"] ."' class='imagen-publicacion'>";
                     echo    "<div class='titulo-desc'>";
                     echo        "<h3>" . $fila["titulo"] . "</h3>";
                     echo        "<h4>Descripcion:</h4>";
