@@ -51,8 +51,8 @@
                     </div>
                 </div>
             <?php else: ?>
-                <a class="animated-button-login" href="./paginas/inicio.php">Iniciar Sesión</a>
-                <a class="animated-button-login" href="./paginas/registro.php">Registrarse</a>
+                <a class="animated-button-login" href="./paginas/login/inicio.php">Iniciar Sesión</a>
+                <a class="animated-button-login" href="./paginas/login/registro.php">Registrarse</a>
             <?php endif; ?>
         </div>
     </header>
@@ -170,11 +170,12 @@
                 $where = "";
             }
 
-            $consulta = "SELECT idPublicacion,titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino FROM publicacion  $where";
+            $consulta = "SELECT idPublicacion,titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino,imagen FROM publicacion  $where";
             $resultado = mysqli_query($conexion,$consulta);
 
             while($fila = mysqli_fetch_array($resultado)){
                 echo "<div class='publicacion'>";
+                echo    "<img src='./". $fila["imagen"] ."' class='imagen-publicacion'>";
                 echo    "<div class='titulo-desc'>";
                 echo        "<h3>" . $fila["titulo"] . "</h3>";
                 echo        "<h4>Descripcion:</h4>";

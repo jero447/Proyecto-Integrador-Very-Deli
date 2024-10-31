@@ -44,7 +44,7 @@
 </header>
     <main>
     
-    <form action= "insertarPublicacion.php" method = 'POST' class='formularioCreacion'>
+    <form action= "insertarPublicacion.php" method = 'POST' class='formularioCreacion' enctype="multipart/form-data">
         <div class="titulo-crear">
             <h3>Crear Publicacion</h3>
         </div>
@@ -190,7 +190,10 @@
                     <label>Calle de destino</label>
                     <input type='text' name='calle-destino'>
                 </div>
-            </div>             
+            </div>  
+            <div>
+                <input type="file" name="imagen" id="" accept="image/*">
+            </div>           
         </div>
         <input type='submit' value='ENVIAR' class="btn-enviar">
 

@@ -209,7 +209,7 @@
 
             <div>
                 <input type="submit" value="Guardar">
-                <a href="editarClave.php">
+                <a href="./editarClave.php">
                     <input type="button" value="Cambiar Contraseña">
                 </a>
                 <br><br>

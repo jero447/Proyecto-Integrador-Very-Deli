@@ -161,6 +161,9 @@ footer{
     font-weight: 500;
     background-color: #D9D9D9;
 }
+.imagen-publicacion{
+    width: 15rem;
+}
 .publicacion{
     display: flex;
     align-items: center;

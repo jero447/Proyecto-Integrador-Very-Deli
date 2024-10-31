@@ -11,8 +11,6 @@
 </head>
 <body>
     <main>
-        <div class = "formulario-login">
-            <h2>Iniciar Sesion</h2>
 
             <?php 
 
@@ -37,7 +35,7 @@
                     }
         
                     if (empty($msjError)) {
-                        require("../conexionBD.php");
+                        require("../../conexionBD.php");
                         $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
 
                         if(mysqli_connect_errno()){
@@ -80,33 +78,32 @@
                 }
             ?>
 
-            <form action="inicio.php" method="post">
-
-                <div class = "contenedor-correo">
-                    <label for="correoUser">Email o Usuario</label>
-                    <input type="text" id="correoUser" name="correoUser" placeholder="usuario@gmail.com o usuario" value="<?php echo htmlspecialchars($correoUser); ?>">
+      <div class="form-container sign-in-container">
+        <form action="inicio.php" method="post">
+          <img src="./iconos/perfil.png" class="img-user">
+          <h1>Iniciar Sesión</h1>
+            <input type="text" id="correoUser" name="correoUser" placeholder="Email o Usuario" value="<?php echo htmlspecialchars($correoUser); ?>">
                     <?php if (isset($msjError['correoUser'])) { echo "<span class='msjError'>{$msjError['correoUser']}</span>"; } ?>
-                </div>
-                <div class= "contenedor-contraseña">
-                    <label for="claveLogin">Contraseña</label>
-                    <input type="password" id="claveLogin" name="claveLogin" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
+            <input type="password" placeholder="Contraseña" id="claveLogin" name="claveLogin" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
                     title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial" 
                     value="<?php echo htmlspecialchars($claveLogin); ?>">
                     <?php if (isset($msjError['claveLogin'])) { echo "<span class='msjError'>{$msjError['claveLogin']}</span>"; } ?>
-                </div>
-                <div>
-                    <input type="submit" value="Siguiente">
-                </div>
-                <br><br>
-                <a href="./perfil-usuario/recuperar-clave-token.php" class="pregunta-inicio">
-                        ¿Olvidó su contraseña?
-                </a><br>
-                <div class="pregunta-inicio2">
-                    <p>¿No tiene cuenta?  <a href="./registro.php">Registrese</a></p>
-                </div>
-            </form>
-            
+          <a href="../recuperar-clave/recuperar-clave-token.php">¿Olvidaste tu contraseña?</a>
+          <button class="btn-iniciar">Iniciar sesión</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-right">
+            <h1>¿No tienes cuenta?</h1>
+            <p>Crear tu cuenta</p>
+            <a href="./registro.php"><button class="ghost" id="signUp">Registrar</button></a>
+          </div>
         </div>
+      </div>
+
+    <script src="./app.js"></script>
+
     </main>
 </body>
 </html>

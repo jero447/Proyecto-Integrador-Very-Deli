@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Contraseña</title>
-    <link rel="stylesheet" href="./estilos-iniciar-registro.css">
+    <link rel="stylesheet" href="./estilos-recuperar-clave.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -96,9 +96,8 @@
         <br>
         <form action="recuperar-clave-token.php" method="post">
 
-            <div class="contenedor-contraseña">
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>">
+            <div class="contenedor-correo">
+                <input type="email" id="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($email); ?>">
             </div>
             <div>
             <input type="submit" value="Recuperar Contraseña">
