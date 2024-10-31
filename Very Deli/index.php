@@ -51,8 +51,8 @@
                     </div>
                 </div>
             <?php else: ?>
-                <a class="animated-button-login" href="./paginas/inicio.php">Iniciar Sesión</a>
-                <a class="animated-button-login" href="./paginas/registro.php">Registrarse</a>
+                <a class="animated-button-login" href="./paginas/login/inicio.php">Iniciar Sesión</a>
+                <a class="animated-button-login" href="./paginas/login/registro.php">Registrarse</a>
             <?php endif; ?>
         </div>
     </header>

@@ -4,22 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Contraseña</title>
-    <link rel="stylesheet" href="./estilos-editar.css">
+    <link rel="stylesheet" href="./estilos-recuperar-clave.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<header>
-    <a href="../../index.php" class="vinculo-home">
-        <div class="contenedor-logo">
-            <img src="../../imagenes/LogoDery.png" alt="logo" class="logo">
-            <h1>Very Deli</h1>  
-        </div>  
-    </a>
-</header>
-
 <main>
     <div class="formulario-login">
         <h2>Recuperar Contraseña</h2>
@@ -102,26 +92,24 @@
             <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
 
             <div class="contenedor-contraseña">
-                    <label for="claveNueva">Nueva contraseña:</label>
-                    <input type="password" id="claveNueva" name="claveNueva" minlength="8"
+                    <input type="password" placeholder="Nueva Contraseña" id="claveNueva" name="claveNueva" minlength="8"
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
                         title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial"
                         value="<?php echo htmlspecialchars($claveNueva); ?>">
-                    <?php if (isset($msjError['claveNueva'])) { echo "<span class='msjError'>{$msjError['claveNueva']}</span>"; } ?>
+                    <?php if (isset($msjError['claveNueva'])) { echo "<span class='msjErrorGeneral'>{$msjError['claveNueva']}</span>"; } ?>
                 </div>
 
                 <div class="contenedor-contraseña">
-                    <label for="confirmClave">Confirmar nueva contraseña:</label>
-                    <input type="password" id="confirmClave" name="confirmClave" minlength="8"
+                    <input type="password" placeholder="Repita la Contraseña" id="confirmClave" name="confirmClave" minlength="8"
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
                         title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial"
                         value="<?php echo htmlspecialchars($confirmClave); ?>">
-                    <?php if (isset($msjError['confirmClave'])) { echo "<span class='msjError'>{$msjError['confirmClave']}</span>"; } ?>
+                    <?php if (isset($msjError['confirmClave'])) { echo "<span class='msjErrorGeneral'>{$msjError['confirmClave']}</span>"; } ?>
                 </div>
             <div><input type="submit" value="Cambiar Contraseña"></div>
             <br>
             <?php 
-                if (isset($msjError['password'])) { echo "<span class='msjError'>{$msjError['password']}</span>"; }
+                if (isset($msjError['password'])) { echo "<span class='msjErrorGeneral'>{$msjError['password']}</span>"; }
                 if ($msjExito) { echo "<span class='msjExito'>{$msjExito}</span>"; }
             ?>
         </form>
