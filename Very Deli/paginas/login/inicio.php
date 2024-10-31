@@ -105,17 +105,9 @@
         </div> -->
 
 
-        <div class="container" id="container">
-      <div class="form-container sign-up-container">
-        <form action="#">
-          <img src="./iconos/nueva-cuenta.png" class="img-user">
-          <h1>Crea tu Cuenta</h1>
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <button id="lila" class="btn-registrar">Registrar</button>
-        </form>
-      </div>
+      <!-- Nuevo Login -->
+
+
       <div class="form-container sign-in-container">
         <form action="#">
           <img src="./iconos/perfil.png" class="img-user">
@@ -128,21 +120,13 @@
       </div>
       <div class="overlay-container">
         <div class="overlay">
-          <div class="overlay-panel overlay-left">
-            <h1>¡Bienvenido!</h1>
-            <p>
-              Inicia sesión con tu cuenta
-            </p>
-            <button class="ghost" id="signIn">Inicia sesión</button>
-          </div>
           <div class="overlay-panel overlay-right">
             <h1>Hola!!!</h1>
             <p>Crear tu cuenta</p>
-            <button class="ghost" id="signUp">Registrar</button>
+            <a href="./registro.php"><button class="ghost" id="signUp">Registrar</button></a>
           </div>
         </div>
       </div>
-    </div>
 
     <script src="./app.js"></script>
 
