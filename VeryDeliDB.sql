@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-10-2024 a las 02:55:39
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.0
+-- Tiempo de generación: 31-10-2024 a las 19:02:49
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `development`
+-- Base de datos: `feature`
 --
 
 -- --------------------------------------------------------
@@ -30,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `calificacion` (
   `idCalificacion` int(11) NOT NULL,
-  `descripccion` text,
+  `descripccion` text DEFAULT NULL,
   `valor` float NOT NULL,
   `idUsuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -47,14 +46,15 @@ CREATE TABLE `postulacion` (
   `estado` varchar(20) NOT NULL,
   `idPublicacion` int(11) DEFAULT NULL,
   `idUsuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `postulacion`
 --
 
 INSERT INTO `postulacion` (`idPostulacion`, `monto`, `estado`, `idPublicacion`, `idUsuario`) VALUES
-(1, 4444, '', 13, 6);
+(2, 0, '', 25, 5),
+(3, 0, '', 28, 5);
 
 -- --------------------------------------------------------
 
@@ -74,15 +74,18 @@ CREATE TABLE `publicacion` (
   `provincia_origen` varchar(30) DEFAULT NULL,
   `provincia_destino` varchar(30) DEFAULT NULL,
   `calle_origen` varchar(30) DEFAULT NULL,
-  `calle_destino` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `calle_destino` varchar(30) DEFAULT NULL,
+  `imagen` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `publicacion`
 --
 
-INSERT INTO `publicacion` (`idPublicacion`, `volumen`, `peso`, `idUsuario`, `titulo`, `descripcion`, `localidad_destino`, `localidad_origen`, `provincia_origen`, `provincia_destino`, `calle_origen`, `calle_destino`) VALUES
-(13, 12, 45, 5, 'Flete ', 'Flete de un armario', 'General Paz', 'Juana Koslay', 'San Luis', 'Cordoba', 'Av.Sarmiento 323', 'Pasaje Colon 245');
+INSERT INTO `publicacion` (`idPublicacion`, `volumen`, `peso`, `idUsuario`, `titulo`, `descripcion`, `localidad_destino`, `localidad_origen`, `provincia_origen`, `provincia_destino`, `calle_origen`, `calle_destino`, `imagen`) VALUES
+(25, 331, 454, 5, 'chau', 'Prueba', 'Real Sayana', 'Real Sayana', 'Santiago del Estero', 'Santiago del Estero', 'Av.Finur 976', 'Pasaje Colon 245', 'uploads/imagenGatito.jpg'),
+(27, 465, 1231, 5, 'Envio de mercaderia', 'Mercaderia de supermercado', 'Colonia Gutiérrez', 'La Lobería', 'Río Negro', 'San Juan', 'Av.Finur 976', 'Pasaje Colon 245', 'uploads/imagen-prueba.png'),
+(28, 789, 456, 8, 'Prueba bruno', 'Prueba', 'Abralaite', 'Yavi', 'Jujuy', 'Jujuy', 'Av.Finur 976', 'Pasaje Colon 245', '');
 
 -- --------------------------------------------------------
 
@@ -95,7 +98,7 @@ CREATE TABLE `reset_clave` (
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `vencimiento` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -105,10 +108,10 @@ CREATE TABLE `reset_clave` (
 
 CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL,
-  `nombre` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nombre_usuario` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `clave` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `nombre` varchar(60) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `nombre_usuario` varchar(50) NOT NULL,
+  `clave` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `dni` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -121,7 +124,8 @@ INSERT INTO `usuario` (`idUsuario`, `nombre`, `email`, `nombre_usuario`, `clave`
 (4, 'Estela de Carlotto', 'raramiro.230@gmail.com', 'Estee44', '$2y$10$Nh9cvPDOUL81J16qtp1KcOCgWpC.VdNMdPkASiYrecIOral4vZfXq', 43620904),
 (5, 'Jeronimo Sturniolo', 'jeronimostur@hotmail.com', 'jero447', '$2y$10$hN3gP2.mYjiTQgDrErMBuumDGRFnj97aymj5RqigcytO/399gjXcW', 44358758),
 (6, 'Ramiro Gabriel Caceres', 'raramiro.240@gmail.com', 'ramaa24', '$2y$10$OosHn1CjTarnbodXNszXqOSuE9BrMOoq5EJFEsVof6JtTRh3s2v9O', 43620902),
-(7, 'Samuel de Luque', 'vegetta777@gmail.com', 'Vegetta777', '$2y$10$7HzZDhnVbN4.QfKAdvAAXephUt1j27kWOxFO.GAB0rvv2twEG6nom', 43620777);
+(7, 'Samuel de Luque', 'vegetta777@gmail.com', 'Vegetta777', '$2y$10$7HzZDhnVbN4.QfKAdvAAXephUt1j27kWOxFO.GAB0rvv2twEG6nom', 43620777),
+(8, 'Bruno ', 'bruno@gmail.com', 'bruno123', '$2y$10$ld/ZjKd1N24jcDKjFwYY9OFgo98dX7xc3Je.2SGUAf7m7Nahz8oJe', 48796531);
 
 -- --------------------------------------------------------
 
@@ -135,7 +139,7 @@ CREATE TABLE `vehiculo` (
   `modelo` varchar(20) NOT NULL,
   `color` varchar(20) NOT NULL,
   `idUsuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `vehiculo`
@@ -212,13 +216,13 @@ ALTER TABLE `calificacion`
 -- AUTO_INCREMENT de la tabla `postulacion`
 --
 ALTER TABLE `postulacion`
-  MODIFY `idPostulacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idPostulacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `reset_clave`
@@ -230,7 +234,7 @@ ALTER TABLE `reset_clave`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
