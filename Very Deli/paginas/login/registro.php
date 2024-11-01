@@ -130,7 +130,7 @@
         </div>
     <div class="form-container sign-up-container">
         <form action="registro.php" method="post">
-          <img src="./iconos/nueva-cuenta.png" class="img-user">
+          <img src="./iconos/LogoDery.png" class="img-user">
           <h1>Crea tu Cuenta</h1>
             <input type="text" id="nombre" name="nombre" placeholder="Nombre" value="<?php echo htmlspecialchars($nombre); ?>">
                 <?php if (isset($msjError['nombre'])) { echo "<span class='msjError'>{$msjError['nombre']}</span>"; } ?>
