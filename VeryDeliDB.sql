@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2024 a las 01:35:55
+-- Tiempo de generación: 04-11-2024 a las 21:29:48
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -37,6 +37,41 @@ CREATE TABLE `calificacion` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `candidato_seleccionado`
+--
+
+CREATE TABLE `candidato_seleccionado` (
+  `idSeleccion` int(11) NOT NULL,
+  `idPostulacion` int(11) NOT NULL,
+  `idPublicacion` int(11) NOT NULL,
+  `idUsuarioDueño` int(11) NOT NULL,
+  `idUsuarioSeleccionado` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mensajes`
+--
+
+CREATE TABLE `mensajes` (
+  `idMensaje` int(11) NOT NULL,
+  `idPublicacion` int(11) DEFAULT NULL,
+  `idUsuario` int(11) DEFAULT NULL,
+  `contenido` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `mensajes`
+--
+
+INSERT INTO `mensajes` (`idMensaje`, `idPublicacion`, `idUsuario`, `contenido`) VALUES
+(25, 42, 8, 'hola prueba'),
+(26, 42, 5, 'asd');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `postulacion`
 --
 
@@ -53,8 +88,7 @@ CREATE TABLE `postulacion` (
 --
 
 INSERT INTO `postulacion` (`idPostulacion`, `monto`, `estado`, `idPublicacion`, `idUsuario`) VALUES
-(2, 0, '', 25, 5),
-(3, 0, '', 28, 5);
+(22, 0, '', 42, 8);
 
 -- --------------------------------------------------------
 
@@ -75,17 +109,16 @@ CREATE TABLE `publicacion` (
   `provincia_destino` varchar(30) DEFAULT NULL,
   `calle_origen` varchar(30) DEFAULT NULL,
   `calle_destino` varchar(30) DEFAULT NULL,
-  `imagen` varchar(50) DEFAULT NULL
+  `imagen` varchar(50) DEFAULT NULL,
+  `estado` varchar(25) DEFAULT 'no resuelta'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `publicacion`
 --
 
-INSERT INTO `publicacion` (`idPublicacion`, `volumen`, `peso`, `idUsuario`, `titulo`, `descripcion`, `localidad_destino`, `localidad_origen`, `provincia_origen`, `provincia_destino`, `calle_origen`, `calle_destino`, `imagen`) VALUES
-(25, 331, 454, 5, 'chau', 'Prueba', 'Real Sayana', 'Real Sayana', 'Santiago del Estero', 'Santiago del Estero', 'Av.Finur 976', 'Pasaje Colon 245', 'uploads/imagenGatito.jpg'),
-(27, 465, 1231, 5, 'Envio de mercaderia', 'Mercaderia de supermercado', 'Colonia Gutiérrez', 'La Lobería', 'Río Negro', 'San Juan', 'Av.Finur 976', 'Pasaje Colon 245', 'uploads/imagen-prueba.png'),
-(28, 789, 456, 8, 'Prueba bruno', 'Prueba', 'Abralaite', 'Yavi', 'Jujuy', 'Jujuy', 'Av.Finur 976', 'Pasaje Colon 245', '');
+INSERT INTO `publicacion` (`idPublicacion`, `volumen`, `peso`, `idUsuario`, `titulo`, `descripcion`, `localidad_destino`, `localidad_origen`, `provincia_origen`, `provincia_destino`, `calle_origen`, `calle_destino`, `imagen`, `estado`) VALUES
+(42, 456, 123, 5, 'Gato', 'gato', '', '', '', '', 'Av.Finur 976', 'Pasaje Colon 245', 'uploads/imagenGatito.jpg', 'no resuelta');
 
 -- --------------------------------------------------------
 
@@ -165,6 +198,24 @@ ALTER TABLE `calificacion`
   ADD KEY `idUsuario` (`idUsuario`);
 
 --
+-- Indices de la tabla `candidato_seleccionado`
+--
+ALTER TABLE `candidato_seleccionado`
+  ADD PRIMARY KEY (`idSeleccion`),
+  ADD KEY `fk_candidato_postulacion` (`idPostulacion`),
+  ADD KEY `fk_candidato_publicacion` (`idPublicacion`),
+  ADD KEY `fk_candidato_usuarioDueño` (`idUsuarioDueño`),
+  ADD KEY `fk_candidato_usuarioSeleccion` (`idUsuarioSeleccionado`);
+
+--
+-- Indices de la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  ADD PRIMARY KEY (`idMensaje`),
+  ADD KEY `idPublicacion` (`idPublicacion`),
+  ADD KEY `idUsuario` (`idUsuario`);
+
+--
 -- Indices de la tabla `postulacion`
 --
 ALTER TABLE `postulacion`
@@ -213,16 +264,28 @@ ALTER TABLE `calificacion`
   MODIFY `idCalificacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `candidato_seleccionado`
+--
+ALTER TABLE `candidato_seleccionado`
+  MODIFY `idSeleccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  MODIFY `idMensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
 -- AUTO_INCREMENT de la tabla `postulacion`
 --
 ALTER TABLE `postulacion`
-  MODIFY `idPostulacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idPostulacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `reset_clave`
@@ -251,6 +314,22 @@ ALTER TABLE `vehiculo`
 --
 ALTER TABLE `calificacion`
   ADD CONSTRAINT `calificacion_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
+
+--
+-- Filtros para la tabla `candidato_seleccionado`
+--
+ALTER TABLE `candidato_seleccionado`
+  ADD CONSTRAINT `fk_candidato_postulacion` FOREIGN KEY (`idPostulacion`) REFERENCES `postulacion` (`idPostulacion`),
+  ADD CONSTRAINT `fk_candidato_publicacion` FOREIGN KEY (`idPublicacion`) REFERENCES `publicacion` (`idPublicacion`),
+  ADD CONSTRAINT `fk_candidato_usuarioDueño` FOREIGN KEY (`idUsuarioDueño`) REFERENCES `usuario` (`idUsuario`),
+  ADD CONSTRAINT `fk_candidato_usuarioSeleccion` FOREIGN KEY (`idUsuarioSeleccionado`) REFERENCES `usuario` (`idUsuario`);
+
+--
+-- Filtros para la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  ADD CONSTRAINT `mensajes_ibfk_1` FOREIGN KEY (`idPublicacion`) REFERENCES `publicacion` (`idPublicacion`),
+  ADD CONSTRAINT `mensajes_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
 
 --
 -- Filtros para la tabla `postulacion`
