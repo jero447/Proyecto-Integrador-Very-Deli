@@ -69,6 +69,7 @@ INSERT INTO `mensajes` (`idMensaje`, `idPublicacion`, `idUsuario`, `contenido`) 
 (25, 42, 8, 'hola prueba'),
 (26, 42, 5, 'asd');
 
+
 -- --------------------------------------------------------
 
 --
@@ -89,6 +90,9 @@ CREATE TABLE `postulacion` (
 
 INSERT INTO `postulacion` (`idPostulacion`, `monto`, `estado`, `idPublicacion`, `idUsuario`) VALUES
 (22, 0, '', 42, 8);
+=======
+(2, 0, '', 25, 5),
+(3, 0, '', 28, 5);
 
 -- --------------------------------------------------------
 
@@ -119,6 +123,7 @@ CREATE TABLE `publicacion` (
 
 INSERT INTO `publicacion` (`idPublicacion`, `volumen`, `peso`, `idUsuario`, `titulo`, `descripcion`, `localidad_destino`, `localidad_origen`, `provincia_origen`, `provincia_destino`, `calle_origen`, `calle_destino`, `imagen`, `estado`) VALUES
 (42, 456, 123, 5, 'Gato', 'gato', '', '', '', '', 'Av.Finur 976', 'Pasaje Colon 245', 'uploads/imagenGatito.jpg', 'no resuelta');
+
 
 -- --------------------------------------------------------
 
@@ -286,6 +291,7 @@ ALTER TABLE `postulacion`
 --
 ALTER TABLE `publicacion`
   MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
 
 --
 -- AUTO_INCREMENT de la tabla `reset_clave`
