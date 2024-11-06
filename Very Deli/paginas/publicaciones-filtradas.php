@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./estilos-publicacion.css">
+    <link rel="stylesheet" href="./estilos-publicacionFiltrada.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,98 +46,54 @@
             <?php endif; ?>
         </div>       
     </header>
+<main>
+<div class="contenedor-lista">
 
+    <h2>Mis publicaciones</h2>
 <?php
-require("../conexionBD.php");
-$conexion = mysqli_connect($db_host, $db_usuario, $db_contra, $db_nombre);
 
-if (mysqli_connect_errno()) {
+require("../conexionBD.php");
+$conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
+
+if(mysqli_connect_errno()){
     echo "Fallo al conectar con la base de datos";
     exit();
 }
+mysqli_set_charset($conexion,"utf8");
 
-if (isset($_SESSION['idUsuario'])) {
-    $idUsuario = $_SESSION['idUsuario'];
+$consulta = "SELECT idPublicacion,titulo, descripcion,provincia_origen, provincia_destino, localidad_origen,localidad_destino,imagen FROM publicacion WHERE idUsuario = $idUsuario";
+$resultado = mysqli_query($conexion,$consulta);
+
+
+while($fila = mysqli_fetch_array($resultado)){
+        $idPublicacion = $fila["idPublicacion"];
+        echo "<a href='./publicacion/publicacion.php?idPublicacion=" . urlencode($idPublicacion) . "' class = 'enlacePostulacion'>";
+            echo "<div class='publicacion'>";
+            echo    "<div class='titulo-desc'>";
+            echo        "<img src='../". $fila["imagen"] ."' class='imagen-publicacion'>";
+            echo        "<div>";
+            echo             "<h3>" . $fila["titulo"] . "</h3>";
+            echo             "<h4>Descripcion:</h4>";
+            echo             "<p>" . $fila["descripcion"] ."</p>";
+            echo        "</div>";
+            echo    "</div>";
+            echo    "<div class='datos-publicacion'>";
+            echo        "<div>";
+            echo            "<p>Provincia de origen: " . $fila["provincia_origen"] . "</p>";
+            echo            "<p>Provincia de destino: " . $fila["provincia_destino"] ."</p>";
+            echo        "</div>";
+            echo        "<div>";
+            echo            "<p>Localidad de origen: " . $fila["localidad_origen"] . "</p>";
+            echo            "<p>Localidad de destino: " . $fila["localidad_destino"] ."</p>";
+            echo        "</div>";
+            echo    "</div>";
+            echo "</div>";
+        echo "</a>";
 }
 
-$sql = "SELECT idPublicacion, volumen, peso, localidad_origen, localidad_destino, provincia_origen, provincia_destino, calle_origen, calle_destino, titulo, descripcion
-        FROM publicacion
-        WHERE idUsuario = ?";
-$stmt = $conexion->prepare($sql);
-$stmt->bind_param("i", $idUsuario);
-$stmt->execute();
-$result = $stmt->get_result();
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo '<main>';
-        echo '<div class="contenedor-publicacion">';
-        echo '<h2>' . $row['titulo'] . '</h2>';
-        echo '<div class="info-publicacion">';
-        echo '<div>';
-        echo '<h4>Usuario dueño de la publicacion</h4>';
-        echo '<p><strong>Descripción:</strong> ' . $row['descripcion'] . '</p>';
-        echo '<p><strong>Lugar de origen:</strong> ' . $row['provincia_origen'] . ', ' . $row['localidad_origen'] . ', ' . $row['calle_origen'] . '</p>';
-        echo '<p><strong>Lugar de destino:</strong> ' . $row['provincia_destino'] . ', ' . $row['localidad_destino'] . ', ' . $row['calle_destino'] . '</p>';
-        echo '<p><strong>Volumen:</strong> ' . $row['volumen'] . '</p>';
-        echo '<p><strong>Peso:</strong> ' . $row['peso'] . '</p>';
-        echo '</div>';
-        echo '</div>';
-        echo '<h4>Lista de postulantes</h4>';
-        echo '<div class="lista-postulantes">';
-
-        // Bucle para mostrar postulantes (ejemplo estático)
-        for ($i = 0; $i < 3; $i++) {
-            echo '<a href="">';
-            echo '<div class="postulante">';
-            echo '<h5>Nombre Postulante</h5>';
-            echo '<p>Monto de cobro</p>';
-            echo '</div>';
-            echo '</a>';
-        }
-
-        echo '</div>'; // Cierra lista-postulantes
-
-        // Sección de comentarios para esta publicación
-        echo '<div class="seccion-comentarios">';
-        echo '<h4>Comentarios</h4>';
-        
-        // Ejemplo de comentario principal y respuestas
-        echo '<div class="comentario">';
-        echo '<p><strong>Usuario1</strong> - 2024-10-26 10:30</p>';
-        echo '<p>Este es un comentario de ejemplo para la publicación.</p>';
-        
-        echo '<div class="respuestas">';
-        echo '<div class="comentario respuesta">';
-        echo '<p><strong>Usuario2</strong> - 2024-10-26 10:45</p>';
-        echo '<p>Esta es una respuesta al comentario de ejemplo.</p>';
-        echo '</div>';
-        
-        echo '<div class="comentario respuesta">';
-        echo '<p><strong>Usuario3</strong> - 2024-10-26 11:00</p>';
-        echo '<p>Otra respuesta a este comentario.</p>';
-        echo '</div>';
-        echo '</div>'; // Cierra respuestas
-
-        // Formulario para responder a un comentario
-        echo '<form method="POST" action="agregarComentario.php">';
-        echo '<textarea name="comentario" placeholder="Escribe una respuesta..."></textarea>';
-        echo '<button type="submit">Responder</button>';
-        echo '</form>';
-        echo '</div>'; // Cierra comentario principal
-
-        // Formulario para agregar un nuevo comentario
-        echo '<form method="POST" action="agregarComentario.php">';
-        echo '<textarea name="comentario" placeholder="Escribe un comentario..."></textarea>';
-        echo '<button type="submit">Comentar</button>';
-        echo '</form>';
-
-        echo '</div>'; // Cierra seccion-comentarios
-        echo '</div>'; // Cierra contenedor-publicacion
-        echo '</main>'; // Cierra main
-    }
-} else {
-    echo "No se encontraron publicaciones.";
-}
 ?>
 
+</div>
+
+</main>
