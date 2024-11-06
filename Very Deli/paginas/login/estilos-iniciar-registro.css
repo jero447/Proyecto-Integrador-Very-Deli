@@ -105,8 +105,8 @@ a {
 
 button {
   border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background: #ff4b2b;
+  border: 1px solid #164c4f;
+  background: #164c4f;
   color: #fff;
   font-size: 12px;
   font-weight: bold;
@@ -117,8 +117,8 @@ button {
 }
 
 #lila {
-  background: #be4bdb;
-  border: 1px solid #be4bdb;
+  background: #23637a;
+  border: 1px solid #23637a;
 }
 
 button:active {
@@ -130,7 +130,8 @@ button:focus {
 }
 
 button.ghost {
-  background: transparent;
+  background: #fff;
+  color: #164c4f;
   border-color: #fff;
 }
 
@@ -163,8 +164,7 @@ button.ghost {
 }
 
 .overlay {
-  background: #ff416c;
-  background: linear-gradient(to right, #ff4b2b, #ff416c) no-repeat 0 0 / cover;
+  background: linear-gradient(to right, #23637a, #164c4f) no-repeat 0 0 / cover;
   color: #fff;
   position: relative;
   left: -100%;
@@ -190,11 +190,13 @@ button.ghost {
 }
 
 .overlay-left {
-  background: #be4bdb;
+  background: linear-gradient(to right, #164c4f, #23637a) no-repeat 0 0 / cover;
+  color: #fff;
 }
 
 .img-user{
-  margin-bottom: 30px;
+  width: 40%;
+  margin-bottom: -2rem;
 }
 .btn-registrar{
   margin-top: 30px;

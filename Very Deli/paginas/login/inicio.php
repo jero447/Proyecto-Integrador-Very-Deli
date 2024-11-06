@@ -80,7 +80,7 @@
 
       <div class="form-container sign-in-container">
         <form action="inicio.php" method="post">
-          <img src="./iconos/perfil.png" class="img-user">
+          <img src="./iconos/LogoDery.png" class="img-user">
           <h1>Iniciar Sesión</h1>
             <input type="text" id="correoUser" name="correoUser" placeholder="Email o Usuario" value="<?php echo htmlspecialchars($correoUser); ?>">
                     <?php if (isset($msjError['correoUser'])) { echo "<span class='msjError'>{$msjError['correoUser']}</span>"; } ?>
