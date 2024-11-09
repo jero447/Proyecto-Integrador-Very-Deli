@@ -140,10 +140,6 @@
             </div>
             <div class="contenedor-lista">
                 <?php
-                
-
-
-
                 require("./conexionBD.php");
                 $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
                 
@@ -154,25 +150,23 @@
 
                 mysqli_set_charset($conexion,"utf8");
 
-                $where = "";
+                $where = "WHERE estado = 'no resuelta'";
 
                 if(isset($_POST["filtrar"])){
                     $provincia = isset($_POST["provincia"]) ? mysqli_real_escape_string($conexion, $_POST["provincia"]) : "";
                     $localidad = isset($_POST["localidad"]) ? mysqli_real_escape_string($conexion, $_POST["localidad"]) : "";
                     if ($provincia && $localidad) {
-                        $where = "WHERE provincia_origen = '$provincia' AND localidad_origen = '$localidad'";
+                        $where .= " AND provincia_origen = '$provincia' AND localidad_origen = '$localidad'";
                     }
                 }
-
                 if(isset($_POST["filtrar-desc"])){
                     $descripcion = isset($_POST["descripcion"]) ? mysqli_real_escape_string($conexion, $_POST["descripcion"]) : "";
                     if($descripcion){
-                        $where = "WHERE titulo LIKE '%$descripcion%' OR descripcion LIKE '%$descripcion%'" ;
+                        $where .= " AND (titulo LIKE '%$descripcion%' OR descripcion LIKE '%$descripcion%')";
                     }
-                }
-
+                }   
                 if(isset($_POST["mostrar"])){
-                    $where = "";
+                    $where = "WHERE estado = 'no resuelta'";
                 }
 
                 $consulta = "SELECT idPublicacion,titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino,imagen FROM publicacion  $where";
