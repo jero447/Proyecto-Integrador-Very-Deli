@@ -173,7 +173,13 @@ footer{
 .imagen-publicacion{
     width: 15rem;
 }
-.publicacion{
+.publicacion {
+    position: relative;
+    padding: 0;
+    overflow: hidden; 
+}
+.contenido-publicacion {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -199,4 +205,24 @@ footer{
     display: flex;
     align-items: center;
     gap: 3rem;
+}
+.boton-eliminar {
+    position: absolute;
+    color: red;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    padding: 8px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    z-index: 1;
+}
+
+.boton-eliminar:hover {
+    opacity: 1;
 }

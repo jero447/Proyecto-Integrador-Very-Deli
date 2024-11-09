@@ -61,7 +61,7 @@ main {
 input[value="Siguiente"], input[value="Registrarse"], 
 input[value="Registrar"], input[value="Recuperar Contraseña"], 
 input[value="Cambiar Contraseña"] {
-    background-color: #ff4b2b;
+    background-color: #164c4f;
     color: #ffffff;
     padding: 12px;
     font-size: 16px;
@@ -115,3 +115,24 @@ input[value="Cambiar Contraseña"]:active {
 .overlay-left {
     background: #be4bdb;
 }
+.boton-flotante {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    color: #23637a;
+    font-size: 45px; 
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 9999;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  
+  .boton-flotante:hover {
+    opacity: 1;
+  }
+  

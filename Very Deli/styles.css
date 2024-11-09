@@ -46,8 +46,8 @@ footer{
     color: #FFFF;
 }
 .logo{
-    height: 8.5rem; /* Ajusta esta medida según el tamaño deseado */
-    width: auto;  /* Mantiene la proporción de la imagen */
+    height: 8.5rem;
+    width: auto; 
     margin-left: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -200,8 +200,6 @@ input[value="Postularme"]:hover{
     text-align: center;
     color: #ffff;
 }
-
-
 .dropdown {
     position: relative;
     display: inline-block;
@@ -339,4 +337,7 @@ input[value="Postularme"]:hover{
     width: 100%; 
     max-width: 550px; 
     height: auto; 
+
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)13%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)13%);
 }
