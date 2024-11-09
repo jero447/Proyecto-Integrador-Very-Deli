@@ -7,21 +7,20 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem;
-    background-color: #224870;
+    background-color: #F5F1E9;
     font-family:  "Merriweather", serif;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000; 
+    height: 5rem;
 }
-body{
-    padding-top: 45px;
-}
+
 main{
-    margin-top: 45px;
-    display: flex;
     font-family: "Roboto", sans-serif;
+    background-color: #FFFBF1;
+    margin-top: 5rem;
 }
 footer{
     padding: 1rem;
@@ -32,21 +31,26 @@ footer{
 }
 .contenedor-main{
     display: flex;
+    flex-direction: column;
     background-color: #224870;
     padding: 10rem;
 }
 
-.contenedor-logo{
+.contenedor-principal{
     display: flex;
-    align-items: center;
+    width: 100%;
+    gap: 1rem;
 }
+
 .contenedor-logo h1{
     color: #FFFF;
 }
 .logo{
-    width: 5rem;
-    border-radius: 2rem;
-    margin-right: 1rem;
+    height: 8.5rem;
+    width: auto; 
+    margin-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 .btn-iniciar{
     margin-right: 1rem;
@@ -134,7 +138,7 @@ footer{
 }
 
 .contenedor-lista{
-    background-color: beige;
+    background-color: #FFFBF1;
     width: 70%;
     height: calc(100vh - 4.4rem - 5.7rem);
     padding: 0.5rem;
@@ -151,6 +155,10 @@ footer{
     border: 1px solid black;
     border-radius: 10px;
 }
+.imagen-publicacion{
+    width: 15rem;
+}
+
 .titulo-desc{
     display: flex;
     flex-direction: column;
@@ -192,27 +200,25 @@ input[value="Postularme"]:hover{
     text-align: center;
     color: #ffff;
 }
-
-/* ESTILOS BOTON DESPLEGABLE*/
 .dropdown {
     position: relative;
     display: inline-block;
 }
 .dropbtn {
     background-color: transparent;
-    color: beige;
+    color: #164c4f;
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
-    border: 2px solid beige; 
+    border: 3px solid #164c4f; 
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dropbtn:hover {
-    background-color: beige;
-    color: black; 
+    background-color: #164c4f;
+    color: #F5F1E9; 
 }
 
 
@@ -254,14 +260,14 @@ input[value="Postularme"]:hover{
     0% { opacity: 0; transform: translateY(-10px); }
     100% { opacity: 1; transform: translateY(0); }
 }
-/* ESTILOS DEL BOTON ANIMADO */
+
 .animated-button-login {
     position: relative;
     display: inline-block;
     padding: 12px 10px;
     border: none;
     font-size: 16px;
-    background-color: #224870;
+    background-color: #23637a;
     border-radius: 100px;
     font-weight: 400;
     color: white;
@@ -279,7 +285,7 @@ input[value="Postularme"]:hover{
     transform: translate(-50%, -50%);
     width: 20px;
     height: 20px;
-    background-color: #2196F3;
+    background-color: #23637a;
     border-radius: 50%;
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
@@ -291,9 +297,9 @@ input[value="Postularme"]:hover{
 }
 
 .animated-button-login:hover {
-    box-shadow: 0 0 0 5px #2195f360;
+    box-shadow: 0 0 0 5px #23637a;
     color: #ffffff;
-    background-color: #17183B;
+    background-color: #164c4f;
 }
 
 .animated-button-login:active {
@@ -304,4 +310,34 @@ input[value="Postularme"]:hover{
     width: 150px;
     height: 150px;
     opacity: 1;
+}
+
+.div-main {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #23637a;
+    height: 25rem; 
+    padding: 2rem;
+    color: white;
+}
+
+.text-container {
+    flex: 1; 
+    text-align: center; 
+}
+
+.image-container {
+    flex: 0 0 auto;
+    text-align: right;
+    margin-right: 5rem; 
+}
+
+.img-main {
+    width: 100%; 
+    max-width: 550px; 
+    height: auto; 
+
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)13%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)13%);
 }

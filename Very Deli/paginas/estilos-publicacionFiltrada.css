@@ -10,13 +10,30 @@ header{
     background-color: #224870;
     font-family:  "Merriweather", serif;
     width: 100%;
+   
+}
+main{
+    height: calc(100vh - 4.4rem - 5.7rem);
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex: 1;
+}
+footer{
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    background-color: #D9D9D9;
+}
+.vinculo-home{
+    text-decoration: none;
 }
 .contenedor-logo{
     display: flex;
     align-items: center;
-}
-.vinculo-home{
-    text-decoration: none;
 }
 .contenedor-logo h1{
     color: #FFFF;
@@ -26,18 +43,36 @@ header{
     border-radius: 2rem;
     margin-right: 1rem;
 }
-.btn-iniciar{
-    margin-right: 1rem;
-}
-.btn-iniciar,.btn-registrarse{
+.animated-button-login {
+    position: relative;
+    display: inline-block;
+    padding: 12px 10px;
+    border: none;
+    font-size: 16px;
+    background-color: #224870;
+    border-radius: 100px;
+    font-weight: 400;
+    color: white;
+    box-shadow: 0 0 0 2px #ffffff40;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
     text-decoration: none;
-    font-weight: 300;
-    color: #F8F3EC;
 }
 
-.btns-login{
-    margin-right: 1rem;
+.animated-button-login span:last-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #2196F3;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
 }
+
 /* ESTILOS BOTON DESPLEGABLE*/
 .dropdown {
     position: relative;
@@ -99,36 +134,6 @@ header{
     0% { opacity: 0; transform: translateY(-10px); }
     100% { opacity: 1; transform: translateY(0); }
 }
-/* ESTILOS DEL BOTON ANIMADO */
-.animated-button-login {
-    position: relative;
-    display: inline-block;
-    padding: 12px 10px;
-    border: none;
-    font-size: 16px;
-    background-color: #224870;
-    border-radius: 100px;
-    font-weight: 400;
-    color: white;
-    box-shadow: 0 0 0 2px #ffffff40;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-    text-decoration: none;
-}
-
-.animated-button-login span:last-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background-color: #2196F3;
-    border-radius: 50%;
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
-}
 
 .animated-button-login span:first-child {
     position: relative;
@@ -150,31 +155,37 @@ header{
     height: 150px;
     opacity: 1;
 }
-main{
+.contenedor-publicacion {
+    background-color: beige;
     display: flex;
-    font-family: "Roboto", sans-serif;
+    flex-direction: column;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-footer{
-    padding: 1rem;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    background-color: #D9D9D9;
+
+.enlacePostulacion{
+    text-decoration: none;
+    color: #000000;
 }
 .imagen-publicacion{
     width: 15rem;
 }
-.publicacion{
+.publicacion {
+    position: relative;
+    padding: 0;
+    overflow: hidden; 
+}
+.contenido-publicacion {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1.5rem;
     border: 1px solid black;
     border-radius: 10px;
-}
-.datos-publicacion{
-    display: flex;
-    gap: 20px;
 }
 .contenedor-lista{
     background-color: beige;
@@ -186,7 +197,32 @@ footer{
     gap: 1rem;
     overflow-y: auto;
 }
-.enlacePostulacion{
+.datos-publicacion{
+    display: flex;
+    gap: 5rem;
+}
+.titulo-desc{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+.boton-eliminar {
+    position: absolute;
+    color: red;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    padding: 8px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    color: #000000;
+    transition: background-color 0.3s ease;
+    z-index: 1;
+}
+
+.boton-eliminar:hover {
+    opacity: 1;
 }
