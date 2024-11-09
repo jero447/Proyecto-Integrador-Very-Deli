@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Vehiculo</title>
-    <link rel="stylesheet" href="./perfil-usuario/estilos-editar.css">
+    <link rel="stylesheet" href="./estilos-iniciar-registro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +26,7 @@
     <a href="../index.php" class="vinculo-home">
         <div class="contenedor-logo">
             <img src="../imagenes/LogoDery.png" alt="logo" class="logo">
+            <h1>Very Deli</h1>  
         </div>  
     </a>       
     <div class="btns-login">
@@ -119,29 +120,44 @@
             }
         }
         ?>
-            
+        <?php if (isset($msjError['limite'])): ?>
+            <span class='msjError'><?php echo $msjError['limite']; ?></span>
+            <br>
+            <a class="animated-button-login" href="../index.php" >Volver</a>
+        <?php else: ?>
+            <h2>Datos del vehiculo</h2>
             <form action="registroVehiculo.php" method="post">
-            <h1>Datos del vehiculo</h1>
-                    <input type="text" id="matricula" name="matricula" placeholder="Matricula" value="<?php echo htmlspecialchars($matricula); ?>">
+                <div class="contenedor-correo">
+                    <label for="matricula">Matricula:</label>
+                    <input type="text" id="matricula" name="matricula" placeholder="Numero de matricula" value="<?php echo htmlspecialchars($matricula); ?>">
                     <?php if (isset($msjError['matricula'])) { echo "<span class='msjError'>{$msjError['matricula']}</span>"; } ?>
+                </div>
 
-
-
-                    <input type="text" id="modelo" name="modelo" placeholder="Modelo" value="<?php echo htmlspecialchars($modelo); ?>">
+                <div class="contenedor-correo">
+                    <label for="modelo">Modelo:</label>
+                    <input type="text" id="modelo" name="modelo" placeholder="Modelo de vehiculo" value="<?php echo htmlspecialchars($modelo); ?>">
                     <?php if (isset($msjError['modelo'])) { echo "<span class='msjError'>{$msjError['modelo']}</span>"; } ?>
+                </div>
 
-
-
-                    <input type="text" id="color" name="color" placeholder="Color" value="<?php echo htmlspecialchars($color); ?>">
+                <div class="contenedor-contraseña">
+                    <label for="color">Color:</label>
+                    <input type="text" id="color" name="color" placeholder="Color de vehiculo" value="<?php echo htmlspecialchars($color); ?>">
                     <?php if (isset($msjError['color'])) { echo "<span class='msjError'>{$msjError['color']}</span>"; } ?>
+                </div>
 
-
-
+                <div>
                     <input type="submit" value="Registrar">
-
+                </div>
                 <?php if (isset($msjExito)) { echo "<span class='msjExito'>{$msjExito}</span>"; } ?>
             </form>
+        <?php endif; ?>
     </div>
 </main>
+
+<footer>
+    <p>Universidad Nacional de San Luis</p>
+    <p>Programación III</p>
+</footer>
+
 </body>
 </html>

@@ -31,7 +31,8 @@
 <header>
     <a href="../../index.php" class="vinculo-home">
         <div class="contenedor-logo">
-            <img src="../../imagenes/LogoDery.png" alt="logo" class="logo"> 
+            <img src="../../imagenes/LogoDery.png" alt="logo" class="logo">
+            <h1>Very Deli</h1>  
         </div>  
     </a>
     <div class="btns-login">
@@ -54,6 +55,7 @@
 
 <main>
     <div class="formulario-login">
+        <h2>Datos de usuario</h2>
 
         <?php
             $msjError = array();
@@ -75,7 +77,7 @@
                 if (empty($_POST['nombre'])) {
                     $msjError['nombre'] = "El campo nombre es obligatorio.";
                 } elseif (!preg_match("/^[A-Za-zÀ-ÿ\s\.,'-]+$/", $_POST['nombre'])) {
-                    $msjError['nombre'] = "Ingrese un nombre valido.";
+                    $msjError['nombre'] = "El nombre solo puede contener letras y caracteres especiales.";
                 } else {
                     $nombreNuevo = $_POST['nombre'];
                     $cambiosRealizados = true;
@@ -177,46 +179,51 @@
         }
         ?>
         <form action="editarPerfil.php" method="post">
-        <h1>Datos de usuario</h1>
-
+            <div class="contenedor-correo">
                 <label for="nombre">Nombre:</label>
-                <div class="input-container">
                 <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($nombreActual); ?>" disabled>
                 <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('nombre')" title="Editar"></i>
                 <?php if (isset($msjError['nombre'])) { echo "<span class='msjError'>{$msjError['nombre']}</span>"; } ?>
-                </div>
+            </div>
 
+            <div class="contenedor-correo">
                 <label for="dni">DNI:</label>
-                <div class="input-container">
                 <input type="number" id="dni" name="dni" min=10000000 max=99999999 value="<?php echo htmlspecialchars($dniActual); ?>" disabled>
                 <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('dni')" title="Editar"></i>
                 <?php if (isset($msjError['dni'])) { echo "<span class='msjError'>{$msjError['dni']}</span>"; } ?>
-                </div>
+            </div>
 
+            <div class="contenedor-correo">
                 <label for="email">Correo Electrónico:</label>
-                <div class="input-container">
                 <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($emailActual); ?>" disabled>
                 <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('email')" title="Editar"></i>
                 <?php if (isset($msjError['email'])) { echo "<span class='msjError'>{$msjError['email']}</span>"; } ?>
-                </div>
+            </div>
 
+            <div class="contenedor-correo">
                 <label for="nombreUsuario">Nombre de Usuario:</label>
-                <div class="input-container">
                 <input type="text" id="nombreUsuario" name="nombreUsuario" value="<?php echo htmlspecialchars($nombreUsuarioActual); ?>" disabled>
                 <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('nombreUsuario')" title="Editar"></i>
                 <?php if (isset($msjError['nombreUsuario'])) { echo "<span class='msjError'>{$msjError['nombreUsuario']}</span>"; } ?>
-                </div>
-                <br><br>
+            </div>
 
+            <div>
                 <input type="submit" value="Guardar">
-                <a href="./editarClave.php" class="boton-input">
+                <a href="editarClave.php">
                     <input type="button" value="Cambiar Contraseña">
                 </a>
+                <br><br>
                 <?php if (isset($msjError['cambiosNULL'])) { echo "<span class='msjErrorGeneral'>{$msjError['cambiosNULL']}</span>"; }?>
                 <?php if (isset($msjExito)) { echo "<span class='msjExito'>{$msjExito}</span>"; } ?>
+            </div>
         </form>
     </div>
 </main>
+
+<footer>
+    <p>Universidad Nacional de San Luis</p>
+    <p>Programación III</p>
+</footer>
 
 <script>
     function habilitarCampo(idCampo) {

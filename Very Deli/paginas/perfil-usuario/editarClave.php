@@ -27,11 +27,13 @@
     <a href="../../index.php" class="vinculo-home">
         <div class="contenedor-logo">
             <img src="../../imagenes/LogoDery.png" alt="logo" class="logo">
+            <h1>Very Deli</h1>  
         </div>  
     </a>
 </header>
 <main>
     <div class="formulario-login">
+        <h2>Cambiar Contraseña</h2>
 
         <?php 
             $msjError = array();
@@ -96,28 +98,32 @@
         ?>
             <br>
             <form action="editarClave.php" method="post">
-            <h1>Cambiar Contraseña</h1>
-
+                <div class="contenedor-contraseña">
                     <label for="claveActual">Contraseña actual:</label>
                     <input type="password" id="claveActual" name="claveActual" minlength="8"
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
                         title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial"
                         value="<?php echo htmlspecialchars($claveActual); ?>">
                     <?php if (isset($msjError['claveActual'])) { echo "<span class='msjError'>{$msjError['claveActual']}</span>"; } ?>
+                </div>
 
+                <div class="contenedor-contraseña">
                     <label for="claveNueva">Nueva contraseña:</label>
                     <input type="password" id="claveNueva" name="claveNueva" minlength="8"
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
                         title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial"
                         value="<?php echo htmlspecialchars($claveNueva); ?>">
                     <?php if (isset($msjError['claveNueva'])) { echo "<span class='msjError'>{$msjError['claveNueva']}</span>"; } ?>
+                </div>
 
+                <div class="contenedor-contraseña">
                     <label for="confirmClave">Confirmar nueva contraseña:</label>
                     <input type="password" id="confirmClave" name="confirmClave" minlength="8"
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
                         title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial"
                         value="<?php echo htmlspecialchars($confirmClave); ?>">
                     <?php if (isset($msjError['confirmClave'])) { echo "<span class='msjError'>{$msjError['confirmClave']}</span>"; } ?>
+                </div>
                 <input type="submit" value="Guardar">
                 <br><br>
                 <?php if (isset($msjExito)) { echo "<span class='msjExito'>{$msjExito}</span>"; } ?>
