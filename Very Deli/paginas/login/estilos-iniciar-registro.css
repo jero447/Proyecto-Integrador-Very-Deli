@@ -205,3 +205,23 @@ button.ghost {
 .btn-iniciar{
   cursor: pointer;
 }
+.boton-flotante {
+  position: fixed;
+  top: 10px;
+  left: 30px;
+  color: #23637a;
+  font-size: 45px; 
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 9999;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.boton-flotante:hover {
+  opacity: 1;
+}
