@@ -90,9 +90,7 @@ CREATE TABLE `postulacion` (
 
 INSERT INTO `postulacion` (`idPostulacion`, `monto`, `estado`, `idPublicacion`, `idUsuario`) VALUES
 (22, 0, '', 42, 8);
-=======
-(2, 0, '', 25, 5),
-(3, 0, '', 28, 5);
+
 
 -- --------------------------------------------------------
 
