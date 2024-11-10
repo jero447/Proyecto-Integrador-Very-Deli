@@ -1,0 +1,184 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #224870;
+    font-family:  "Merriweather", serif;
+    width: 100%;
+   
+}
+.vinculo-home{
+    text-decoration: none;
+}
+.contenedor-logo{
+    display: flex;
+    align-items: center;
+}
+.contenedor-logo h1{
+    color: #FFFF;
+}
+.logo{
+    width: 5rem;
+    border-radius: 2rem;
+    margin-right: 1rem;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropbtn {
+    background-color: transparent;
+    color: beige;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid beige; 
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropbtn:hover {
+    background-color: beige;
+    color: black; 
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    padding: 10px 0;
+    z-index: 1000;
+    animation: slideDown 0.3s ease forwards;
+    right: 0;
+    transform: translateX(-50%);
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease;
+    font-size: 15px;
+}
+.dropdown-content a:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+}
+
+.dropdown-content a:hover {
+    background-color: #eaeaea;
+}
+
+.dropdown:focus-within .dropdown-content {
+    display: block;
+}
+
+@keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.animated-button-login span:first-child {
+    position: relative;
+    z-index: 1;
+}
+
+.animated-button-login:hover {
+    box-shadow: 0 0 0 5px #2195f360;
+    color: #ffffff;
+    background-color: #17183B;
+}
+
+.animated-button-login:active {
+    scale: 0.95;
+}
+
+.animated-button-login:hover span:last-child {
+    width: 150px;
+    height: 150px;
+    opacity: 1;
+}
+
+.contenedor-publicacion {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    max-width: 750px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer{
+    padding: 1rem;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    background-color: #D9D9D9;
+}
+.imagen-publicacion{
+    width: 16rem;
+}
+.contenedor-datos{
+    display: flex;
+    justify-content: space-between;
+}
+.contenedor-imagen{
+    order: 2;
+}
+.contenedor-publicacion h1{
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.contenedor-lista-postulantes{
+   border: 1px solid black;
+   width: 100%;
+   table-layout: fixed;
+   border-collapse: collapse;
+   margin-top: 1rem;
+}
+.info-candidatos{
+    text-align: center;
+    border: 1px solid black;
+    
+}
+.contenedor-lista-postulantes td{
+    padding: 10px;
+}
+.btn-elegir{
+    padding: 8px;
+    background-color: #224870;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+.postulantes{
+    margin-top: 2rem;
+}
+.contenedor-mensajes{
+    display: flex;
+    flex-direction: column;
+    height: 230px;
+    overflow-y: auto;
+    border-top: 1px solid black;
+    margin-top: 10px;
+    background-color: #ffffff;
+}
+.mensaje{
+    margin: 10px 0 10px 0;
+}
+.seccion-mensajes{
+    margin-top: 27px;
+}
