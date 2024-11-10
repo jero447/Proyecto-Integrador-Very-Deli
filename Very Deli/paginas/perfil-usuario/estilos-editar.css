@@ -7,162 +7,104 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem;
-    background-color: #224870;
+    background-color: #F5F1E9;
     font-family:  "Merriweather", serif;
-    width: 100%;
-}
-main{
-    height: calc(100vh - 4.4rem - 5.7rem);
-    font-family: "Roboto", sans-serif;
-    display: flex;
-    flex: 1;
-}
-footer{
-    padding: 1rem;
     position: fixed;
-    bottom: 0;
     width: 100%;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    background-color: #D9D9D9;
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    height: 5rem;
+}
+main {
+    font-family: "Poppins", sans-serif;
+    background-color: #f6f5f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+}
+.logo{
+    height: 8.5rem;
+    width: auto;
+    margin-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 .vinculo-home{
     text-decoration: none;
 }
-.contenedor-logo{
+
+.formulario-login form{
+    background: #fff;
     display: flex;
+    flex-direction: column;
+    padding: 60px 60px;
+    height: 100%;
+    justify-content: center;
     align-items: center;
-    text-decoration: none;
-}
-.contenedor-logo h1{
-    color: #FFFF;
-}
-.logo{
-    width: 5rem;
-    border-radius: 2rem;
-    margin-right: 1rem;
-}
-.animated-button-login {
-    position: relative;
-    display: inline-block;
-    padding: 12px 10px;
-    border: none;
-    font-size: 16px;
-    background-color: #224870;
-    border-radius: 100px;
-    font-weight: 400;
-    color: white;
-    box-shadow: 0 0 0 2px #ffffff40;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-    text-decoration: none;
-}
-
-.animated-button-login span:last-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background-color: #2196F3;
-    border-radius: 50%;
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-.animated-button-login span:first-child {
-    position: relative;
-    z-index: 1;
-}
-
-.animated-button-login:hover {
-    box-shadow: 0 0 0 5px #2195f360;
-    color: #ffffff;
-    background-color: #17183B;
-}
-
-.animated-button-login:active {
-    scale: 0.95;
-}
-
-.animated-button-login:hover span:last-child {
-    width: 150px;
-    height: 150px;
-    opacity: 1;
-}
-
-.formulario-login{
-    display: flex;
-    flex-direction: column;
-    width: 25rem;
-    margin: auto;
-    background-color: #224870;
-    padding: 3rem;
-    border-radius: 20px;
-}
-.formulario-login h2{
     text-align: center;
-    font-size: 30px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 35px;
 }
-.contenedor-correo {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    margin-top: 1.5rem;
-    gap: 0.5rem;
-    font-size: 17px;
+.formulario-login input {
+    background: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 400px;
+}
+.formulario-login label {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 5px;
+    margin-top: 6px;
+    font-weight: bold;
+}
+.input-container {
     position: relative;
-    margin-bottom: 2rem;
+    width: 400px;
 }
 
-.contenedor-correo input {
-    border-radius: 5px;
-    padding: 10px 40px 10px 10px;
-    border: none;
-    font-size: 16px;
+.input-container input {
+    width: 100%;
+    padding-right: 2.5rem;
 }
-.contenedor-correo .icono-editar {
+
+.icono-editar {
     position: absolute;
+    color: #164c4f;
     right: 10px;
-    top: 70%;
+    top: 50%;
     transform: translateY(-50%);
-    font-size: 18px;
-    color: #666;
     cursor: pointer;
-    transition: color 0.3s ease;
+    font-size: 1rem;
 }
 
-.contenedor-correo .icono-editar:hover {
-    color: #224870;
-}
+h1 {
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 20px;
+  }
 
-.contenedor-contraseña{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
-    gap: 0.5rem;
-    font-size: 17px;
-}
-.contenedor-contraseña input{
-    border-radius: 5px;
-    padding: 10px;
+input[value="Guardar"],input[value="Cambiar Contraseña"],input[value="Recuperar Contraseña"],input[value="Registrar"]{
+    background-color: #164c4f;
+    color: #FFFBF1;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
     border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 80ms ease-in;
 }
-input[value="Guardar"],input[value="Cambiar Contraseña"],input[value="Recuperar Contraseña"]{
- background-color: #F5F5F5; 
-  color: #333333; 
-  border: none;
-  padding: 7px 15px;
-  font-size: 18px;
-  border-radius: 5px;
-  cursor: pointer;
-  
-}
-input[value="Guardar"]:hover,input[value="Cambiar Contraseña"]:hover,input[value="Recuperar Contraseña"]:hover{
-    background-color: #D9D9D9; 
+
+input[value="Guardar"]:active,input[value="Cambiar Contraseña"]:active,input[value="Recuperar Contraseña"]:active,input[value="Registrar"]:active {
+    transform: scale(0.95);
 }
 
 input[type="number"] {
@@ -176,18 +118,21 @@ input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+.boton-input {
+    width: 100%;
+}
 
 .msjError {
+    display: block;
     font-size: 12px;
+    top: 100%;
     color: rgb(160, 3, 3);
     font-weight: bold;
-    margin-top: 5px;
-    position: absolute;
-    bottom: -20px;
-    padding-left: 5px;
+    margin-top: 0px;
+
 }
 .msjErrorGeneral {
-    font-size: 14px;
+    font-size: 12px;
     color: rgb(160, 3, 3);
     font-weight: bold;
 
@@ -206,21 +151,20 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .dropbtn {
     background-color: transparent;
-    color: beige;
+    color: #164c4f;
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
-    border: 2px solid beige; 
+    border: 3px solid #164c4f; 
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dropbtn:hover {
-    background-color: beige;
-    color: black; 
+    background-color: #164c4f;
+    color: #F5F1E9; 
 }
-
 
 .dropdown-content {
     display: none;

@@ -41,8 +41,8 @@ main{
     color: #FFFF;
 }
 .logo{
-    height: 8.5rem; 
-    width: auto;  
+    height: 8.5rem;
+    width: auto; 
     margin-left: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -207,8 +207,6 @@ input[value="Postularme"]:hover{
     color: #ffff;
     width: 250px;
 }
-
-
 .dropdown {
     position: relative;
     display: inline-block;

@@ -25,8 +25,7 @@
     <header>
         <a href="../index.php" class = "vinculo-home">
         <div class="contenedor-logo">
-            <img src="../imagenes/LogoDery.png" alt="logo" class="logo">
-            <h1>Very Deli</h1>  
+            <img src="../imagenes/LogoDery.png" alt="logo" class="logo">  
         </div>
         </a>
         <div class="btns-login">
@@ -66,9 +65,11 @@ $resultado = mysqli_query($conexion,$consulta);
 
 
 while($fila = mysqli_fetch_array($resultado)){
-        $idPublicacion = $fila["idPublicacion"];
+        $idPublicacion = $fila["idPublicacion"]; 
         echo "<a href='./publicacion/publicacion.php?idPublicacion=" . urlencode($idPublicacion) . "' class = 'enlacePostulacion'>";
-            echo "<div class='publicacion'>";
+            echo "<div class='publicacion'>"; 
+            echo '<a href="./eliminar-publicacion.php?id=' . urlencode($idPublicacion) . '" class="boton-eliminar" title="Eliminar" onclick="return confirmDelete()"><i class="fa fa-trash"></i></a>';
+            echo "<div class='contenido-publicacion'>";
             echo    "<div class='titulo-desc'>";
             echo        "<img src='../". $fila["imagen"] ."' class='imagen-publicacion'>";
             echo        "<div>";
@@ -87,6 +88,7 @@ while($fila = mysqli_fetch_array($resultado)){
             echo            "<p>Localidad de destino: " . $fila["localidad_destino"] ."</p>";
             echo        "</div>";
             echo    "</div>";
+            echo  "</div>";
             echo "</div>";
         echo "</a>";
 }
@@ -97,3 +99,10 @@ while($fila = mysqli_fetch_array($resultado)){
 </div>
 
 </main>
+</body>
+<script>
+function confirmDelete() {
+    return confirm("¿Estás seguro de que deseas eliminar esta publicación?");
+}
+</script>
+</html>
