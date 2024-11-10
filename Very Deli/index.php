@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+
 
     <?php
     
@@ -55,10 +57,23 @@
     <main>
         <div class="div-main">
             <div class="text-container">
-                <h2>Vos lo pedis y nosotros te lo dejamos en la puerta de tu casa</h2>
+                <h1 class="titulo">Lo pedis y lo dejamos en la puerta de tu casa</h1>
             </div>
             <div class="image-container">
-                <img src="./imagenes/delivery.jpg" alt="Descripción de la imagen" class="img-main">
+                <img src="./imagenes/delivery.png" alt="Descripción de la imagen" class="img-main">
+            </div>
+        </div>
+        <h2 style="text-align:center;">Todo lo que quieras</h2>
+        <div class= "div-info">
+            <div class="div-logos">    
+                <img class="img-logos" src="./imagenes/logo1.png" alt="camion">
+                <h3>Entrega rápida</h3>
+                <p>Si lo que pides esta en tu ciudad <span class="highlight">recíbelo en minutos</span></p>
+            </div>
+            <div class="div-logos">
+                <img class="img-logos" src="./imagenes/logo2.png" alt="argentina">
+                <h3>En toda Argentina</h3>
+                <p>Pide o envia <span class="highlight">desde cualquier parte del pais</span></p>
             </div>
         </div>
         <div class="contenedor-principal">
@@ -180,7 +195,9 @@
 
                 while($fila = mysqli_fetch_array($resultado)){
                     echo "<div class='publicacion'>";
-                    echo    "<img src='./". $fila["imagen"] ."' class='imagen-publicacion'>";
+                    echo    "<div class='imagen-publicacion-container'>"; // Contenedor para la imagen
+                    echo        "<img src='./". $fila["imagen"] ."' class='imagen-publicacion'>";
+                    echo    "</div>";
                     echo    "<div class='titulo-desc'>";
                     echo        "<h3>" . $fila["titulo"] . "</h3>";
                     echo        "<h4>Descripcion:</h4>";
@@ -201,13 +218,12 @@
                         echo        "<form class='form-monto' method='POST' action='./paginas/creacion-postulacion/insertar-postulacion.php'>";
                         echo            "<label>Monto de cobro</label>";
                         echo            "<input type='text' name='monto'>";
-                        echo            "<input type='hidden' name='idPublicacion' value = '" . $fila['idPublicacion'] . "'>";
+                        echo            "<input type='hidden' name='idPublicacion' value='" . $fila['idPublicacion'] . "'>";
                         echo            "<input type='submit' value='Postularme'>";
                         echo        "</form>";
                         echo    "</div>";
                     }
                     echo "</div>";
-                    
                 }
                 mysqli_close($conexion);
 
@@ -225,5 +241,46 @@
             </div>
         </div>
     </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-links">
+                    <h4>Compania</h4>
+                    <ul>
+                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="#">Nuestros servicios</a></li>
+                        <li><a href="#">Politicas de privacidad</a></li>
+                        <li><a href="#">Trabaja con nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="#">Preguntas</a></li>
+                        <li><a href="#">Envios</a></li>
+                        <li><a href="#">Estado de orden</a></li>
+                        <li><a href="#">Pago</a></li>
+                        <li><a href="#">verydeli2024@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Integrantes</h4>
+                    <ul>
+                        <li><a href="#">Enzo Rodriguez</a></li>
+                        <li><a href="#">Jeronimo Sturniolo</a></li>
+                        <li><a href="#">Ramiro Caceres</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Seguinos!</h4>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </footer>
 </body>
 </html>
