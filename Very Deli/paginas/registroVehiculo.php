@@ -1,12 +1,12 @@
 <?php
-        session_start();
-        $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : null;
+session_start();
+$idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : null;
 
-        if (!$idUsuario) {
-            header("Location: ../index.php");
-            exit();
-        }
-        $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
+if (!$idUsuario) {
+    header("Location: ../index.php");
+    exit();
+}
+$nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,10 +15,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Vehiculo</title>
     <link rel="stylesheet" href="./perfil-usuario/estilos-editar.css">
+    <link rel="icon" href="./login/iconos/logoFondoBlanco.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -29,50 +30,49 @@
         </div>  
     </a>       
     <div class="btns-login">
-            <?php if ($nombreUsuario): ?>
-                <div class="dropdown">
-                    <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
-                    <div class="dropdown-content">
-                        <a href="./perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i> Mi perfil</a>
-                        <a href="./publicaciones-filtradas.php"><i class="fas fa-book"></i> Mis publicaciones</a>
-                        <a href="./creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
-                        <a href="./salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
-                    </div>
+        <?php if ($nombreUsuario): ?>
+            <div class="dropdown">
+                <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
+                <div class="dropdown-content">
+                    <a href="./perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i> Mi perfil</a>
+                    <a href="./publicaciones-filtradas.php"><i class="fas fa-book"></i> Mis publicaciones</a>
+                    <a href="./creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
+                    <a href="./salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
                 </div>
-            <?php else: ?>
-                <a class="animated-button-login" href="./paginas/inicio.php">Iniciar Sesión</a>
-                <a class="animated-button-login" href="./paginas/registro.php">Registrarse</a>
-            <?php endif; ?>
-        </div>      
+            </div>
+        <?php else: ?>
+            <a class="animated-button-login" href="./paginas/inicio.php">Iniciar Sesión</a>
+            <a class="animated-button-login" href="./paginas/registro.php">Registrarse</a>
+        <?php endif; ?>
+    </div>      
 </header>
 
 <main>
     <div class="formulario-login">
         <?php
-
         require("../conexionBD.php");
-        $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
+        $conexion = mysqli_connect($db_host, $db_usuario, $db_contra, $db_nombre);
 
-        if(mysqli_connect_errno()){
+        if (mysqli_connect_errno()) {
             die("Fallo al conectar con la base de datos");
         }
-        mysqli_set_charset($conexion,"utf8");
+        mysqli_set_charset($conexion, "utf8");
 
         $sqlCountVehiculo = "SELECT COUNT(*) AS vehiculo FROM vehiculo WHERE idUsuario = '$idUsuario'";
         $resultCountVehiculo = $conexion->query($sqlCountVehiculo);
         $rowCountVehiculo = $resultCountVehiculo->fetch_assoc();
         $numVehiculo = $rowCountVehiculo['vehiculo'];
 
-            $msjError = array();
-            $msjExito = null;
-            $idVehiculo = "";
-            $matricula = "";
-            $modelo = "";
-            $color = "";
+        $msjError = array();
+        $msjExito = null;
+        $idVehiculo = "";
+        $matricula = "";
+        $modelo = "";
+        $color = "";
 
         if ($numVehiculo >= 2) {
             $msjError['limite'] = "Ha alcanzado el maximo de vehiculos registrados";
-        } else {    
+        } else {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (empty($_POST['matricula'])) {
                     $msjError['matricula'] = "El campo matrícula es obligatorio.";
@@ -84,11 +84,11 @@
                     $sqlVehiculo = "SELECT COUNT(*) AS count FROM vehiculo WHERE matricula = '$matricula'";
                     $resultVehiculo = $conexion->query($sqlVehiculo);
                     $rowVehiculo = $resultVehiculo->fetch_assoc();
-                    
+
                     if ($rowVehiculo['count'] > 0) {
                         $msjError['matricula'] = "La matricula ya esta registrada.";
                     }
-                }            
+                }
 
                 if (empty($_POST['modelo'])) {
                     $msjError['modelo'] = "El campo modelo es obligatorio.";
@@ -104,7 +104,7 @@
 
                 if (empty($msjError)) {
                     $sql = "INSERT INTO vehiculo (matricula, modelo, color, idUsuario) VALUES ('$matricula', '$modelo', '$color', '$idUsuario')";
-                
+
                     if ($conexion->query($sql) === TRUE) {
                         $matricula = "";
                         $modelo = "";
@@ -114,34 +114,42 @@
                         echo "Error: " . $sql . "<br>" . $conexion->error;
                     }
                 }
-
-                $conexion->close();
             }
+            $conexion->close();
         }
         ?>
-            
+
+        <?php if ($numVehiculo < 2): ?>
             <form action="registroVehiculo.php" method="post">
-            <h1>Datos del vehículo</h1>
-                    <input type="text" id="matricula" name="matricula" placeholder="Matricula" value="<?php echo htmlspecialchars($matricula); ?>">
-                    <?php if (isset($msjError['matricula'])) { echo "<span class='msjError'>{$msjError['matricula']}</span>"; } ?>
+                <h1>Datos del vehículo</h1>
+                <input type="text" id="matricula" name="matricula" placeholder="Matricula" value="<?php echo htmlspecialchars($matricula); ?>">
+                <?php if (isset($msjError['matricula'])) { echo "<span class='msjError'>{$msjError['matricula']}</span>"; } ?>
 
+                <input type="text" id="modelo" name="modelo" placeholder="Modelo" value="<?php echo htmlspecialchars($modelo); ?>">
+                <?php if (isset($msjError['modelo'])) { echo "<span class='msjError'>{$msjError['modelo']}</span>"; } ?>
 
+                <input type="text" id="color" name="color" placeholder="Color" value="<?php echo htmlspecialchars($color); ?>">
+                <?php if (isset($msjError['color'])) { echo "<span class='msjError'>{$msjError['color']}</span>"; } ?>
 
-                    <input type="text" id="modelo" name="modelo" placeholder="Modelo" value="<?php echo htmlspecialchars($modelo); ?>">
-                    <?php if (isset($msjError['modelo'])) { echo "<span class='msjError'>{$msjError['modelo']}</span>"; } ?>
-
-
-
-                    <input type="text" id="color" name="color" placeholder="Color" value="<?php echo htmlspecialchars($color); ?>">
-                    <?php if (isset($msjError['color'])) { echo "<span class='msjError'>{$msjError['color']}</span>"; } ?>
-
-
-
-                    <input type="submit" value="Registrar">
-
+                <input type="submit" value="Registrar">
                 <?php if (isset($msjExito)) { echo "<span class='msjExito'>{$msjExito}</span>"; } ?>
             </form>
+        <?php else: ?>
+            <div id="modal-overlay" class="modal-overlay">
+                <div class="modal-content">
+                    <p>Ha alcanzado el máximo de vehículos registrados.</p>
+                    <button onclick="closeModal()">Volver</button>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </main>
+
+<script>
+function closeModal() {
+    window.location.href = "../index.php";
+}
+</script>
+
 </body>
 </html>

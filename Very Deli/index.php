@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Very Deli</title>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="./paginas/login/iconos/logoFondoBlanco.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -277,6 +278,7 @@
 
 
 
+
                     document.querySelectorAll(".form-monto").forEach(function(form) {
                     form.addEventListener("submit", function(event) {
                         event.preventDefault();
@@ -301,6 +303,7 @@
                             .catch(error => {
                                 console.error("Error al verificar la validación de postulaciones", error);
                                 botonSubmit.disabled = false;
+
                             });
                     }
                 </script>
