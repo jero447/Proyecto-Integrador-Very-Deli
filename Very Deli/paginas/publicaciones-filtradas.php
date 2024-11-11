@@ -52,6 +52,7 @@
     <h2>Mis publicaciones</h2>
     <?php
 
+
     require("../conexionBD.php");
     $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
 
@@ -65,32 +66,31 @@
     $consulta = "SELECT idPublicacion,titulo, descripcion,provincia_origen, provincia_destino, localidad_origen,localidad_destino,imagen FROM publicacion WHERE idUsuario = $idUsuario AND estado_envio = 'no finalizada'";
     $resultado = mysqli_query($conexion,$consulta);
 
-while($fila = mysqli_fetch_array($resultado)){
-        $idPublicacion = $fila["idPublicacion"]; 
-        echo "<a href='./publicacion/publicacion.php?idPublicacion=" . urlencode($idPublicacion) . "' class = 'enlacePostulacion'>";
-            echo "<div class='publicacion'>";
-            echo    "<div class='imagen-publicacion-container'>"; 
-            echo "<img src='../" . $fila["imagen"] . "' class='imagen-publicacion'>";
-            echo    "</div>";
-            echo    "<div class='titulo-desc'>";
-            echo        "<h3>" . $fila["titulo"] . "</h3>";
-            echo        "<h4>Descripción:</h4>";
-            echo        "<p>" . $fila["descripcion"] ."</p>";
-            echo    "</div>";
-            echo    "<div class='datos-publicacion'>";
-            echo        "<div>";
-            echo            "<p>Provincia de origen: " . $fila["provincia_origen"] . "</p>";
-            echo            "<p>Provincia de destino: " . $fila["provincia_destino"] ."</p>";
-            echo        "</div>";
-            echo        "<div>";
-            echo            "<p>Localidad de origen: " . $fila["localidad_origen"] . "</p>";
-            echo            "<p>Localidad de destino: " . $fila["localidad_destino"] ."</p>";
-            echo        "</div>";
-            echo    "</div>";
-            echo "</div>";
-        echo "</a>";
-}
-
+    while($fila = mysqli_fetch_array($resultado)){
+            $idPublicacion = $fila["idPublicacion"];
+            echo "<a href='./publicacion/publicacion.php?idPublicacion=" . urlencode($idPublicacion) . "' class = 'enlacePostulacion'>";
+                echo "<div class='publicacion'>";
+                echo    "<div class='titulo-desc'>";
+                echo        "<img src='../". $fila["imagen"] ."' class='imagen-publicacion'>";
+                echo        "<div>";
+                echo             "<h3>" . $fila["titulo"] . "</h3>";
+                echo             "<h4>Descripcion:</h4>";
+                echo             "<p>" . $fila["descripcion"] ."</p>";
+                echo        "</div>";
+                echo    "</div>";
+                echo    "<div class='datos-publicacion'>";
+                echo        "<div>";
+                echo            "<p>Provincia de origen: " . $fila["provincia_origen"] . "</p>";
+                echo            "<p>Provincia de destino: " . $fila["provincia_destino"] ."</p>";
+                echo        "</div>";
+                echo        "<div>";
+                echo            "<p>Localidad de origen: " . $fila["localidad_origen"] . "</p>";
+                echo            "<p>Localidad de destino: " . $fila["localidad_destino"] ."</p>";
+                echo        "</div>";
+                echo    "</div>";
+                echo "</div>";
+            echo "</a>";
+    }
 
 
     ?>

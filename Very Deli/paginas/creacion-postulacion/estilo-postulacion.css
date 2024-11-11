@@ -259,10 +259,80 @@ main{
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: 500;
-=======
+
 @font-face {
     font-family: 'montserrat'; 
     src: url('../../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
+}
+
+@media (max-width: 768px) {
+    
+    .contenedor-datos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contenedor-imagen {
+        width: 200px;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .contenedor-info {
+        text-align: left;
+        margin-bottom: 15px;
+    }
+
+    .seccion-mensajes {
+        height: auto;
+    }
+
+    .contenedor-postulacion {
+        width: 100%;
+        padding: 1rem;
+        gap: 5px;
+    }
+
+    h1{
+        padding-top: 20px;
+        align-self: center;
+    }
+
+    .cartel-seleccionado{
+        position: relative;
+        padding-top: 10px;
+        font-size: 15px;
+        margin-left: 180px;
+        width: 180px;
+    }
+
+    .dropbtn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .dropdown-content {
+        min-width: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        height: 5rem;
+    }
+
+    .contenedor-datos {
+        flex-direction: column;
+    }
+
+    .contenedor-info h3 {
+        font-size: 14px;
+    }
+
+    .imagen-publicacion {
+        max-width: 100%;
+        height: auto;
+    }
 }

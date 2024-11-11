@@ -7,8 +7,14 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem;
-    background-color: #224870;
-    font-family:  "Merriweather", serif;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    height: 5rem;
+    border: 1px solid lightgrey;
 }
 .vinculo-home{
     text-decoration: none;
@@ -22,9 +28,11 @@ header{
     color: #FFFF;
 }
 .logo{
-    width: 5rem;
-    border-radius: 2rem;
-    margin-right: 1rem;
+    height: 8.5rem;
+    width: auto; 
+    margin-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 .animated-button-login {
     position: relative;
@@ -83,19 +91,20 @@ header{
 }
 .dropbtn {
     background-color: transparent;
-    color: beige;
+    color: #164c4f;
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
-    border: 2px solid beige; 
+    border: 3px solid #164c4f; 
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'montserrat';
 }
 
 .dropbtn:hover {
-    background-color: beige;
-    color: black; 
+    background-color: #164c4f;
+    color: #F5F1E9; 
 }
 
 
@@ -111,6 +120,7 @@ header{
     animation: slideDown 0.3s ease forwards;
     right: 0;
     transform: translateX(-50%);
+    font-family: 'montserrat';
 }
 
 .dropdown-content a {
@@ -138,7 +148,6 @@ header{
     100% { opacity: 1; transform: translateY(0); }
 }
 
-/* ESTILOS DEL BOTON ANIMADO */
 .animated-button-login {
     position: relative;
     display: inline-block;
@@ -190,9 +199,11 @@ header{
     opacity: 1;
 }
 .formularioCreacion{
-    background-color: #2196F3;
+    margin-top: 90px;
+    background-color: #eeeeee;
     padding: 2rem;
     border-radius: 15px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }   
 
 .formularioCreacion label{
@@ -205,6 +216,7 @@ header{
     border: 1px solid #D9D9D9;
     margin-bottom: 7px;
     width: 250px;
+    font-family: 'montserrat';
 }
 
 .cont-input{
@@ -221,23 +233,27 @@ header{
 
 .titulo-crear{
     padding: 1rem;
-    background-color: #0e0236;
+    background-color: #164c4f;
     color: #ffff;
     width: 100%;
     text-align: center;
     margin-bottom: 30px;
+    border-radius: 5px;
 }
 
 .btn-enviar{
-    width: 100%;
+    width: 50%;
     margin-top: 30px;
     padding: 10px;
-    background-color: #07ab71;  
+    background-color: #224870;  
     color: #ffff;
     font-size: medium;
     font-weight: 500;
     border: none;
     cursor: pointer;
+    font-family: 'montserrat';
+    border-radius: 5px;
+    margin-left: 130px;
 }
 
 main{
@@ -245,12 +261,63 @@ main{
     justify-content: center;
     align-items: center;
     height: calc(100vh - 4.4rem - 5.7rem);
-    font-family: "Roboto", sans-serif;
+    font-family: "montserrat", sans-serif;
 }
-footer{
-    padding: 1rem;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    background-color: #D9D9D9;
+
+@font-face {
+    font-family: 'montserrat'; 
+    src: url('../../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 1rem;
+        height: 4rem; 
+    }
+    
+    .logo {
+        height: 6rem; 
+    }
+
+    .formularioCreacion {
+        margin-top: 270px; 
+        padding: 1rem; 
+        
+    }
+
+    .formularioCreacion input[type="text"], 
+    .formularioCreacion input[type="number"], 
+    .formularioCreacion select {
+        width: 100%; 
+    }
+
+  
+    .cont-campos-par {
+        flex-direction: column; 
+        gap: 10px; 
+    }
+
+    .btn-enviar {
+        width: 60%;
+        position: relative;
+        margin-left: 20px;
+        left: 53px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .formularioCreacion {
+        padding: 0.5rem; 
+    }
+
+    .titulo-crear {
+        font-size: 18px;
+        padding: 0.8rem; 
+    }
+
+    .btn-enviar {
+        padding: 10px; 
+    }
 }

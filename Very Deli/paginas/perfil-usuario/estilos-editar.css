@@ -146,7 +146,7 @@ input[type="number"]::-webkit-outer-spin-button {
     text-align: center;
     display: block;
 }
-/* ESTILOS BOTON DESPLEGABLE*/
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -251,4 +251,10 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .modal-content button:active {
     transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .formulario-login {
+        width: 100%;
+    }
 }
