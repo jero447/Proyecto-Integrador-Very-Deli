@@ -39,7 +39,7 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuarioActual); ?></button>
                     <div class="dropdown-content">
-                        <a href="../publicaciones-filtradas.php"><i class="fas fa-user"></i>Mis publicaciones</a>
+                        <a href="../publicaciones-filtradas.php"><i class="fas fa-book"></i>Mis publicaciones</a>
                         <a href="../creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i>Mis postulaciones</a>
                         <a href="../registroVehiculo.php"><i class="fas fa-car"></i>Registrar vehiculo</a>
                         <a href="../salir.php"><i class="fas fa-sign-out-alt"></i>Salir</a>

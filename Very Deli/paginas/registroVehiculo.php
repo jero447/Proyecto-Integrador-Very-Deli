@@ -34,9 +34,9 @@
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
                     <div class="dropdown-content">
                         <a href="./perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i> Mi perfil</a>
-                        <a href="./publicaciones-filtradas.php"><i class="fas fa-book"></i>Mis publicaciones</a>
-                        <a href="./creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i>Mis postulaciones</a>
-                        <a href="./salir.php"><i class="fas fa-sign-out-alt"></i>Salir</a>
+                        <a href="./publicaciones-filtradas.php"><i class="fas fa-book"></i> Mis publicaciones</a>
+                        <a href="./creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
+                        <a href="./salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
                     </div>
                 </div>
             <?php else: ?>
@@ -121,7 +121,7 @@
         ?>
             
             <form action="registroVehiculo.php" method="post">
-            <h1>Datos del vehiculo</h1>
+            <h1>Datos del vehículo</h1>
                     <input type="text" id="matricula" name="matricula" placeholder="Matricula" value="<?php echo htmlspecialchars($matricula); ?>">
                     <?php if (isset($msjError['matricula'])) { echo "<span class='msjError'>{$msjError['matricula']}</span>"; } ?>
 

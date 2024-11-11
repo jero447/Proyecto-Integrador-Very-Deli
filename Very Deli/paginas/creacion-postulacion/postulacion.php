@@ -33,11 +33,11 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
                     <div class="dropdown-content">
-                        <a href="../perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i>Mi perfil</a>
-                        <a href="./miPostulaciones.php"><i class="fas fa-briefcase"></i>Mis postulaciones</a>
-                        <a href="../publicaciones-filtradas.php"><i class="fas fa-book"></i>Mis publicaciones</a>
-                        <a href="../registroVehiculo.php"><i class="fas fa-car"></i>Registrar vehiculo</a>
-                        <a href="../salir.php"><i class="fas fa-sign-out-alt"></i>Salir</a>
+                        <a href="../perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i> Mi perfil</a>
+                        <a href="./miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
+                        <a href="../publicaciones-filtradas.php"><i class="fas fa-book"></i> Mis publicaciones</a>
+                        <a href="../registroVehiculo.php"><i class="fas fa-car"></i> Registrar vehiculo</a>
+                        <a href="../salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
                     </div>
                 </div>
             <?php else: ?>
@@ -77,7 +77,7 @@
                     echo            "<img src='../../". $fila["imagen"] ."' class='imagen-publicacion'>";
                     echo        "</div>";
                     echo        "<div class='contenedor-info'>";
-                    echo            "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
+                    echo            "<h3>Descripción: " . $fila["descripcion"] ."</h3>";
                     echo            "<h3>Peso: " . $fila["peso"] ."</h3>";
                     echo            "<h3>Volumen: " . $fila["volumen"] ."</h3>";
                     echo            "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
@@ -104,7 +104,7 @@
                     echo            "<img src='../../". $fila["imagen"] ."' class='imagen-publicacion'>";
                     echo        "</div>";
                     echo        "<div class='contenedor-info'>";
-                    echo            "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
+                    echo            "<h3>Descripción: " . $fila["descripcion"] ."</h3>";
                     echo            "<h3>Peso: " . $fila["peso"] ."</h3>";
                     echo            "<h3>Volumen: " . $fila["volumen"] ."</h3>";
                     echo            "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";

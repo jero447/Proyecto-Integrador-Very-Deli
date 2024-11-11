@@ -127,14 +127,15 @@ main{
 
 .contendor-btn-filtro{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: left;
+    gap: 30px;
 }
 
 .contenedor-lista{
     background-color: white;
     width: 70%;
-    height: calc(100vh - 4.4rem - 5.7rem);
+    height: calc(100vh - 4.4rem - 15rem);
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -146,7 +147,7 @@ main{
     align-items: center;
     justify-content: space-between;
     padding: 1.5rem;
-    background-color: #D9D9D9;
+    background-color: #eeeeee;
     border-radius: 10px;
 }
 
@@ -182,7 +183,9 @@ input[value="Postularme"]{
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #f1f1f1;
+    background-color: rgb(197, 197, 197);
+    border: 1px solid lightgray;
+    font-family: "montserrat";
 }
 input[value="Postularme"]:hover{
     background-color:#D9D9D9 ;
@@ -195,6 +198,7 @@ input[value="Postularme"]:hover{
 .contenedor-lista a{
     text-decoration: none;
     color:  black;
+    width: 250px;
 }
 
 .crear{
@@ -205,8 +209,13 @@ input[value="Postularme"]:hover{
     border-radius: 10px; 
     text-align: center;
     color: #ffff;
-    width: 250px;
 }
+
+.enlace-crear{
+    margin-bottom: 50px;
+    text-decoration: none;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -221,6 +230,7 @@ input[value="Postularme"]:hover{
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'montserrat';
 }
 
 .dropbtn:hover {
@@ -230,6 +240,7 @@ input[value="Postularme"]:hover{
 
 
 .dropdown-content {
+    font-family: 'montserrat';
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -323,10 +334,11 @@ input[value="Postularme"]:hover{
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    background-color: white;
+    background-color: aliceblue;
     height: 25rem; 
     padding: 2rem;
     color: black;
+    margin-bottom: 30px;
 }
 
 .text-container {
@@ -371,6 +383,7 @@ input[value="Postularme"]:hover{
     font-family: "montserrat";
     width: 100%;
     flex-wrap: nowrap;
+    margin-bottom: 25px;
 }
 
 .div-info h2 {
@@ -416,6 +429,7 @@ input[value="Postularme"]:hover{
     border-radius: 5px; 
     color: black; 
     font-weight: 500; 
+    box-decoration-break: clone;
 }
 
 .footer{
@@ -441,22 +455,31 @@ input[value="Postularme"]:hover{
     padding: 0 15px;
 }
 
-.footer-links h4{
+.footer-links h4 {
     font-size: 20px;
     color: white;
-    margin-bottom: 25px;
+    margin-bottom: 10px; 
     font-weight: 500;
     border-bottom: 2px solid #23637a;
     padding-bottom: 10px;
     display: inline-block;
 }
 
-.footer-links ul li{
+.footer-links ul {
+    padding-left: 0; 
+}
+
+.footer-links ul li {
     font-size: 10px;
-    text-decoration: none;
     color: #BBBBBB;
     display: block;
     margin-bottom: 15px;
+    transition: all .3s ease;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: #BBBBBB;
     transition: all .3s ease;
 }
 
@@ -476,6 +499,8 @@ input[value="Postularme"]:hover{
     border-radius: 50%;
     color: white;
     transition: all .5s ease;
+    font-size: 18px;
+    padding-right: 5px;
 }
 
 .footer-social a:hover{
