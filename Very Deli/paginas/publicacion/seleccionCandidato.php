@@ -23,7 +23,7 @@ if($resultado = false){
     if($resultado = false){
         echo "Error en la consulta para actualizar";
     }
-    header("Location: ./publicacionCandidatoSelec.php");
+    header("Location: ./publicacion.php");
     exit();
 }
 
