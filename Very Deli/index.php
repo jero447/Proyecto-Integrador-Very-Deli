@@ -48,6 +48,11 @@
                         <a href="./paginas/creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
                         <a href="./paginas/registroVehiculo.php"><i class="fas fa-car"></i> Registrar vehiculo</a>
                         <a href="./paginas/salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
+                        <a href="./paginas/perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i> Mi perfil</a>
+                        <a href="./paginas/publicaciones-filtradas.php"><i class="fas fa-book"></i> Mis publicaciones</a>
+                        <a href="./paginas/creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
+                        <a href="./paginas/registroVehiculo.php"><i class="fas fa-car"></i> Registrar vehiculo</a>
+                        <a href="./paginas/salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
                     </div>
                 </div>
             <?php else: ?>
@@ -70,16 +75,19 @@
                 <img class="img-logos" src="./imagenes/logo1.png" alt="camion">
                 <h3>Entrega rápida</h3>
                 <p>Si lo que pedis esta en tu ciudad <span class="highlight">recibilo en minutos</span></p>
+                <p>Si lo que pedis esta en tu ciudad <span class="highlight">recibilo en minutos</span></p>
             </div>
             <div class="div-logos">
                 <img class="img-logos" src="./imagenes/logo2.png" alt="argentina">
                 <h3>En toda Argentina</h3>
+                <p>Pedí o envia <span class="highlight">desde cualquier <br> parte del país</span></p>
                 <p>Pedí o envia <span class="highlight">desde cualquier <br> parte del país</span></p>
             </div>
         </div>
         <div class="contenedor-principal">
             <div class="contenedor-filtro">
                 <form method="POST">
+                    <h3>Buscar publicación por zona:</h3>
                     <h3>Buscar publicación por zona:</h3>
                     <div class="filtro-zona">
                         <label>Provincia:</label>
@@ -100,7 +108,9 @@
 
                 <form method="POST">
                     <h3>Buscar publicación por descripcion</h3>
+                    <h3>Buscar publicación por descripcion</h3>
                     <div class="filtro-desc">
+                        <label for="">Descripción</label>
                         <label for="">Descripción</label>
                         <input type="text" name="descripcion" placeholder="Ingrese su descripcion">
                     </div>
@@ -203,10 +213,12 @@
                 while($fila = mysqli_fetch_array($resultado)){
                     echo "<div class='publicacion'>";
                     echo    "<div class='imagen-publicacion-container'>"; 
+                    echo    "<div class='imagen-publicacion-container'>"; 
                     echo        "<img src='./". $fila["imagen"] ."' class='imagen-publicacion'>";
                     echo    "</div>";
                     echo    "<div class='titulo-desc'>";
                     echo        "<h3>" . $fila["titulo"] . "</h3>";
+                    echo        "<h4>Descripción:</h4>";
                     echo        "<h4>Descripción:</h4>";
                     echo        "<p>" . $fila["descripcion"] ."</p>";
                     echo    "</div>";
@@ -315,9 +327,11 @@
             <div class="footer-row">
                 <div class="footer-links">
                     <h4>Compañía</h4>
+                    <h4>Compañía</h4>
                     <ul>
                         <li><a href="#">Nosotros</a></li>
                         <li><a href="#">Nuestros servicios</a></li>
+                        <li><a href="#">Políticas de privacidad</a></li>
                         <li><a href="#">Políticas de privacidad</a></li>
                         <li><a href="#">Trabaja con nosotros</a></li>
                     </ul>

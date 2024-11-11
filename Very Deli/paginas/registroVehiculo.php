@@ -30,6 +30,7 @@ $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] 
         </div>  
     </a>       
     <div class="btns-login">
+<<<<<<< HEAD
         <?php if ($nombreUsuario): ?>
             <div class="dropdown">
                 <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
@@ -38,6 +39,17 @@ $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] 
                     <a href="./publicaciones-filtradas.php"><i class="fas fa-book"></i> Mis publicaciones</a>
                     <a href="./creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
                     <a href="./salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
+=======
+            <?php if ($nombreUsuario): ?>
+                <div class="dropdown">
+                    <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
+                    <div class="dropdown-content">
+                        <a href="./perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i> Mi perfil</a>
+                        <a href="./publicaciones-filtradas.php"><i class="fas fa-book"></i> Mis publicaciones</a>
+                        <a href="./creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
+                        <a href="./salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
+                    </div>
+>>>>>>> be02727 (Cambios visuales generales.)
                 </div>
             </div>
         <?php else: ?>
@@ -121,9 +133,15 @@ $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] 
 
         <?php if ($numVehiculo < 2): ?>
             <form action="registroVehiculo.php" method="post">
+<<<<<<< HEAD
                 <h1>Datos del vehículo</h1>
                 <input type="text" id="matricula" name="matricula" placeholder="Matricula" value="<?php echo htmlspecialchars($matricula); ?>">
                 <?php if (isset($msjError['matricula'])) { echo "<span class='msjError'>{$msjError['matricula']}</span>"; } ?>
+=======
+            <h1>Datos del vehículo</h1>
+                    <input type="text" id="matricula" name="matricula" placeholder="Matricula" value="<?php echo htmlspecialchars($matricula); ?>">
+                    <?php if (isset($msjError['matricula'])) { echo "<span class='msjError'>{$msjError['matricula']}</span>"; } ?>
+>>>>>>> be02727 (Cambios visuales generales.)
 
                 <input type="text" id="modelo" name="modelo" placeholder="Modelo" value="<?php echo htmlspecialchars($modelo); ?>">
                 <?php if (isset($msjError['modelo'])) { echo "<span class='msjError'>{$msjError['modelo']}</span>"; } ?>

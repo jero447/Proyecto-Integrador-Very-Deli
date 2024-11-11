@@ -179,6 +179,7 @@ main{
     border-radius: 5px;
     color: #ffffff;
 }
+<<<<<<< HEAD
 main{
     font-family: "Roboto", sans-serif;
 }
@@ -260,11 +261,14 @@ main{
     font-size: 20px;
     font-weight: 500;
 
+=======
+>>>>>>> be02727 (Cambios visuales generales.)
 @font-face {
     font-family: 'montserrat'; 
     src: url('../../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -339,4 +343,6 @@ main{
         height: auto;
     }
 >>>>>>> 4973b99 (Cambios visuales finales)
+=======
+>>>>>>> be02727 (Cambios visuales generales.)
 }

@@ -18,7 +18,11 @@ header{
     border: 1px solid lightgrey;
 }
 main{
+<<<<<<< HEAD
     font-family: "montserrat", sans-serif;
+=======
+    font-family: "Roboto", sans-serif;
+>>>>>>> be02727 (Cambios visuales generales.)
     display: flex;
     flex: 1;
     margin-top: 90px;
@@ -264,6 +268,7 @@ footer{
     src: url('../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
+<<<<<<< HEAD
 }
 
 @media (max-width: 768px) {
@@ -306,4 +311,6 @@ footer{
         margin: 1rem auto;
         padding: 1rem;
     }
+=======
+>>>>>>> be02727 (Cambios visuales generales.)
 }

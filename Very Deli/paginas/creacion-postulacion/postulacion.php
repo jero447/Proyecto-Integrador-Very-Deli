@@ -79,6 +79,7 @@
                     echo        "</div>";
                     echo        "<div class='contenedor-info'>";
                     echo            "<h3>Descripción: " . $fila["descripcion"] ."</h3>";
+<<<<<<< HEAD
                     echo            "<h3>Peso: " . $fila["peso"] ."</h3>";
                     echo            "<h3>Volumen: " . $fila["volumen"] ."</h3>";
                     echo            "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
@@ -108,6 +109,8 @@
                     echo        "</div>";
                     echo        "<div class='contenedor-info'>";
                     echo            "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
+=======
+>>>>>>> be02727 (Cambios visuales generales.)
                     echo            "<h3>Peso: " . $fila["peso"] ."</h3>";
                     echo            "<h3>Volumen: " . $fila["volumen"] ."</h3>";
                     echo            "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
