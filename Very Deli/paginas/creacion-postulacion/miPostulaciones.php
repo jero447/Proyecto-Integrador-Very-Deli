@@ -90,7 +90,38 @@
                 }
             }
             echo "<h2>Mis postulaciones seleccionadas</h2>";
-            $consulta = "SELECT candidato_seleccionado.idUsuarioSeleccionado,publicacion.estado,postulacion.idPublicacion,publicacion.titulo, publicacion.descripcion, publicacion.provincia_origen, publicacion.provincia_destino, publicacion.localidad_origen, publicacion.localidad_destino,publicacion.imagen, monto FROM postulacion JOIN publicacion ON postulacion.idPublicacion = publicacion.idPublicacion  JOIN candidato_seleccionado ON postulacion.idPostulacion = candidato_seleccionado.idPostulacion WHERE postulacion.idUsuario = $idUsuario ";
+            $consulta = "SELECT candidato_seleccionado.idUsuarioSeleccionado,publicacion.estado,postulacion.idPublicacion,publicacion.titulo, publicacion.descripcion, publicacion.provincia_origen, publicacion.provincia_destino, publicacion.localidad_origen, publicacion.localidad_destino,publicacion.imagen, monto FROM postulacion JOIN publicacion ON postulacion.idPublicacion = publicacion.idPublicacion  JOIN candidato_seleccionado ON postulacion.idPostulacion = candidato_seleccionado.idPostulacion WHERE postulacion.idUsuario = $idUsuario AND publicacion.estado_envio = 'no finalizada'";
+            $resultado = mysqli_query($conexion,$consulta);
+            while($fila = mysqli_fetch_array($resultado)){
+                if($idUsuario == $fila["idUsuarioSeleccionado"]){
+                    $idPublicacion = $fila["idPublicacion"];
+                    echo "<a href='./postulacion.php?idPublicacion=" . urlencode($idPublicacion) . "' class='enlacePostulacion'>";
+                    echo "<div class='publicacion'>";
+                    echo    "<img src='../../" . $fila["imagen"] . "' class='imagen-publicacion'>";
+                    echo    "<div class='titulo-desc'>";
+                    echo        "<h3>" . $fila["titulo"] . "</h3>";
+                    echo        "<h4>Descripcion:</h4>";
+                    echo        "<p>" . $fila["descripcion"] . "</p>";
+                    echo    "</div>";
+                    echo    "<div class='datos-publicacion'>";
+                    echo        "<div>";
+                    echo            "<p>Provincia de origen: " . $fila["provincia_origen"] . "</p>";
+                    echo            "<p>Provincia de destino: " . $fila["provincia_destino"] . "</p>";
+                    echo        "</div>";
+                    echo        "<div>";
+                    echo            "<p>Localidad de origen: " . $fila["localidad_origen"] . "</p>";
+                    echo            "<p>Localidad de destino: " . $fila["localidad_destino"] . "</p>";
+                    echo        "</div>";
+                    echo    "</div>";
+                    echo    "<div>";
+                    echo        "<p>Monto a cobrar: " . $fila["monto"] . "</p>";
+                    echo    "</div>";
+                    echo "</div>";
+                    echo "</a>";
+                }
+            }
+            echo "<h2>Mis postulaciones finalizadas</h2>";
+            $consulta = "SELECT candidato_seleccionado.idUsuarioSeleccionado,publicacion.estado,postulacion.idPublicacion,publicacion.titulo, publicacion.descripcion, publicacion.provincia_origen, publicacion.provincia_destino, publicacion.localidad_origen, publicacion.localidad_destino,publicacion.imagen, monto FROM postulacion JOIN publicacion ON postulacion.idPublicacion = publicacion.idPublicacion  JOIN candidato_seleccionado ON postulacion.idPostulacion = candidato_seleccionado.idPostulacion WHERE postulacion.idUsuario = $idUsuario AND publicacion.estado_envio = 'finalizada' ";
             $resultado = mysqli_query($conexion,$consulta);
             while($fila = mysqli_fetch_array($resultado)){
                 if($idUsuario == $fila["idUsuarioSeleccionado"]){

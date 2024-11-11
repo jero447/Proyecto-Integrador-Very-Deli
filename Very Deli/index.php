@@ -192,11 +192,11 @@
                     echo    "</div>";
                     if($nombreUsuario){
                         echo    "<div>";
-                        echo        "<form class='form-monto' method='POST' action='./paginas/creacion-postulacion/insertar-postulacion.php'>";
+                        echo        "<form id='formPostulacion' class='form-monto' method='POST' action='./paginas/creacion-postulacion/insertar-postulacion.php'>";
                         echo            "<label>Monto de cobro</label>";
                         echo            "<input type='text' name='monto'>";
                         echo            "<input type='hidden' name='idPublicacion' value = '" . $fila['idPublicacion'] . "'>";
-                        echo            "<input type='submit' value='Postularme'>";
+                        echo            "<input type='submit' value='Postularme' onClick='verificarCalificacionPostulacion()'>";
                         echo        "</form>";
                         echo    "</div>";
                     }
@@ -206,16 +206,78 @@
                 mysqli_close($conexion);
 
                 ?>
+                <div class="modal" id="pantalla-modal-postulacion-exito">
+                    <div class="contenedor-moda">
+                        <p>Tu Postulacion fue exitosa</p>
+                        <button class="btn-cerrar" onclick="cerrarModal()">Cerrar</button>
+                    </div>
+                </div>
+                <div class="modal" id="pantalla-modal-postulacion">
+                    <div class="contenedor-modal">
+                        <p>No eres un usuario responsable y ya tienes una postulacion activa</p>
+                        <button class="btn-cerrar" onclick="cerrarModal()">Cerrar</button>
+                    </div>
+                </div>
                 <?php
                     if($nombreUsuario){
-                        echo " <a href='./paginas/creacion-publicacion/formCrearPublicacion.php'>
+                        echo " <a href='#' onclick='verificarCalificacion()'>
                         <div class='crear'>
                         <h4>Crear publicacion</h4>
                         </div>
                         </a>";
                     }
                 ?>
-            
+                <div class="modal" id="pantalla-modal">
+                    <div class="contenedor-modal">
+                        <p>No eres un usuario responsable y tienes tres o mas publicaciones activas</p>
+                        <button class="btn-cerrar" onclick="cerrarModal()">Cerrar</button>
+                    </div>
+                </div>
+                <script>
+                    function verificarCalificacion(){
+                        fetch("./verificarCalificacion.php")
+                            .then(response => response.json())
+                            .then(data =>{
+                                if(data.responsable){
+                                    window.location.href = "./paginas/creacion-publicacion/formCrearPublicacion.php";
+                                }else{
+                                    document.getElementById("pantalla-modal").style.display = "block";
+                                }
+                            })
+                            .catch(error =>{
+                                console.error("Error al verificar la validacion", error)
+                            });
+                    }
+
+                    function cerrarModal(){
+                        document.getElementById("pantalla-modal").style.display = "none";
+                        document.getElementById("pantalla-modal-postulacion").style.display = "none";
+                        document.getElementById("pantalla-modal-postulacion-exito").style.display = "none";
+                    }
+
+
+
+                    document.getElementById("formPostulacion").addEventListener("submit", function(event){
+                        event.preventDefault();
+                        verificarCalificacionPostulacion();
+                    })
+
+                    function verificarCalificacionPostulacion(){
+                        fetch("./verificarCalificacionPostulacion.php")
+                            .then(response => response.json())
+                            .then(data =>{
+                                if(data.responsable){
+                                    document.getElementById("formPostulacion").submit();
+
+                                }else{
+                                    document.getElementById("pantalla-modal-postulacion").style.display = "block";
+                                }
+                            })
+                            .catch(error =>{
+                                console.error("Error al verificar la validación de postulaciones", error);
+                            });
+                    }
+                </script>
             </div>
         </div>
     </main>
