@@ -19,6 +19,14 @@ if (isset($_POST["idPublicacion"])) {
 
     $idUsuarioDueño = $fila["idUsuario"];
     $consulta = "UPDATE usuario SET publicaciones_activas= publicaciones_activas - 1 WHERE idUsuario = $idUsuarioDueño";
+    mysqli_query($conexion,$consulta);
+
+
+    $consultaUsuarioPostulante = "SELECT postulacion.idUsuario FROM postulacion JOIN usuario ON postulacion.idUsuario = usuario.idUsuario WHERE idPublicacion = $idPublicacion";
+    $resultado = mysqli_query($conexion,$consultaUsuarioPostulante);
+    $fila = mysqli_fetch_array($resultado);
+    $usuarioPostulante = $fila["idUsuario"];
+    $consulta = "UPDATE usuario SET postulaciones_activas = postulaciones_activas - 1 WHERE idUsuario = $usuarioPostulante";
     $resultado = mysqli_query($conexion,$consulta);
 
     if($resultado){

@@ -114,6 +114,7 @@ button {
   border: 1px solid #164c4f;
   background: #164c4f;
   color: #fff;
+  font-weight: bold;
   font-size: 12px;
   padding: 12px 45px;
   letter-spacing: 1px;
@@ -138,6 +139,7 @@ button:focus {
 button.ghost {
   background: #fff;
   color: #164c4f;
+  font-weight: bold;
   border-color: #fff;
 }
 

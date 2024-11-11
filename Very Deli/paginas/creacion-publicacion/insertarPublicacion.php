@@ -46,7 +46,6 @@ if(mysqli_connect_errno()){
 mysqli_set_charset($conexion,"utf8");
 $consulta = "INSERT INTO publicacion (titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino,calle_origen,calle_destino,idUsuario, imagen) VALUES ('$titulo','$descripcion','$volumen','$peso','$prov_origen','$prov_destino','$local_origen','$local_destino','$calle_origen','$calle_destino','$idUsuario','$urlImagen')";
 mysqli_query($conexion,$consulta);
-
 $consulta_publiActivas = "UPDATE usuario SET publicaciones_activas = publicaciones_activas + 1 WHERE idUsuario = $idUsuario";
 $resultado = mysqli_query($conexion,$consulta_publiActivas);
 

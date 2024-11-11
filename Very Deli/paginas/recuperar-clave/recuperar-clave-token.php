@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Contraseña</title>
     <link rel="stylesheet" href="./estilos-recuperar-clave.css">
+    <link rel="icon" href="../login/iconos/logoFondoBlanco.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +59,7 @@
 
                     $token = bin2hex(random_bytes(16));
                     $vencimiento = date("Y-m-d H:i:s", strtotime("+1 hour"));
-                    $resetLink = "http://localhost:3000/Very%20Deli/paginas/perfil-usuario/recuperar-clave.php?token=" . $token;
+                    $resetLink = "http://localhost:3000/Very%20Deli/paginas/recuperar-clave/recuperar-clave.php?token=" . $token;
 
                     $consulta = "INSERT INTO reset_clave (email, token, vencimiento) VALUES ('$email', '$token', '$vencimiento')";
                     $resultado = mysqli_query($conexion, $consulta);

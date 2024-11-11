@@ -14,8 +14,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mis Publicaciones</title>
     <link rel="stylesheet" href="./estilos-publicacionFiltrada.css">
+    <link rel="icon" href="./login/iconos/logoFondoBlanco.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,6 +52,7 @@
     <h2>Mis publicaciones</h2>
     <?php
 
+
     require("../conexionBD.php");
     $conexion = mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
 
@@ -59,6 +61,7 @@
         exit();
     }
     mysqli_set_charset($conexion,"utf8");
+
 
     $consulta = "SELECT idPublicacion,titulo, descripcion,provincia_origen, provincia_destino, localidad_origen,localidad_destino,imagen FROM publicacion WHERE idUsuario = $idUsuario AND estado_envio = 'no finalizada'";
     $resultado = mysqli_query($conexion,$consulta);

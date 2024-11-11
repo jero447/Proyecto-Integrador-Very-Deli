@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Very Deli</title>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="./paginas/login/iconos/logoFondoBlanco.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,14 +111,15 @@
                 </form>
                 <?php
                     if($nombreUsuario){
-                        echo " <a class='enlace-crear' href='./paginas/creacion-publicacion/formCrearPublicacion.php'>
+                        echo " <a href='#' class='enlace-crear' onclick='verificarCalificacion()'>
                         <div class='crear'>
-                        <h4>Crear publicación</h4>
+                        <h4>Crear publicacion</h4>
                         </div>
                         </a>";
                     }
                 ?>
-                
+
+
                 <script>
                     const API_BASE_URL = "https://apis.datos.gob.ar/georef/api";
 
@@ -245,15 +247,7 @@
                         <button class="btn-cerrar" onclick="cerrarModal()">Cerrar</button>
                     </div>
                 </div>
-                <?php
-                    if($nombreUsuario){
-                        echo " <a href='#' onclick='verificarCalificacion()'>
-                        <div class='crear'>
-                        <h4>Crear publicacion</h4>
-                        </div>
-                        </a>";
-                    }
-                ?>
+                
                 <div class="modal" id="pantalla-modal">
                     <div class="contenedor-modal">
                         <p>No eres un usuario responsable y tienes tres o mas publicaciones activas</p>
@@ -284,6 +278,7 @@
 
 
 
+
                     document.querySelectorAll(".form-monto").forEach(function(form) {
                     form.addEventListener("submit", function(event) {
                         event.preventDefault();
@@ -308,6 +303,7 @@
                             .catch(error => {
                                 console.error("Error al verificar la validación de postulaciones", error);
                                 botonSubmit.disabled = false;
+
                             });
                     }
                 </script>
