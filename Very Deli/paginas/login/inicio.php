@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="./estilos-iniciar-registro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="./iconos/logoFondoBlanco.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -82,32 +83,36 @@
                 }
             ?>
 
-      <div class="form-container sign-in-container">
+
+
+<div class="form-container sign-in-container">
         <form action="inicio.php" method="post">
-          <img src="./iconos/LogoDery.png" class="img-user">
-          <h1>Iniciar Sesión</h1>
+            <img src="./iconos/LogoDery.png" class="img-user">
+            <h1>Iniciar Sesión</h1>
             <input type="text" id="correoUser" name="correoUser" placeholder="Email o Usuario" value="<?php echo htmlspecialchars($correoUser); ?>">
-                    <?php if (isset($msjError['correoUser'])) { echo "<span class='msjError'>{$msjError['correoUser']}</span>"; } ?>
+            <?php if (isset($msjError['correoUser'])) { echo "<span class='msjError'>{$msjError['correoUser']}</span>"; } ?>
             <input type="password" placeholder="Contraseña" id="claveLogin" name="claveLogin" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
                     title="Debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial" 
                     value="<?php echo htmlspecialchars($claveLogin); ?>">
-                    <?php if (isset($msjError['claveLogin'])) { echo "<span class='msjError'>{$msjError['claveLogin']}</span>"; } ?>
-          <a href="../recuperar-clave/recuperar-clave-token.php">¿Olvidaste tu contraseña?</a>
-          <button class="btn-iniciar">Iniciar sesión</button>
+            <?php if (isset($msjError['claveLogin'])) { echo "<span class='msjError'>{$msjError['claveLogin']}</span>"; } ?>
+            <a href="../recuperar-clave/recuperar-clave-token.php">¿Olvidaste tu contraseña?</a>
+            <button class="btn-iniciar">Iniciar sesión</button>
         </form>
-      </div>
-      <div class="overlay-container">
+    </div>
+
+    <div class="overlay-container">
         <div class="overlay">
-          <div class="overlay-panel overlay-right">
-            <h1>¿No tienes cuenta?</h1>
-            <p>Crear tu cuenta</p>
-            <a href="./registro.php"><button class="ghost" id="signUp">Registrar</button></a>
-          </div>
+            <div class="overlay-panel overlay-right">
+                <h1>¿No tienes cuenta?</h1>
+                <p>Crear tu cuenta</p>
+                <a href="./registro.php"><button class="ghost" id="signUp">Registrar</button></a>
+            </div>
         </div>
-      </div>
+    </div>
 
     <script src="./app.js"></script>
 
-    </main>
+</main>
+
 </body>
 </html>

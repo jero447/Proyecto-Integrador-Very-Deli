@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="./estilos-editar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="../login/iconos/logoFondoBlanco.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -39,7 +40,7 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuarioActual); ?></button>
                     <div class="dropdown-content">
-                        <a href="../publicaciones-filtradas.php"><i class="fas fa-user"></i>Mis publicaciones</a>
+                        <a href="../publicaciones-filtradas.php"><i class="fas fa-book"></i>Mis publicaciones</a>
                         <a href="../creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i>Mis postulaciones</a>
                         <a href="../registroVehiculo.php"><i class="fas fa-car"></i>Registrar vehiculo</a>
                         <a href="../salir.php"><i class="fas fa-sign-out-alt"></i>Salir</a>

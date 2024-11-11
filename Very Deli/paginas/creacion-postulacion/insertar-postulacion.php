@@ -1,6 +1,6 @@
 <?php
-        session_start();
-        $idUsuario = $_SESSION["idUsuario"] ;
+    session_start();
+    $idUsuario = $_SESSION["idUsuario"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,9 +23,11 @@
     }
     mysqli_set_charset($conexion,"utf8");
     $consulta = "INSERT INTO postulacion (monto,idPublicacion,idUsuario) VALUES ('$monto','$idPublicacion',$idUsuario)";
-    $resultado = mysqli_query($conexion,$consulta);
-    
-    if($resultado = false){
+    mysqli_query($conexion,$consulta);
+    $consulta_postuActivas = "UPDATE usuario SET postulaciones_activas = postulaciones_activas + 1 WHERE idUsuario = $idUsuario";
+    $resultado = mysqli_query($conexion,$consulta_postuActivas);
+
+    if($resultado === false){
         echo "Error en la consulta";
     }else{
         header("Location: ../../index.php");
