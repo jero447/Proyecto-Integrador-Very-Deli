@@ -59,7 +59,7 @@
 
                     $token = bin2hex(random_bytes(16));
                     $vencimiento = date("Y-m-d H:i:s", strtotime("+1 hour"));
-                    $resetLink = "http://localhost:3000/Very%20Deli/paginas/perfil-usuario/recuperar-clave.php?token=" . $token;
+                    $resetLink = "http://localhost:3000/Very%20Deli/paginas/recuperar-clave/recuperar-clave.php?token=" . $token;
 
                     $consulta = "INSERT INTO reset_clave (email, token, vencimiento) VALUES ('$email', '$token', '$vencimiento')";
                     $resultado = mysqli_query($conexion, $consulta);

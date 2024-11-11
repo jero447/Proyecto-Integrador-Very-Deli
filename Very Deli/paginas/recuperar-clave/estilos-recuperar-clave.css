@@ -69,7 +69,7 @@ main {
 
 input[value="Siguiente"], input[value="Registrarse"], 
 input[value="Registrar"], input[value="Recuperar Contraseña"], 
-input[value="Cambiar Contraseña"] {
+input[value="Establecer Contraseña"] {
     background-color: #164c4f;
     color: #ffffff;
     padding: 12px;
@@ -84,7 +84,7 @@ input[value="Cambiar Contraseña"] {
 
 input[value="Siguiente"]:active, input[value="Registrarse"]:active, 
 input[value="Registrar"]:active, input[value="Recuperar Contraseña"]:active, 
-input[value="Cambiar Contraseña"]:active {
+input[value="Establecer Contraseña"]:active {
     transform: scale(0.95);
 }
 
