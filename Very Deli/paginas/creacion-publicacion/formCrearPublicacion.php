@@ -192,6 +192,7 @@
                 </div>
             </div>  
             <div>
+                <label>Subir foto</label><br>
                 <input type="file" name="imagen" id="" accept="image/*">
             </div>           
         </div>
@@ -201,9 +202,6 @@
 
     </form>
     </main>
-    <footer>
-        <p>Universidad Nacional de San Luis</p>
-        <p>Programacion III</p>
-    </footer>                 
+                    
 </body>
 </html>

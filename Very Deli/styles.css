@@ -552,3 +552,112 @@ input[value="Postularme"]:hover{
     }
 }
 
+@media (max-width: 768px) {
+    .contenedor-main {
+        padding: 5rem; 
+    }
+
+    .contenedor-principal {
+        flex-direction: column; 
+        gap: 2rem;
+    }
+
+    .filtro-desc{
+        align-items: center;
+    }
+
+    .contenedor-filtro {
+        width: 100%; 
+        padding-left: 0;
+        align-items: center;
+    }
+
+    .contenedor-lista {
+        width: 100%; 
+    }
+
+    .btn-filtrar, .btn-mostrar {
+        width: 50%; 
+        align-self: center;
+    }
+
+    .footer-links {
+        width: 100%; 
+    }
+
+    .contenedor-lista {
+        flex-direction: column;
+    }
+
+    .publicacion {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+    }
+
+    .titulo-desc, .datos-publicacion{
+        width: 100%;
+    }
+
+    .imagen-publicacion-container {
+        width: 100%; 
+        height: auto; 
+        align-self: center;
+    }
+
+    .imagen-publicacion {
+        width: 100%; 
+        height: auto;
+        align-self: center;
+    }
+
+    .form-monto {
+        align-items: right;
+    }
+}
+
+@media (max-width: 576px) {
+    .titulo {
+        font-size: 2rem; 
+    }
+
+    .div-main {
+        height: auto; 
+        flex-direction: column; 
+        padding: 1rem;
+    }
+
+    .btn-iniciar, .btn-registrarse {
+        font-size: 0.9rem; 
+    }
+
+    .dropbtn {
+        font-size: 14px; 
+    }
+
+    .imagen-publicacion-container {
+        width: 100px;
+        height: 100px; 
+    }
+
+    .footer {
+        padding: 40px 0; 
+    }
+}
+
+@media (max-width: 768px) {
+    .text-container, .image-container {
+        text-align: center;
+        margin: 0;
+    }
+    .img-main {
+        max-width: 100%; 
+    }
+}
+
+@media (max-width: 576px) {
+    .animated-button-login {
+        padding: 10px 5px; 
+        font-size: 14px;
+    }
+}
