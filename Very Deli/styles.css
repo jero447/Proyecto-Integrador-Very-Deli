@@ -587,8 +587,6 @@ input[value="Postularme"]:hover{
     }
 }
 
-<<<<<<< HEAD
-
 @media (max-width: 768px) {
     .contenedor-main {
         padding: 5rem; 
@@ -698,6 +696,3 @@ input[value="Postularme"]:hover{
         font-size: 14px;
     }
 }
-
-=======
->>>>>>> parent of 4997eab (Merge pull request #37 from jero447/feature-cambios-visuales)

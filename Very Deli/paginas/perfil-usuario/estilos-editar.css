@@ -146,7 +146,7 @@ input[type="number"]::-webkit-outer-spin-button {
     text-align: center;
     display: block;
 }
-/* ESTILOS BOTON DESPLEGABLE*/
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -216,6 +216,7 @@ input[type="number"]::-webkit-outer-spin-button {
     font-weight: normal;
     font-style: normal;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 .modal-overlay {
     font-family: "montserrat";
@@ -252,13 +253,19 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .modal-content button:active {
     transform: scale(0.95);
+=======
+>>>>>>> 4973b99 (Cambios visuales finales)
 }
 
 @media (max-width: 768px) {
     .formulario-login {
         width: 100%;
     }
+<<<<<<< HEAD
 }
 =======
 }
 >>>>>>> parent of 4997eab (Merge pull request #37 from jero447/feature-cambios-visuales)
+=======
+}
+>>>>>>> 4973b99 (Cambios visuales finales)
