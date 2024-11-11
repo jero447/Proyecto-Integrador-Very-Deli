@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+
 
     <?php
     
@@ -40,11 +42,11 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
                     <div class="dropdown-content">
-                        <a href="./paginas/perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i>Mi perfil</a>
-                        <a href="./paginas/publicaciones-filtradas.php"><i class="fas fa-book"></i>Mis publicaciones</a>
-                        <a href="./paginas/creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i>Mis postulaciones</a>
-                        <a href="./paginas/registroVehiculo.php"><i class="fas fa-car"></i>Registrar vehiculo</a>
-                        <a href="./paginas/salir.php"><i class="fas fa-sign-out-alt"></i>Salir</a>
+                        <a href="./paginas/perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i> Mi perfil</a>
+                        <a href="./paginas/publicaciones-filtradas.php"><i class="fas fa-book"></i> Mis publicaciones</a>
+                        <a href="./paginas/creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
+                        <a href="./paginas/registroVehiculo.php"><i class="fas fa-car"></i> Registrar vehiculo</a>
+                        <a href="./paginas/salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
                     </div>
                 </div>
             <?php else: ?>
@@ -55,16 +57,29 @@
     <main>
         <div class="div-main">
             <div class="text-container">
-                <h2>Vos lo pedis y nosotros te lo dejamos en la puerta de tu casa</h2>
+                <h1 class="titulo">Lo pedís y lo dejamos en la puerta de tu casa</h1>
             </div>
             <div class="image-container">
-                <img src="./imagenes/delivery.jpg" alt="Descripción de la imagen" class="img-main">
+                <img src="./imagenes/delivery.png" alt="Descripción de la imagen" class="img-main">
+            </div>
+        </div>
+        <h2 style="text-align:center;">Todo lo que quieras</h2>
+        <div class= "div-info">
+            <div class="div-logos">    
+                <img class="img-logos" src="./imagenes/logo1.png" alt="camion">
+                <h3>Entrega rápida</h3>
+                <p>Si lo que pedis esta en tu ciudad <span class="highlight">recibilo en minutos</span></p>
+            </div>
+            <div class="div-logos">
+                <img class="img-logos" src="./imagenes/logo2.png" alt="argentina">
+                <h3>En toda Argentina</h3>
+                <p>Pedí o envia <span class="highlight">desde cualquier <br> parte del país</span></p>
             </div>
         </div>
         <div class="contenedor-principal">
             <div class="contenedor-filtro">
                 <form method="POST">
-                    <h3>Buscar publicacion por zona:</h3>
+                    <h3>Buscar publicación por zona:</h3>
                     <div class="filtro-zona">
                         <label>Provincia:</label>
                         <select id="provincia" onchange="cargarLocalidades()" name="provincia" >
@@ -81,9 +96,9 @@
                 </form>
 
                 <form method="POST">
-                    <h3>Buscar publicacion por descripcion</h3>
+                    <h3>Buscar publicación por descripcion</h3>
                     <div class="filtro-desc">
-                        <label for="">Descripcion</label>
+                        <label for="">Descripción</label>
                         <input type="text" name="descripcion" placeholder="Ingrese su descripcion">
                     </div>
                     <div class="contendor-btn-filtro">
@@ -91,6 +106,15 @@
                         <input type="submit" value="Mostrar todas las publicaciones" name="mostrar" class="btn-mostrar">
                     </div>
                 </form>
+                <?php
+                    if($nombreUsuario){
+                        echo " <a class='enlace-crear' href='./paginas/creacion-publicacion/formCrearPublicacion.php'>
+                        <div class='crear'>
+                        <h4>Crear publicación</h4>
+                        </div>
+                        </a>";
+                    }
+                ?>
                 
                 <script>
                     const API_BASE_URL = "https://apis.datos.gob.ar/georef/api";
@@ -174,10 +198,12 @@
 
                 while($fila = mysqli_fetch_array($resultado)){
                     echo "<div class='publicacion'>";
-                    echo    "<img src='./". $fila["imagen"] ."' class='imagen-publicacion'>";
+                    echo    "<div class='imagen-publicacion-container'>"; 
+                    echo        "<img src='./". $fila["imagen"] ."' class='imagen-publicacion'>";
+                    echo    "</div>";
                     echo    "<div class='titulo-desc'>";
                     echo        "<h3>" . $fila["titulo"] . "</h3>";
-                    echo        "<h4>Descripcion:</h4>";
+                    echo        "<h4>Descripción:</h4>";
                     echo        "<p>" . $fila["descripcion"] ."</p>";
                     echo    "</div>";
                     echo    "<div class='datos-publicacion'>";
@@ -201,7 +227,6 @@
                         echo    "</div>";
                     }
                     echo "</div>";
-                    
                 }
                 mysqli_close($conexion);
 
@@ -287,5 +312,46 @@
             </div>
         </div>
     </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-links">
+                    <h4>Compañía</h4>
+                    <ul>
+                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="#">Nuestros servicios</a></li>
+                        <li><a href="#">Políticas de privacidad</a></li>
+                        <li><a href="#">Trabaja con nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="#">Preguntas</a></li>
+                        <li><a href="#">Envios</a></li>
+                        <li><a href="#">Estado de orden</a></li>
+                        <li><a href="#">Pago</a></li>
+                        <li><a href="#">verydeli2024@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Integrantes</h4>
+                    <ul>
+                        <li><a href="#">Enzo Rodriguez</a></li>
+                        <li><a href="#">Jeronimo Sturniolo</a></li>
+                        <li><a href="#">Ramiro Caceres</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Seguinos!</h4>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </footer>
 </body>
 </html>

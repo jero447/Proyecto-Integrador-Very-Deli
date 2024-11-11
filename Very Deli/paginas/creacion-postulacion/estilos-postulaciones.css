@@ -1,16 +1,36 @@
 *{
     margin: 0;
     box-sizing: border-box;
+    font-family: "montserrat", sans-serif;
 }
 header{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem;
-    background-color: #224870;
-    font-family:  "Merriweather", serif;
+    background-color: white;
+    position: fixed;
     width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    height: 5rem;
+    border: 1px solid lightgrey;
 }
+
+main{
+    display: flex;
+    flex: 1;
+    margin-top: 90px;
+}
+
+@font-face {
+    font-family: 'montserrat'; 
+    src: url('../../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
 .contenedor-logo{
     display: flex;
     align-items: center;
@@ -22,9 +42,11 @@ header{
     color: #FFFF;
 }
 .logo{
-    width: 5rem;
-    border-radius: 2rem;
-    margin-right: 1rem;
+    height: 8.5rem;
+    width: auto; 
+    margin-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 .btn-iniciar{
     margin-right: 1rem;
@@ -45,23 +67,25 @@ header{
 }
 .dropbtn {
     background-color: transparent;
-    color: beige;
+    color: #164c4f;
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
-    border: 2px solid beige; 
+    border: 3px solid #164c4f; 
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'montserrat';
 }
 
 .dropbtn:hover {
-    background-color: beige;
-    color: black; 
+    background-color: #164c4f;
+    color: #F5F1E9; 
 }
 
 
 .dropdown-content {
+    font-family: 'montserrat';
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -152,7 +176,7 @@ header{
 }
 main{
     display: flex;
-    font-family: "Roboto", sans-serif;
+    font-family: "montserrat", sans-serif;
 }
 footer{
     padding: 1rem;
@@ -161,23 +185,33 @@ footer{
     font-weight: 500;
     background-color: #D9D9D9;
 }
+
+.imagen-container{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px; 
+}
+
 .imagen-publicacion{
-    width: 15rem;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
 }
 .publicacion{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1.5rem;
-    border: 1px solid black;
     border-radius: 10px;
+    background-color: #eeeeee;
 }
 .datos-publicacion{
     display: flex;
     gap: 20px;
 }
 .contenedor-lista{
-    background-color: beige;
+    background-color: white;
     width: 100%;
     height: calc(100vh - 4.4rem - 5.7rem);
     padding: 0.5rem;

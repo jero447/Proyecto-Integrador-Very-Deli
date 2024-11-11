@@ -25,8 +25,7 @@
     <header>
         <a href="../index.php" class = "vinculo-home">
         <div class="contenedor-logo">
-            <img src="../imagenes/LogoDery.png" alt="logo" class="logo">
-            <h1>Very Deli</h1>  
+            <img src="../imagenes/LogoDery.png" alt="logo" class="logo">  
         </div>
         </a>
         <div class="btns-login">
@@ -128,3 +127,10 @@
 </div>
 
 </main>
+</body>
+<script>
+function confirmDelete() {
+    return confirm("¿Estás seguro de que deseas eliminar esta publicación?");
+}
+</script>
+</html>
