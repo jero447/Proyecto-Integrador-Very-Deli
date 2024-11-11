@@ -146,7 +146,7 @@ input[type="number"]::-webkit-outer-spin-button {
     text-align: center;
     display: block;
 }
-
+/* ESTILOS BOTON DESPLEGABLE*/
 .dropdown {
     position: relative;
     display: inline-block;
@@ -215,6 +215,7 @@ input[type="number"]::-webkit-outer-spin-button {
     src: url('../../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
+<<<<<<< HEAD
 }
 .modal-overlay {
     font-family: "montserrat";
@@ -258,3 +259,6 @@ input[type="number"]::-webkit-outer-spin-button {
         width: 100%;
     }
 }
+=======
+}
+>>>>>>> parent of 4997eab (Merge pull request #37 from jero447/feature-cambios-visuales)

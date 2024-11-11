@@ -93,9 +93,7 @@
                             <option value="" selected disabled>Seleccione una localidad</option>
                         </select>
                     </div>
-                    <div class="contendor-btn-filtro">
-                        <input type="submit" value="Filtrar" name="filtrar" class="btn-filtrar">
-                    </div>
+                    <input type="submit" value="Filtrar" name="filtrar" class="btn-filtrar">
                 </form>
 
                 <form method="POST">

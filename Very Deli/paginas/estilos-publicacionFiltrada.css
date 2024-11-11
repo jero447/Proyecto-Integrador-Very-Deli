@@ -18,7 +18,7 @@ header{
     border: 1px solid lightgrey;
 }
 main{
-    font-family: "montserrat", sans-serif;
+    font-family: "Roboto", sans-serif;
     display: flex;
     flex: 1;
     margin-top: 90px;
@@ -80,6 +80,7 @@ footer{
     transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
+/* ESTILOS BOTON DESPLEGABLE*/
 .dropdown {
     position: relative;
     display: inline-block;
@@ -264,46 +265,4 @@ footer{
     src: url('../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
-}
-
-@media (max-width: 768px) {
-    
-    .contenedor-lista {
-        padding: 1rem;
-    }
-    .publicacion {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .imagen-publicacion-container {
-        width: 120px;
-        height: 120px;
-        align-self: center;
-    }
-    .imagen-publicacion {
-        width: 100%;
-        height: auto;
-    }
-    .titulo-desc, .datos-publicacion {
-        width: 100%;
-    }
-    .datos-publicacion {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo {
-        height: 5rem;
-    }
-    .titulo-desc h3 {
-        font-size: 1.2rem; 
-    }
-    .publicacion {
-        padding: 1rem;
-    }
-    .contenedor-publicacion {
-        margin: 1rem auto;
-        padding: 1rem;
-    }
 }
