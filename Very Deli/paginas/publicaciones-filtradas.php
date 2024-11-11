@@ -68,7 +68,6 @@ while($fila = mysqli_fetch_array($resultado)){
         $idPublicacion = $fila["idPublicacion"]; 
         echo "<a href='./publicacion/publicacion.php?idPublicacion=" . urlencode($idPublicacion) . "' class = 'enlacePostulacion'>";
             echo "<div class='publicacion'>"; 
-            echo '<a href="./eliminar-publicacion.php?id=' . urlencode($idPublicacion) . '" class="boton-eliminar" title="Eliminar" onclick="return confirmDelete()"><i class="fa fa-trash"></i></a>';
             echo "<div class='contenido-publicacion'>";
             echo    "<div class='titulo-desc'>";
             echo        "<img src='../". $fila["imagen"] ."' class='imagen-publicacion'>";
