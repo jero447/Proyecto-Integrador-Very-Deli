@@ -108,14 +108,14 @@
                 </form>
                 <?php
                     if($nombreUsuario){
-                        echo " <a class='enlace-crear' href='./paginas/creacion-publicacion/formCrearPublicacion.php'>
+                        echo " <a href='#' class='enlace-crear' onclick='verificarCalificacion()'>
                         <div class='crear'>
-                        <h4>Crear publicación</h4>
+                        <h4>Crear publicacion</h4>
                         </div>
                         </a>";
                     }
                 ?>
-                
+
                 <script>
                     const API_BASE_URL = "https://apis.datos.gob.ar/georef/api";
 
@@ -243,15 +243,7 @@
                         <button class="btn-cerrar" onclick="cerrarModal()">Cerrar</button>
                     </div>
                 </div>
-                <?php
-                    if($nombreUsuario){
-                        echo " <a href='#' onclick='verificarCalificacion()'>
-                        <div class='crear'>
-                        <h4>Crear publicacion</h4>
-                        </div>
-                        </a>";
-                    }
-                ?>
+                
                 <div class="modal" id="pantalla-modal">
                     <div class="contenedor-modal">
                         <p>No eres un usuario responsable y tienes tres o mas publicaciones activas</p>
