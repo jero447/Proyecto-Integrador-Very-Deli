@@ -257,24 +257,30 @@
 
 
 
-                    document.getElementById("formPostulacion").addEventListener("submit", function(event){
+                    document.querySelectorAll(".form-monto").forEach(function(form) {
+                    form.addEventListener("submit", function(event) {
                         event.preventDefault();
-                        verificarCalificacionPostulacion();
-                    })
+                        verificarCalificacionPostulacion(form);
+                    });
+                    });
 
-                    function verificarCalificacionPostulacion(){
+                    function verificarCalificacionPostulacion(form) {
+                        const botonSubmit = form.querySelector("input[type='submit']");
+                        botonSubmit.disabled = true;
+
                         fetch("./verificarCalificacionPostulacion.php")
                             .then(response => response.json())
-                            .then(data =>{
-                                if(data.responsable){
-                                    document.getElementById("formPostulacion").submit();
-
-                                }else{
+                            .then(data => {
+                                if (data.responsable) {
+                                    form.submit(); // Envía el formulario específico que se pasó como parámetro
+                                } else {
                                     document.getElementById("pantalla-modal-postulacion").style.display = "block";
+                                    botonSubmit.disabled = false;
                                 }
                             })
-                            .catch(error =>{
+                            .catch(error => {
                                 console.error("Error al verificar la validación de postulaciones", error);
+                                botonSubmit.disabled = false;
                             });
                     }
                 </script>
