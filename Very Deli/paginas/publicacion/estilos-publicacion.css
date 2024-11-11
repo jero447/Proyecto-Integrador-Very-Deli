@@ -1,17 +1,35 @@
 *{
     margin: 0;
     box-sizing: border-box;
+    font-family: "montserrat";
 }
 header{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem;
-    background-color: #224870;
-    font-family:  "Merriweather", serif;
+    background-color: white;
+    position: fixed;
     width: 100%;
-   
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    height: 5rem;
+    border: 1px solid lightgrey;
 }
+
+h3{
+    margin-right: 10px;
+}
+
+main{
+    
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex: 1;
+    margin-top: 90px;
+}
+
 .vinculo-home{
     text-decoration: none;
 }
@@ -23,9 +41,11 @@ header{
     color: #FFFF;
 }
 .logo{
-    width: 5rem;
-    border-radius: 2rem;
-    margin-right: 1rem;
+    height: 8.5rem;
+    width: auto; 
+    margin-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 .dropdown {
     position: relative;
@@ -33,23 +53,25 @@ header{
 }
 .dropbtn {
     background-color: transparent;
-    color: beige;
+    color: #164c4f;
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
-    border: 2px solid beige; 
+    border: 3px solid #164c4f; 
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'montserrat';
 }
 
 .dropbtn:hover {
-    background-color: beige;
-    color: black; 
+    background-color: #164c4f;
+    color: #F5F1E9; 
 }
 
 
 .dropdown-content {
+    font-family: 'montserrat';
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -110,32 +132,32 @@ header{
 }
 
 .contenedor-publicacion {
-    background-color: beige;
+    background-color: #eeeeee;
     display: flex;
     flex-direction: column;
     margin: 2rem auto;
     padding: 1.5rem;
-    max-width: 750px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 35px;
 }
 
-footer{
-    padding: 1rem;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    background-color: #D9D9D9;
-}
 .imagen-publicacion{
-    width: 16rem;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
 }
 .contenedor-datos{
     display: flex;
     justify-content: space-between;
 }
 .contenedor-imagen{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px; 
     order: 2;
+
 }
 .contenedor-publicacion h1{
     text-align: center;
@@ -181,4 +203,18 @@ footer{
 }
 .seccion-mensajes{
     margin-top: 27px;
+}
+
+@font-face {
+    font-family: 'montserrat'; 
+    src: url('../../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+.usuario-seleccionado{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 25px;
 }
