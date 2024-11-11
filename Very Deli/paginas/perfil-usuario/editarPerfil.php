@@ -31,8 +31,7 @@
 <header>
     <a href="../../index.php" class="vinculo-home">
         <div class="contenedor-logo">
-            <img src="../../imagenes/LogoDery.png" alt="logo" class="logo">
-            <h1>Very Deli</h1>  
+            <img src="../../imagenes/LogoDery.png" alt="logo" class="logo"> 
         </div>  
     </a>
     <div class="btns-login">
@@ -40,7 +39,7 @@
                 <div class="dropdown">
                     <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuarioActual); ?></button>
                     <div class="dropdown-content">
-                        <a href="../publicaciones-filtradas.php"><i class="fas fa-user"></i>Mis publicaciones</a>
+                        <a href="../publicaciones-filtradas.php"><i class="fas fa-book"></i>Mis publicaciones</a>
                         <a href="../creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i>Mis postulaciones</a>
                         <a href="../registroVehiculo.php"><i class="fas fa-car"></i>Registrar vehiculo</a>
                         <a href="../salir.php"><i class="fas fa-sign-out-alt"></i>Salir</a>
@@ -55,7 +54,6 @@
 
 <main>
     <div class="formulario-login">
-        <h2>Datos de usuario</h2>
 
         <?php
             $msjError = array();
@@ -179,51 +177,46 @@
         }
         ?>
         <form action="editarPerfil.php" method="post">
-            <div class="contenedor-correo">
+        <h1>Datos de usuario</h1>
+
                 <label for="nombre">Nombre:</label>
+                <div class="input-container">
                 <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($nombreActual); ?>" disabled>
                 <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('nombre')" title="Editar"></i>
                 <?php if (isset($msjError['nombre'])) { echo "<span class='msjError'>{$msjError['nombre']}</span>"; } ?>
-            </div>
+                </div>
 
-            <div class="contenedor-correo">
                 <label for="dni">DNI:</label>
+                <div class="input-container">
                 <input type="number" id="dni" name="dni" min=10000000 max=99999999 value="<?php echo htmlspecialchars($dniActual); ?>" disabled>
                 <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('dni')" title="Editar"></i>
                 <?php if (isset($msjError['dni'])) { echo "<span class='msjError'>{$msjError['dni']}</span>"; } ?>
-            </div>
+                </div>
 
-            <div class="contenedor-correo">
                 <label for="email">Correo Electrónico:</label>
+                <div class="input-container">
                 <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($emailActual); ?>" disabled>
                 <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('email')" title="Editar"></i>
                 <?php if (isset($msjError['email'])) { echo "<span class='msjError'>{$msjError['email']}</span>"; } ?>
-            </div>
+                </div>
 
-            <div class="contenedor-correo">
                 <label for="nombreUsuario">Nombre de Usuario:</label>
+                <div class="input-container">
                 <input type="text" id="nombreUsuario" name="nombreUsuario" value="<?php echo htmlspecialchars($nombreUsuarioActual); ?>" disabled>
                 <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('nombreUsuario')" title="Editar"></i>
                 <?php if (isset($msjError['nombreUsuario'])) { echo "<span class='msjError'>{$msjError['nombreUsuario']}</span>"; } ?>
-            </div>
+                </div>
+                <br><br>
 
-            <div>
                 <input type="submit" value="Guardar">
-                <a href="./editarClave.php">
+                <a href="./editarClave.php" class="boton-input">
                     <input type="button" value="Cambiar Contraseña">
                 </a>
-                <br><br>
                 <?php if (isset($msjError['cambiosNULL'])) { echo "<span class='msjErrorGeneral'>{$msjError['cambiosNULL']}</span>"; }?>
                 <?php if (isset($msjExito)) { echo "<span class='msjExito'>{$msjExito}</span>"; } ?>
-            </div>
         </form>
     </div>
 </main>
-
-<footer>
-    <p>Universidad Nacional de San Luis</p>
-    <p>Programación III</p>
-</footer>
 
 <script>
     function habilitarCampo(idCampo) {

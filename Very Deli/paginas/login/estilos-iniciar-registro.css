@@ -15,14 +15,19 @@
     100% { opacity: 1; transform: translateY(0); }
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap");
+@font-face {
+    font-family: 'montserrat'; 
+    src: url('../../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
 
 * {
   box-sizing: border-box;
 }
 
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: "montserrat", sans-serif;
     background: #f6f5f7;
     display: flex;
     flex-direction: column;
@@ -105,15 +110,16 @@ a {
 
 button {
   border-radius: 20px;
+  font-family: 'montserrat';
   border: 1px solid #164c4f;
   background: #164c4f;
   color: #fff;
   font-size: 12px;
-  font-weight: bold;
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  cursor: pointer;
 }
 
 #lila {
@@ -204,4 +210,25 @@ button.ghost {
 }
 .btn-iniciar{
   cursor: pointer;
+}
+
+.boton-flotante {
+  position: fixed;
+  top: 10px;
+  left: 30px;
+  color: #23637a;
+  font-size: 45px; 
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 9999;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.boton-flotante:hover {
+  opacity: 1;
 }

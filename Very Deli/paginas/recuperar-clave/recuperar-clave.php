@@ -106,7 +106,7 @@
                         value="<?php echo htmlspecialchars($confirmClave); ?>">
                     <?php if (isset($msjError['confirmClave'])) { echo "<span class='msjErrorGeneral'>{$msjError['confirmClave']}</span>"; } ?>
                 </div>
-            <div><input type="submit" value="Cambiar Contraseña"></div>
+            <div><input type="submit" value="Establecer Contraseña"></div>
             <br>
             <?php 
                 if (isset($msjError['password'])) { echo "<span class='msjErrorGeneral'>{$msjError['password']}</span>"; }

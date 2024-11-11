@@ -82,7 +82,7 @@
                     echo        "<img src='../../". $fila["imagen"] ."' class='imagen-publicacion'>";
                     echo    "</div>";
                     echo    "<div class='contenedor-info'>";
-                    echo        "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
+                    echo        "<h3>Descripción: " . $fila["descripcion"] ."</h3>";
                     echo        "<h3>Peso: " . $fila["peso"] ."</h3>";
                     echo        "<h3>Volumen: " . $fila["volumen"] ."</h3>";
                     echo        "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
@@ -196,11 +196,9 @@
                 $resultado = mysqli_query($conexion,$consulta);
 
                 if($fila = mysqli_fetch_array($resultado)){
+                    $imagen = $fila["imagen"];
                     echo "<h1>" . $fila["titulo"] . "</h1>";
                     echo "<div class='contenedor-datos'>";
-                    echo    "<div class='contenedor-imagen'>";
-                    echo        "<img src='../../". $fila["imagen"] ."' class='imagen-publicacion'>";
-                    echo    "</div>";
                     echo    "<div class='contenedor-info'>";
                     echo        "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
                     echo        "<h3>Peso: " . $fila["peso"] ."</h3>";
@@ -212,18 +210,21 @@
                     echo        "<h3>Localidad de destino : " . $fila["localidad_destino"] ."</h3>";
                     echo        "<h3>Calle destino : " . $fila["calle_destino"] ."</h3>";
                     echo    "</div>";
-                
                 }
                 $consulta = "SELECT usuario.nombre FROM candidato_seleccionado JOIN usuario ON candidato_seleccionado.idUsuarioSeleccionado = usuario.idUsuario WHERE idPublicacion = $idPublicacion";
                 $resultado = mysqli_query($conexion,$consulta);
-                if($fila = $fila = mysqli_fetch_array($resultado)){
+                if($fila = mysqli_fetch_array($resultado)){
+                    echo "<div class='usuario-seleccionado'>";
                     echo "<h3>Usuario Seleccionado: " . $fila["nombre"] . "</h3>";
+                    echo "<div class='contenedor-imagen'>";
+                    echo    "<img src='../../$imagen' class='imagen-publicacion'>";
+                    echo "</div>";
+                    echo "</div>";
                 }
-
+                
                 echo "</div>";
-            }    
-           ?>
-           
+            }
+                ?>
            <div class="seccion-mensajes">
                 <h2>Mensajes</h2>
                 <?php
@@ -268,9 +269,5 @@
            </div>
         </div>
     </main>
-    <footer>
-        <p>Universidad Nacional de San Luis</p>
-        <p>Programacion III</p>
-    </footer>
 </body>
 </html>
