@@ -172,16 +172,97 @@ main{
 .cartel-seleccionado{
     position: absolute;
     right: 35px;
-    top: 25px;
+    top: 10px;
     border: 2px solid black;
     padding: 5px;
     background-color: #07ab71;
     border-radius: 5px;
     color: #ffffff;
 }
+main{
+    font-family: "Roboto", sans-serif;
+}
+.cartel-finalizada{
+    background-color: red;
+    position: absolute;
+    right: 30px;
+    top: 57px;
+    padding: 8px;
+    color: #ffffff;
+    border-radius: 10px;
+}
+.contenedor-estrellas{
+    border: 1px solid black;
+    align-self: flex-start;
+    cursor: pointer;
+    background-color: #333;
+    display: inline;
+}
+.estrella{
+    color: #ccc;
+    font-size: 25px;
+    transition: color 0.3s;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.contenedor-estrellas input[type="radio"]{
+    display: none;
+}
+
+.contenedor-estrellas:hover .estrella{
+    color: #ffcc00;
+}
+
+.contenedor-estrellas input[type="radio"]:checked + label{
+    color: gold;
+}
+
+.puntuacion{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.contenedor-calificacion{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.contenedor-estrellas-all{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.contenedor-comentario{
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+.contenedor-comentario input[type="submit"]{
+    width: 130px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #224870;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.contenedor-comentario textarea{
+    width: 250px;
+    height: 150px;
+    resize: none;
+}
+.contenedor-comentario label{
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
 @font-face {
     font-family: 'montserrat'; 
     src: url('../../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
+
 }
