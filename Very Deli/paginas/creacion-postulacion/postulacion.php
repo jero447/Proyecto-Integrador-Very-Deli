@@ -79,7 +79,6 @@
                     echo        "</div>";
                     echo        "<div class='contenedor-info'>";
                     echo            "<h3>Descripción: " . $fila["descripcion"] ."</h3>";
-<<<<<<< HEAD
                     echo            "<h3>Peso: " . $fila["peso"] ."</h3>";
                     echo            "<h3>Volumen: " . $fila["volumen"] ."</h3>";
                     echo            "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
@@ -109,8 +108,6 @@
                     echo        "</div>";
                     echo        "<div class='contenedor-info'>";
                     echo            "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
-=======
->>>>>>> be02727 (Cambios visuales generales.)
                     echo            "<h3>Peso: " . $fila["peso"] ."</h3>";
                     echo            "<h3>Volumen: " . $fila["volumen"] ."</h3>";
                     echo            "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
@@ -167,8 +164,8 @@
                     if($fila["idUsuarioSeleccionado"] == $idUsuario){
                         echo "<h2 class='cartel-seleccionado'>Has sido seleccionado</h2>";
                         echo "<form method='POST' action='../finalizar-envio/finalizar_envio.php'>";
-                        echo    "<input type='hidden' name='idPublicacion' value='$idPublicacion'>";
-                        echo    "<input type='submit' value='Finalizar Envio'>";
+                        echo    "<input  type='hidden' name='idPublicacion' value='$idPublicacion'>";
+                        echo    "<input  class='boton-finalizar' type='submit' value='Finalizar Envio'>";
                         echo "</form>";
                     }
                 }

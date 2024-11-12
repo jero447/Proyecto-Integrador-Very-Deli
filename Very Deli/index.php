@@ -1,6 +1,12 @@
 <?php
-        session_start();
-        $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
+    session_start();
+    $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : null;
+
+    if (!$idUsuario) {
+        header("Location: ../index.php");
+        exit();
+    }
+    $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +54,7 @@
                         <a href="./paginas/creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
                         <a href="./paginas/registroVehiculo.php"><i class="fas fa-car"></i> Registrar vehiculo</a>
                         <a href="./paginas/salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
+                    </div>
                 </div>
             <?php else: ?>
                 <a class="animated-button-login" href="./paginas/login/inicio.php">Ingresar</a>
@@ -196,18 +203,16 @@
                     $where = "WHERE estado = 'no resuelta'";
                 }
 
-                $consulta = "SELECT idPublicacion,titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino,imagen FROM publicacion  $where";
+                $consulta = "SELECT idPublicacion,titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino,imagen,idUsuario FROM publicacion  $where";
                 $resultado = mysqli_query($conexion,$consulta);
 
                 while($fila = mysqli_fetch_array($resultado)){
                     echo "<div class='publicacion'>";
                     echo    "<div class='imagen-publicacion-container'>"; 
-                    echo    "<div class='imagen-publicacion-container'>"; 
                     echo        "<img src='./". $fila["imagen"] ."' class='imagen-publicacion'>";
                     echo    "</div>";
                     echo    "<div class='titulo-desc'>";
                     echo        "<h3>" . $fila["titulo"] . "</h3>";
-                    echo        "<h4>Descripción:</h4>";
                     echo        "<h4>Descripción:</h4>";
                     echo        "<p>" . $fila["descripcion"] ."</p>";
                     echo    "</div>";
@@ -221,7 +226,9 @@
                     echo            "<p>Localidad de destino: " . $fila["localidad_destino"] ."</p>";
                     echo        "</div>";
                     echo    "</div>";
-                    if($nombreUsuario){
+                    if($idUsuario == $fila["idUsuario"]){
+                        echo "<div></div>";
+                    }else{
                         echo    "<div>";
                         echo        "<form id='formPostulacion' class='form-monto' method='POST' action='./paginas/creacion-postulacion/insertar-postulacion.php'>";
                         echo            "<label>Monto de cobro</label>";
@@ -295,7 +302,7 @@
                             .then(response => response.json())
                             .then(data => {
                                 if (data.responsable) {
-                                    form.submit(); // Envía el formulario específico que se pasó como parámetro
+                                    form.submit(); 
                                 } else {
                                     document.getElementById("pantalla-modal-postulacion").style.display = "block";
                                     botonSubmit.disabled = false;
@@ -316,11 +323,9 @@
             <div class="footer-row">
                 <div class="footer-links">
                     <h4>Compañía</h4>
-                    <h4>Compañía</h4>
                     <ul>
                         <li><a href="#">Nosotros</a></li>
                         <li><a href="#">Nuestros servicios</a></li>
-                        <li><a href="#">Políticas de privacidad</a></li>
                         <li><a href="#">Políticas de privacidad</a></li>
                         <li><a href="#">Trabaja con nosotros</a></li>
                     </ul>

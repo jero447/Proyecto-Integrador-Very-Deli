@@ -179,7 +179,7 @@ main{
     border-radius: 5px;
     color: #ffffff;
 }
-<<<<<<< HEAD
+
 main{
     font-family: "Roboto", sans-serif;
 }
@@ -260,18 +260,22 @@ main{
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: 500;
+}
 
-=======
->>>>>>> be02727 (Cambios visuales generales.)
+.boton-finalizar{
+    padding: 13px;
+    border-radius: 8px;
+    border: none;
+    color: #ffffff;
+    background-color: #224870;
+    cursor: pointer;
+}
+
 @font-face {
     font-family: 'montserrat'; 
     src: url('../../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 }
 
 @media (max-width: 768px) {
@@ -342,7 +346,4 @@ main{
         max-width: 100%;
         height: auto;
     }
->>>>>>> 4973b99 (Cambios visuales finales)
-=======
->>>>>>> be02727 (Cambios visuales generales.)
 }

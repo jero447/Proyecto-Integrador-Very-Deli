@@ -49,6 +49,7 @@ main {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     font-family: "montserrat";
     border-radius: 35px;
+    margin-top: 50px;
 }
 .formulario-login input {
     background: #eee;
@@ -215,9 +216,6 @@ input[type="number"]::-webkit-outer-spin-button {
     src: url('../../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'); 
     font-weight: normal;
     font-style: normal;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
 .modal-overlay {
     font-family: "montserrat";
@@ -254,22 +252,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .modal-content button:active {
     transform: scale(0.95);
-=======
->>>>>>> 4973b99 (Cambios visuales finales)
 }
 
 @media (max-width: 768px) {
     .formulario-login {
         width: 100%;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> parent of 4997eab (Merge pull request #37 from jero447/feature-cambios-visuales)
-=======
-}
->>>>>>> 4973b99 (Cambios visuales finales)
-=======
-}
->>>>>>> be02727 (Cambios visuales generales.)
+

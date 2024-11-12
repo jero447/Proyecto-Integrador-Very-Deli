@@ -183,14 +183,14 @@
                 <label for="nombre">Nombre:</label>
                 <div class="input-container">
                 <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($nombreActual); ?>" disabled>
-                <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('nombre')" title="Editar"></i>
+                <!-- <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('nombre')" title="Editar"></i> -->
                 <?php if (isset($msjError['nombre'])) { echo "<span class='msjError'>{$msjError['nombre']}</span>"; } ?>
                 </div>
 
                 <label for="dni">DNI:</label>
                 <div class="input-container">
                 <input type="number" id="dni" name="dni" min=10000000 max=99999999 value="<?php echo htmlspecialchars($dniActual); ?>" disabled>
-                <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('dni')" title="Editar"></i>
+                <!-- <i class="fas fa-pencil icono-editar" onclick="habilitarCampo('dni')" title="Editar"></i> -->
                 <?php if (isset($msjError['dni'])) { echo "<span class='msjError'>{$msjError['dni']}</span>"; } ?>
                 </div>
 

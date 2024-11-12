@@ -149,11 +149,8 @@
                 $consulta = "SELECT usuario.nombre,usuario.idUsuario FROM candidato_seleccionado JOIN usuario ON candidato_seleccionado.idUsuarioSeleccionado = usuario.idUsuario WHERE idPublicacion = $idPublicacion";
                 $resultado = mysqli_query($conexion,$consulta);
                 if($fila = mysqli_fetch_array($resultado)){
-<<<<<<< HEAD
                     $idUsuarioSeleccionado = $fila["idUsuario"];
-=======
                     echo "<div class='usuario-seleccionado'>";
->>>>>>> be02727 (Cambios visuales generales.)
                     echo "<h3>Usuario Seleccionado: " . $fila["nombre"] . "</h3>";
                     echo "<div class='contenedor-imagen'>";
                     echo    "<img src='../../$imagen' class='imagen-publicacion'>";
@@ -162,7 +159,6 @@
                 }
                 
                 echo "</div>";
-<<<<<<< HEAD
                 echo '<div>';
                 echo '    <h2>Calificar transportista</h2>';
                 echo '    <form action="../calificacion/inserciones-calificaciones.php" method="POST">';
@@ -233,11 +229,6 @@
                 echo "</div>";
             }
                 ?>
-=======
-            }
-                ?>
-
->>>>>>> be02727 (Cambios visuales generales.)
            <div class="seccion-mensajes">
                 <h2>Mensajes</h2>
                 <?php
