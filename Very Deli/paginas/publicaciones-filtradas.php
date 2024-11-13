@@ -111,10 +111,10 @@
                     $idPublicacion = $fila["idPublicacion"];
                     echo "<a href='./publicacion/publicacion.php?idPublicacion=" . urlencode($idPublicacion) . "' class = 'enlacePostulacion'>";
                         echo "<div class='publicacion'>";
-                        echo    "<div class='titulo-desc'>";
                         echo    "<div class='imagen-publicacion-container'>"; 
                         echo    "<img src='../" . $fila["imagen"] . "' class='imagen-publicacion'>";
                         echo    "</div>";
+                        echo    "<div class='titulo-desc'>";
                         echo        "<div>";
                         echo             "<h3>" . $fila["titulo"] . "</h3>";
                         echo             "<h4>Descripcion:</h4>";
