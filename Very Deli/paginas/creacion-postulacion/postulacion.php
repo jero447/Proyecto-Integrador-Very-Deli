@@ -3,7 +3,7 @@
     $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : null;
 
     if (!$idUsuario) {
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
         exit();
     }
     $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Postulación</title>
     <link rel="stylesheet" href="./estilo-postulacion.css">
     <link rel="icon" href="../login/iconos/logoFondoBlanco.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -25,8 +25,7 @@
     <header>
         <a href="../../index.php" class = "vinculo-home">
         <div class="contenedor-logo">
-            <img src="../../imagenes/LogoDery.png" alt="logo" class="logo">
-            <h1>Very Deli</h1>  
+            <img src="../../imagenes/LogoDery.png" alt="logo" class="logo"> 
         </div>
         </a>
         <div class="btns-login">

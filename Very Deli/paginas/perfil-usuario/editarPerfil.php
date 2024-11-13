@@ -156,7 +156,13 @@
                 }
 
                 if (empty($msjError)) {
-                    $sql = "UPDATE usuario SET nombre='$nombreNuevo', email='$emailNuevo', nombre_usuario='$nombreUsuarioNuevo', dni='$dniNuevo' WHERE idUsuario='$idUsuario'";
+                    $sql = "UPDATE usuario SET nombre='$nombreNuevo', email='$emailNuevo', nombre_usuario='$nombreUsuarioNuevo', dni='$dniNuevo'";
+
+                if (isset($nombreUsuarioCambio)) {
+                    $sql .= ", estado_responsable='no responsable', promedio_puntuacion=NULL";
+                }
+
+                $sql .= " WHERE idUsuario='$idUsuario'";
             
                     if ($conexion->query($sql) === TRUE) {
                         $_SESSION['nombre'] = $nombreNuevo;

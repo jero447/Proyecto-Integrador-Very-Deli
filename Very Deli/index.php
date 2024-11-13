@@ -3,7 +3,7 @@
     $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : null;
 
     if (!$idUsuario) {
-        header("Location: ../index.php");
+        header("Location: ./paginas/login/inicio.php");
         exit();
     }
     $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
