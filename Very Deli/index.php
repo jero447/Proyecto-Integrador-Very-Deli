@@ -1,7 +1,6 @@
 <?php
     session_start();
     $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : null;
-
     $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
 ?>
 <!DOCTYPE html>
@@ -199,7 +198,7 @@
                     $where = "WHERE estado = 'no resuelta'";
                 }
 
-                $consulta = "SELECT idPublicacion,titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino,imagen,idUsuario FROM publicacion  $where";
+                $consulta = "SELECT idPublicacion,titulo,descripcion,volumen,peso,provincia_origen,provincia_destino,localidad_origen,localidad_destino,imagen,idUsuario FROM publicacion  $where ORDER BY RAND()";
                 $resultado = mysqli_query($conexion,$consulta);
 
                 while($fila = mysqli_fetch_array($resultado)){

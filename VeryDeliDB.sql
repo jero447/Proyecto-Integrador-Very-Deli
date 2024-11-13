@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2024 a las 18:17:21
+-- Tiempo de generación: 12-11-2024 a las 22:28:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -33,8 +33,16 @@ CREATE TABLE `calificacion` (
   `valor` float NOT NULL,
   `idUsuarioCalificado` int(11) DEFAULT NULL,
   `idUsuarioCalificador` int(11) DEFAULT NULL,
-  `resultado` varchar(30) DEFAULT NULL
+  `resultado` varchar(30) DEFAULT NULL,
+  `idPublicacion` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `calificacion`
+--
+
+INSERT INTO `calificacion` (`idCalificacion`, `comentario`, `valor`, `idUsuarioCalificado`, `idUsuarioCalificador`, `resultado`, `idPublicacion`) VALUES
+(40, '', 4, 27, 28, 'positiva', NULL);
 
 -- --------------------------------------------------------
 
@@ -50,6 +58,14 @@ CREATE TABLE `candidato_seleccionado` (
   `idUsuarioSeleccionado` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `candidato_seleccionado`
+--
+
+INSERT INTO `candidato_seleccionado` (`idSeleccion`, `idPostulacion`, `idPublicacion`, `idUsuarioDueño`, `idUsuarioSeleccionado`) VALUES
+(47, 126, 94, 27, 28),
+(48, 127, 95, 27, 28);
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +78,14 @@ CREATE TABLE `mensajes` (
   `idUsuario` int(11) DEFAULT NULL,
   `contenido` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `mensajes`
+--
+
+INSERT INTO `mensajes` (`idMensaje`, `idPublicacion`, `idUsuario`, `contenido`) VALUES
+(29, 94, 27, 'Hola Jero'),
+(30, 94, 28, 'Hola Bruno');
 
 -- --------------------------------------------------------
 
@@ -82,7 +106,8 @@ CREATE TABLE `postulacion` (
 --
 
 INSERT INTO `postulacion` (`idPostulacion`, `monto`, `estado`, `idPublicacion`, `idUsuario`) VALUES
-(33, 0, '', 57, 13);
+(126, 0, '', 94, 28),
+(127, 0, '', 95, 28);
 
 -- --------------------------------------------------------
 
@@ -113,7 +138,10 @@ CREATE TABLE `publicacion` (
 --
 
 INSERT INTO `publicacion` (`idPublicacion`, `volumen`, `peso`, `idUsuario`, `titulo`, `descripcion`, `localidad_destino`, `localidad_origen`, `provincia_origen`, `provincia_destino`, `calle_origen`, `calle_destino`, `imagen`, `estado`, `estado_envio`) VALUES
-(57, 456, 132, 13, 'Prueba', 'demasiado texto', 'Barrio Militar y Aeropuerto', 'Agua de Castilla', 'Jujuy', 'Chubut', 'Av.Finur 976', 'Pasaje Colon 245', 'uploads/imagenGatito.jpg', 'no resuelta', 'no finalizada');
+(94, 123, 465, 27, 'Prueba', 'Prueba', 'Barrio Gasoducto', 'Gran Guardia', 'Formosa', 'Chubut', 'Av.Finur 976', 'Pasaje Colon 245', 'uploads/imagenGatito.jpg', 'resuelta', 'finalizada'),
+(95, 456, 123, 27, 'Envio de mercaderia', 'demasiado texto', 'Chaupihuasi', '11va Sección', 'Mendoza', 'La Rioja', 'Av.Finur 976', 'Pasaje Colon 245', 'uploads/imagen-prueba.png', 'resuelta', 'no finalizada'),
+(96, 789, 456, 27, 'Gato 2', 'demasiado texto', 'El Paraíso', 'Villa Basilio Nievas', 'San Juan', 'Tucumán', 'Av.Finur 976', 'Pasaje Colon 245', 'uploads/gato2.jpg', 'no resuelta', 'no finalizada'),
+(99, 4, 50, 27, 'Flete de una cama', 'Una cama de dos plazas', '8va Sección', 'Leandro N. Alem', 'San Luis', 'Mendoza', 'Av.Finur 976', 'Pasaje Colon 245', '', 'no resuelta', 'no finalizada');
 
 -- --------------------------------------------------------
 
@@ -152,7 +180,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `nombre`, `email`, `nombre_usuario`, `clave`, `dni`, `estado_responsable`, `publicaciones_activas`, `promedio_puntuacion`, `postulaciones_activas`) VALUES
-(13, 'Jeronimo', 'jeronimosturniolo44@gmail.com', 'jero447', '$2y$10$JxBv8DY537SU799.uImaY.K.AooDmxzLQLLFLbhI/BrZcvlbeT0e.', 44358758, NULL, 1, NULL, 1);
+(27, 'Jeronimo Sturniolo', 'jeronimosturniolo44@gmail.com', 'jero447', '$2y$10$rgcoByGbKrO/Ts/7aqYGDu66ZNkr0CHzMby6b6S4d3eL/0N9a7jRq', 44358758, NULL, 5, 4.0, 0),
+(28, 'Bruno', 'bruno@gmail.com', 'bruno123', '$2y$10$62LnP.RHXgMH9xkwXJ/jnuNo2qJ5qyxFKvtpSacsFUzvuIPvnX8pC', 45347896, NULL, 3, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -178,7 +207,8 @@ CREATE TABLE `vehiculo` (
 ALTER TABLE `calificacion`
   ADD PRIMARY KEY (`idCalificacion`),
   ADD KEY `idUsuario` (`idUsuarioCalificado`),
-  ADD KEY `fk_user_calificador` (`idUsuarioCalificador`);
+  ADD KEY `fk_user_calificador` (`idUsuarioCalificador`),
+  ADD KEY `fk_publicacion` (`idPublicacion`);
 
 --
 -- Indices de la tabla `candidato_seleccionado`
@@ -244,31 +274,31 @@ ALTER TABLE `vehiculo`
 -- AUTO_INCREMENT de la tabla `calificacion`
 --
 ALTER TABLE `calificacion`
-  MODIFY `idCalificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `idCalificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `candidato_seleccionado`
 --
 ALTER TABLE `candidato_seleccionado`
-  MODIFY `idSeleccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `idSeleccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `idMensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `idMensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `postulacion`
 --
 ALTER TABLE `postulacion`
-  MODIFY `idPostulacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `idPostulacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT de la tabla `reset_clave`
@@ -280,7 +310,7 @@ ALTER TABLE `reset_clave`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
@@ -297,6 +327,7 @@ ALTER TABLE `vehiculo`
 --
 ALTER TABLE `calificacion`
   ADD CONSTRAINT `calificacion_ibfk_1` FOREIGN KEY (`idUsuarioCalificado`) REFERENCES `usuario` (`idUsuario`),
+  ADD CONSTRAINT `fk_publicacion` FOREIGN KEY (`idPublicacion`) REFERENCES `publicacion` (`idPublicacion`),
   ADD CONSTRAINT `fk_user_calificador` FOREIGN KEY (`idUsuarioCalificador`) REFERENCES `usuario` (`idUsuario`);
 
 --

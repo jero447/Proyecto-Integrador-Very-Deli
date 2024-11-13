@@ -126,75 +126,119 @@
                     echo    "</div>";
                 }
             }elseif($fila["estado_envio"] == "finalizada"){
-                $consulta = "SELECT titulo,descripcion,provincia_origen,provincia_destino,localidad_origen,localidad_destino,calle_origen,calle_destino,volumen,peso,imagen FROM publicacion WHERE idPublicacion = $idPublicacion";
-                $resultado = mysqli_query($conexion,$consulta);
 
-                if($fila = mysqli_fetch_array($resultado)){
-                    $imagen = $fila["imagen"];
-                    echo "<h1>" . $fila["titulo"] . "</h1>";
-                    echo "<h2 class='cartel-finalizada'>Finalizada</h2>";
-                    echo "<div class='contenedor-datos'>";
-                    echo    "<div class='contenedor-info'>";
-                    echo        "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
-                    echo        "<h3>Peso: " . $fila["peso"] ."</h3>";
-                    echo        "<h3>Volumen: " . $fila["volumen"] ."</h3>";
-                    echo        "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
-                    echo        "<h3>Localidad de origen : " . $fila["localidad_origen"] ."</h3>";
-                    echo        "<h3>Calle origen : " . $fila["calle_origen"] ."</h3>";
-                    echo        "<h3>Provincia de destino : " . $fila["provincia_destino"] ."</h3>";   
-                    echo        "<h3>Localidad de destino : " . $fila["localidad_destino"] ."</h3>";
-                    echo        "<h3>Calle destino : " . $fila["calle_destino"] ."</h3>";
-                    echo    "</div>";
-                }
-                $consulta = "SELECT usuario.nombre,usuario.idUsuario FROM candidato_seleccionado JOIN usuario ON candidato_seleccionado.idUsuarioSeleccionado = usuario.idUsuario WHERE idPublicacion = $idPublicacion";
+                $consulta = "SELECT * FROM calificacion JOIN usuario AS usuario_calificado ON calificacion.idUsuarioCalificado = usuario_calificado.idUsuario JOIN usuario AS usuario_calificador ON calificacion.idUsuarioCalificador = usuario_calificador.idUsuario JOIN publicacion ON calificacion.idPublicacion = publicacion.idPublicacion WHERE (calificacion.idUsuarioCalificado = $idUsuario OR calificacion.idUsuarioCalificador = $idUsuario) AND calificacion.idPublicacion = $idPublicacion";
                 $resultado = mysqli_query($conexion,$consulta);
-                if($fila = mysqli_fetch_array($resultado)){
-                    $idUsuarioSeleccionado = $fila["idUsuario"];
-                    echo "<div class='usuario-seleccionado'>";
-                    echo "<h3>Usuario Seleccionado: " . $fila["nombre"] . "</h3>";
-                    echo "<div class='contenedor-imagen'>";
-                    echo    "<img src='../../$imagen' class='imagen-publicacion'>";
+                if(mysqli_num_rows($resultado) > 0){
+
+                    $consulta = "SELECT titulo,descripcion,provincia_origen,provincia_destino,localidad_origen,localidad_destino,calle_origen,calle_destino,volumen,peso,imagen FROM publicacion WHERE idPublicacion = $idPublicacion";
+                    $resultado = mysqli_query($conexion,$consulta);
+
+                    if($fila = mysqli_fetch_array($resultado)){
+                        $imagen = $fila["imagen"];
+                        echo "<h1>" . $fila["titulo"] . "</h1>";
+                        echo "<h2 class='cartel-finalizada'>Finalizada</h2>";
+                        echo "<div class='contenedor-datos'>";
+                        echo    "<div class='contenedor-info'>";
+                        echo        "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
+                        echo        "<h3>Peso: " . $fila["peso"] ."</h3>";
+                        echo        "<h3>Volumen: " . $fila["volumen"] ."</h3>";
+                        echo        "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
+                        echo        "<h3>Localidad de origen : " . $fila["localidad_origen"] ."</h3>";
+                        echo        "<h3>Calle origen : " . $fila["calle_origen"] ."</h3>";
+                        echo        "<h3>Provincia de destino : " . $fila["provincia_destino"] ."</h3>";   
+                        echo        "<h3>Localidad de destino : " . $fila["localidad_destino"] ."</h3>";
+                        echo        "<h3>Calle destino : " . $fila["calle_destino"] ."</h3>";
+                        echo    "</div>";
+                    }
+                    $consulta = "SELECT usuario.nombre,usuario.idUsuario FROM candidato_seleccionado JOIN usuario ON candidato_seleccionado.idUsuarioSeleccionado = usuario.idUsuario WHERE idPublicacion = $idPublicacion";
+                    $resultado = mysqli_query($conexion,$consulta);
+                    if($fila = mysqli_fetch_array($resultado)){
+                        $idUsuarioSeleccionado = $fila["idUsuario"];
+                        echo "<div class='usuario-seleccionado'>";
+                        echo "<h3>Usuario Seleccionado: " . $fila["nombre"] . "</h3>";
+                        echo "<div class='contenedor-imagen'>";
+                        echo    "<img src='../../$imagen' class='imagen-publicacion'>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
                     echo "</div>";
+                    echo '<div class="calidicar-finalizada">';
+                    echo '    <h2>Calificar transportista</h2>';
+                    echo '    <h4>Ya has calificado en esta publicacion</h4>';
                     echo "</div>";
-                }
-                
-                echo "</div>";
-                echo '<div>';
-                echo '    <h2>Calificar transportista</h2>';
-                echo '    <form action="../calificacion/inserciones-calificaciones.php" method="POST">';
-                echo '        <input type="hidden" name="idUsuarioCalificado" value="' . $idUsuarioSeleccionado . '">';
-                echo '        <div class="contenedor-calificacion">';
-                echo '          <div class="contenedor-estrellas-all">';
-                echo '              <div class="contenedor-estrellas">';
-                echo '                 <input type="radio" id="estrella-1" name="calificacion" value="1" >';
-                echo '                 <label class="estrella" for="estrella-1">&#9733;</label>';
-                echo '              </div>';
-                echo '              <div class="contenedor-estrellas">';
-                echo '                 <input type="radio" id="estrella-2" name="calificacion" value="2" >';
-                echo '                 <label class="estrella" for="estrella-2">&#9733;&#9733;</label>';
-                echo '              </div>';
-                echo '              <div class="contenedor-estrellas">';
-                echo '                 <input type="radio" id="estrella-3" name="calificacion" value="3" >';
-                echo '                 <label class="estrella" for="estrella-3">&#9733;&#9733;&#9733;</label>';
-                echo '              </div>';
-                echo '              <div class="contenedor-estrellas">';
-                echo '                 <input type="radio" id="estrella-4" name="calificacion" value="4" >';
-                echo '                 <label class="estrella" for="estrella-4">&#9733;&#9733;&#9733;&#9733;</label>';
-                echo '              </div>';
-                echo '              <div class="contenedor-estrellas">';
-                echo '                 <input type="radio" id="estrella-5" name="calificacion" value="5" >';
-                echo '                 <label class="estrella" for="estrella-5">&#9733;&#9733;&#9733;&#9733;&#9733;</label>';
-                echo '              </div>';
-                echo '          </div>';
-                echo '          <div class="contenedor-comentario">';
-                echo '              <label>Escribe algun comentario</label>';
-                echo '              <textarea name="comentario"></textarea>';
-                echo '              <input type="submit" value="Enviar calificacion">';
-                echo '          </div>';
-                echo '        </div>';
-                
-                echo '    </form>';
-                echo '</div>';
+                }else{
+                    $consulta = "SELECT titulo,descripcion,provincia_origen,provincia_destino,localidad_origen,localidad_destino,calle_origen,calle_destino,volumen,peso,imagen FROM publicacion WHERE idPublicacion = $idPublicacion";
+                    $resultado = mysqli_query($conexion,$consulta);
+
+                    if($fila = mysqli_fetch_array($resultado)){
+                        $imagen = $fila["imagen"];
+                        echo "<h1>" . $fila["titulo"] . "</h1>";
+                        echo "<h2 class='cartel-finalizada'>Finalizada</h2>";
+                        echo "<div class='contenedor-datos'>";
+                        echo    "<div class='contenedor-info'>";
+                        echo        "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
+                        echo        "<h3>Peso: " . $fila["peso"] ."</h3>";
+                        echo        "<h3>Volumen: " . $fila["volumen"] ."</h3>";
+                        echo        "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
+                        echo        "<h3>Localidad de origen : " . $fila["localidad_origen"] ."</h3>";
+                        echo        "<h3>Calle origen : " . $fila["calle_origen"] ."</h3>";
+                        echo        "<h3>Provincia de destino : " . $fila["provincia_destino"] ."</h3>";   
+                        echo        "<h3>Localidad de destino : " . $fila["localidad_destino"] ."</h3>";
+                        echo        "<h3>Calle destino : " . $fila["calle_destino"] ."</h3>";
+                        echo    "</div>";
+                    }
+                    $consulta = "SELECT usuario.nombre,usuario.idUsuario FROM candidato_seleccionado JOIN usuario ON candidato_seleccionado.idUsuarioSeleccionado = usuario.idUsuario WHERE idPublicacion = $idPublicacion";
+                    $resultado = mysqli_query($conexion,$consulta);
+                    if($fila = mysqli_fetch_array($resultado)){
+                        $idUsuarioSeleccionado = $fila["idUsuario"];
+                        echo "<div class='usuario-seleccionado'>";
+                        echo "<h3>Usuario Seleccionado: " . $fila["nombre"] . "</h3>";
+                        echo "<div class='contenedor-imagen'>";
+                        echo    "<img src='../../$imagen' class='imagen-publicacion'>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+                    
+                    echo "</div>";
+                    echo '<div>';
+                    echo '    <h2>Calificar transportista</h2>';
+                    echo '    <form action="../calificacion/inserciones-calificaciones.php" method="POST">';
+                    echo '        <input type="hidden" name="idPublicacion" value="' . $idPublicacion . '">';
+                    echo '        <input type="hidden" name="idUsuarioCalificado" value="' . $idUsuarioSeleccionado . '">';
+                    echo '        <div class="contenedor-calificacion">';
+                    echo '          <div class="contenedor-estrellas-all">';
+                    echo '              <div class="contenedor-estrellas">';
+                    echo '                 <input type="radio" id="estrella-1" name="calificacion" value="1" >';
+                    echo '                 <label class="estrella" for="estrella-1">&#9733;</label>';
+                    echo '              </div>';
+                    echo '              <div class="contenedor-estrellas">';
+                    echo '                 <input type="radio" id="estrella-2" name="calificacion" value="2" >';
+                    echo '                 <label class="estrella" for="estrella-2">&#9733;&#9733;</label>';
+                    echo '              </div>';
+                    echo '              <div class="contenedor-estrellas">';
+                    echo '                 <input type="radio" id="estrella-3" name="calificacion" value="3" >';
+                    echo '                 <label class="estrella" for="estrella-3">&#9733;&#9733;&#9733;</label>';
+                    echo '              </div>';
+                    echo '              <div class="contenedor-estrellas">';
+                    echo '                 <input type="radio" id="estrella-4" name="calificacion" value="4" >';
+                    echo '                 <label class="estrella" for="estrella-4">&#9733;&#9733;&#9733;&#9733;</label>';
+                    echo '              </div>';
+                    echo '              <div class="contenedor-estrellas">';
+                    echo '                 <input type="radio" id="estrella-5" name="calificacion" value="5" >';
+                    echo '                 <label class="estrella" for="estrella-5">&#9733;&#9733;&#9733;&#9733;&#9733;</label>';
+                    echo '              </div>';
+                    echo '          </div>';
+                    echo '          <div class="contenedor-comentario">';
+                    echo '              <label>Escribe algun comentario</label>';
+                    echo '              <textarea name="comentario"></textarea>';
+                    echo '              <input type="submit" value="Enviar calificacion">';
+                    echo '          </div>';
+                    echo '        </div>';
+                    
+                    echo '    </form>';
+                    echo '</div>';
+                }   
             }else{
                 $consulta = "SELECT titulo,descripcion,provincia_origen,provincia_destino,localidad_origen,localidad_destino,calle_origen,calle_destino,volumen,peso,imagen FROM publicacion WHERE idPublicacion = $idPublicacion";
                 $resultado = mysqli_query($conexion,$consulta);
