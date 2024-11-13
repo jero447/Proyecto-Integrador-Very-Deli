@@ -132,6 +132,7 @@ main{
     max-width: 750px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     border-radius: 35px;
+    padding-top: 4rem;
 }
 .imagen-publicacion{
     width: 100%; 

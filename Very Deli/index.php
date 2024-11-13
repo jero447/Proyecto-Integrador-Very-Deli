@@ -223,7 +223,7 @@
                     echo    "</div>";
                     if($idUsuario == $fila["idUsuario"]){
                         echo "<div></div>";
-                    }else{
+                    }elseif($idUsuario){
                         echo    "<div>";
                         echo        "<form id='formPostulacion' class='form-monto' method='POST' action='./paginas/creacion-postulacion/insertar-postulacion.php'>";
                         echo            "<label>Monto de cobro</label>";
