@@ -89,7 +89,46 @@
                     echo    "</div>";
                 }
             }elseif($fila["estado_envio"] == "finalizada"){
-                $consulta = "SELECT candidato_seleccionado.idUsuarioSeleccionado,candidato_seleccionado.idUsuarioDueño FROM postulacion JOIN candidato_seleccionado ON postulacion.idPostulacion = candidato_seleccionado.idPostulacion WHERE postulacion.idPublicacion = $idPublicacion";
+                $consulta = "SELECT * FROM calificacion JOIN usuario AS usuario_calificado ON calificacion.idUsuarioCalificado = usuario_calificado.idUsuario JOIN usuario AS usuario_calificador ON calificacion.idUsuarioCalificador = usuario_calificador.idUsuario JOIN publicacion ON calificacion.idPublicacion = publicacion.idPublicacion WHERE (calificacion.idUsuarioCalificado = $idUsuario OR calificacion.idUsuarioCalificador = $idUsuario) AND calificacion.idPublicacion = $idPublicacion";
+                $resultado = mysqli_query($conexion,$consulta);
+                if(mysqli_num_rows($resultado) > 0){
+                    $consulta = "SELECT candidato_seleccionado.idUsuarioSeleccionado,candidato_seleccionado.idUsuarioDueño FROM postulacion JOIN candidato_seleccionado ON postulacion.idPostulacion = candidato_seleccionado.idPostulacion WHERE postulacion.idPublicacion = $idPublicacion";
+                    $resultado = mysqli_query($conexion,$consulta);
+                    if($fila = mysqli_fetch_array($resultado)){
+                        $idUsuarioDueño = $fila["idUsuarioDueño"];
+                        if($fila["idUsuarioSeleccionado"] == $idUsuario){
+                            echo "<h2 class='cartel-seleccionado'>Has sido seleccionado</h2>";
+                            echo "<h2 class='cartel-finalizada'>Finalizada</h2>";
+                        }
+                    }
+                    $consulta = "SELECT publicacion.titulo, publicacion.descripcion, publicacion.volumen, publicacion.peso, publicacion.imagen, publicacion.provincia_origen, publicacion.localidad_origen, publicacion.provincia_destino,publicacion.localidad_destino,publicacion.calle_origen,publicacion.calle_destino FROM postulacion JOIN publicacion ON postulacion.idPublicacion = publicacion.idPublicacion  WHERE postulacion.idPublicacion = $idPublicacion";
+                    $resultado = mysqli_query($conexion,$consulta);
+                    if($fila = mysqli_fetch_array($resultado)){
+                        echo    "<h1>" . $fila["titulo"] . "</h1>";
+                        echo    "<div class='contenedor-datos'>";
+                        echo        "<div class='contenedor-imagen'>";
+                        echo            "<img src='../../". $fila["imagen"] ."' class='imagen-publicacion'>";
+                        echo        "</div>";
+                        echo        "<div class='contenedor-info'>";
+                        echo            "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
+                        echo            "<h3>Peso: " . $fila["peso"] ."</h3>";
+                        echo            "<h3>Volumen: " . $fila["volumen"] ."</h3>";
+                        echo            "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
+                        echo            "<h3>Localidad de origen : " . $fila["localidad_origen"] ."</h3>";
+                        echo            "<h3>Calle origen : " . $fila["calle_origen"] ."</h3>";
+                        echo            "<h3>Provincia de destino : " . $fila["provincia_destino"] ."</h3>";   
+                        echo            "<h3>Localidad de destino : " . $fila["localidad_destino"] ."</h3>";
+                        echo            "<h3>Calle destino : " . $fila["calle_destino"] ."</h3>";
+                        echo        "</div>";
+                        echo    "</div>";
+                        echo '<div>';
+                    }
+                    echo '<div class="calidicar-finalizada">';
+                    echo '    <h2>Calificar transportista</h2>';
+                    echo '    <h4>Ya has calificado en esta publicacion</h4>';
+                    echo "</div>";
+                }else{
+                    $consulta = "SELECT candidato_seleccionado.idUsuarioSeleccionado,candidato_seleccionado.idUsuarioDueño FROM postulacion JOIN candidato_seleccionado ON postulacion.idPostulacion = candidato_seleccionado.idPostulacion WHERE postulacion.idPublicacion = $idPublicacion";
                 $resultado = mysqli_query($conexion,$consulta);
                 if($fila = mysqli_fetch_array($resultado)){
                     $idUsuarioDueño = $fila["idUsuarioDueño"];
@@ -121,6 +160,7 @@
                     echo '<div>';
                     echo '    <h2>Calificar transportista</h2>';
                     echo '    <form action="../calificacion/inserciones-calificaciones.php" method="POST">';
+                    echo '        <input type="hidden" name="idPublicacion" value="' . $idPublicacion . '">';
                     echo '        <input type="hidden" name="idUsuarioCalificado" value="' . $idUsuarioDueño . '">';
                     echo '        <div class="contenedor-calificacion">';
                     echo '          <div class="contenedor-estrellas-all">';
@@ -155,8 +195,7 @@
                     echo '    </form>';
                     echo '</div>';
                 }
-            
-
+            }   
             }else{
                 $consulta = "SELECT candidato_seleccionado.idUsuarioSeleccionado FROM postulacion JOIN candidato_seleccionado ON postulacion.idPostulacion = candidato_seleccionado.idPostulacion WHERE postulacion.idPublicacion = $idPublicacion";
                 $resultado = mysqli_query($conexion,$consulta);

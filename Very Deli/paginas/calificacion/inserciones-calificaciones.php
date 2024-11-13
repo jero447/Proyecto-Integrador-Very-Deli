@@ -13,6 +13,7 @@
     if(isset($_POST["calificacion"]) && isset($_POST["idUsuarioCalificado"]) && isset($_POST["comentario"]) ){
         $calificacion = $_POST["calificacion"];
         $idUsuarioCalificado = $_POST["idUsuarioCalificado"];
+        $idPublicacion = $_POST["idPublicacion"];
         $comentario = $_POST["comentario"];
         $resultadoCalificacion = "";
         require("../../conexionBD.php");
@@ -31,7 +32,7 @@
             $resultadoCalificacion = "negativa";
         }
 
-        $consulta = "INSERT INTO calificacion(comentario,valor,idUsuarioCalificado,idUsuarioCalificador,resultado) VALUES ('$comentario','$calificacion','$idUsuarioCalificado','$idUsuario','$resultadoCalificacion')";
+        $consulta = "INSERT INTO calificacion(comentario,valor,idUsuarioCalificado,idUsuarioCalificador,resultado,idPublicacion) VALUES ('$comentario','$calificacion','$idUsuarioCalificado','$idUsuario','$resultadoCalificacion','$idPublicacion')";
         mysqli_query($conexion,$consulta);
 
         $consultaPromedio = "SELECT AVG(valor) AS promedio_calificacion FROM calificacion WHERE idUsuarioCalificado = $idUsuarioCalificado";
