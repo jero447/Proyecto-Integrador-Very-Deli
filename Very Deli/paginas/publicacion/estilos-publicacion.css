@@ -205,7 +205,6 @@ main{
 .seccion-mensajes{
     margin-top: 27px;
 }
-<<<<<<< HEAD
 .cartel-finalizada{
     background-color: red;
     position: absolute;
@@ -283,8 +282,7 @@ main{
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: 500;
-=======
->>>>>>> be02727 (Cambios visuales generales.)
+}
 
 @font-face {
     font-family: 'montserrat'; 
