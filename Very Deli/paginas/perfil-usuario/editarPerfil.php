@@ -159,7 +159,7 @@
                     $sql = "UPDATE usuario SET nombre='$nombreNuevo', email='$emailNuevo', nombre_usuario='$nombreUsuarioNuevo', dni='$dniNuevo'";
 
                 if (isset($nombreUsuarioCambio)) {
-                    $sql .= ", estado_responsable='no responsable', promedio_puntuacion=NULL";
+                    $sql .= ", estado_responsable='no responsable', promedio_puntuacion=0.0";
                 }
 
                 $sql .= " WHERE idUsuario='$idUsuario'";
