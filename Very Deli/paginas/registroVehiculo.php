@@ -30,15 +30,14 @@ $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] 
         </div>  
     </a>       
     <div class="btns-login">
-            <?php if ($nombreUsuario): ?>
-                <div class="dropdown">
-                    <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
-                    <div class="dropdown-content">
-                        <a href="./perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i> Mi perfil</a>
-                        <a href="./publicaciones-filtradas.php"><i class="fas fa-book"></i> Mis publicaciones</a>
-                        <a href="./creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
-                        <a href="./salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
-                    </div>
+        <?php if ($nombreUsuario): ?>
+            <div class="dropdown">
+                <button class="dropbtn"><?php echo htmlspecialchars($nombreUsuario); ?></button>
+                <div class="dropdown-content">
+                    <a href="./perfil-usuario/editarPerfil.php"><i class="fas fa-user"></i> Mi perfil</a>
+                    <a href="./publicaciones-filtradas.php"><i class="fas fa-book"></i> Mis publicaciones</a>
+                    <a href="./creacion-postulacion/miPostulaciones.php"><i class="fas fa-briefcase"></i> Mis postulaciones</a>
+                    <a href="./salir.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
                 </div>
             </div>
         <?php else: ?>

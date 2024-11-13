@@ -2,10 +2,7 @@
     session_start();
     $idUsuario = isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario'] : null;
 
-    if (!$idUsuario) {
-        header("Location: ../index.php");
-        exit();
-    }
+   
     $nombreUsuario = isset($_SESSION['nombreUsuario']) ? $_SESSION['nombreUsuario'] : null;
 ?>
 <!DOCTYPE html>
