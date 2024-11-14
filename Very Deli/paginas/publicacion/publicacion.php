@@ -84,8 +84,8 @@
                     echo    "</div>";
                     echo    "<div class='contenedor-info'>";
                     echo        "<h3>Descripción: " . $fila["descripcion"] ."</h3>";
-                    echo        "<h3>Peso: " . $fila["peso"] ."</h3>";
-                    echo        "<h3>Volumen: " . $fila["volumen"] ."</h3>";
+                    echo        "<h3>Peso: " . $fila["peso"] ." KG</h3>";
+                    echo        "<h3>Volumen: " . $fila["volumen"] ." Metros</h3>";
                     echo        "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
                     echo        "<h3>Localidad de origen : " . $fila["localidad_origen"] ."</h3>";
                     echo        "<h3>Calle origen : " . $fila["calle_origen"] ."</h3>";
@@ -141,8 +141,8 @@
                         echo "<div class='contenedor-datos'>";
                         echo    "<div class='contenedor-info'>";
                         echo        "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
-                        echo        "<h3>Peso: " . $fila["peso"] ."</h3>";
-                        echo        "<h3>Volumen: " . $fila["volumen"] ."</h3>";
+                        echo        "<h3>Peso: " . $fila["peso"] ." KG</h3>";
+                        echo        "<h3>Volumen: " . $fila["volumen"] ." Metros</h3>";
                         echo        "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
                         echo        "<h3>Localidad de origen : " . $fila["localidad_origen"] ."</h3>";
                         echo        "<h3>Calle origen : " . $fila["calle_origen"] ."</h3>";
@@ -178,8 +178,8 @@
                         echo "<div class='contenedor-datos'>";
                         echo    "<div class='contenedor-info'>";
                         echo        "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
-                        echo        "<h3>Peso: " . $fila["peso"] ."</h3>";
-                        echo        "<h3>Volumen: " . $fila["volumen"] ."</h3>";
+                        echo        "<h3>Peso: " . $fila["peso"] ." KG</h3>";
+                        echo        "<h3>Volumen: " . $fila["volumen"] ." Metros</h3>";
                         echo        "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
                         echo        "<h3>Localidad de origen : " . $fila["localidad_origen"] ."</h3>";
                         echo        "<h3>Calle origen : " . $fila["calle_origen"] ."</h3>";
@@ -249,8 +249,8 @@
                     echo "<div class='contenedor-datos'>";
                     echo    "<div class='contenedor-info'>";
                     echo        "<h3>Descripcion: " . $fila["descripcion"] ."</h3>";
-                    echo        "<h3>Peso: " . $fila["peso"] ."</h3>";
-                    echo        "<h3>Volumen: " . $fila["volumen"] ."</h3>";
+                    echo        "<h3>Peso: " . $fila["peso"] ." KG</h3>";
+                    echo        "<h3>Volumen: " . $fila["volumen"] ." Metros</h3>";
                     echo        "<h3>Provincia de origen : " . $fila["provincia_origen"] ."</h3>";
                     echo        "<h3>Localidad de origen : " . $fila["localidad_origen"] ."</h3>";
                     echo        "<h3>Calle origen : " . $fila["calle_origen"] ."</h3>";

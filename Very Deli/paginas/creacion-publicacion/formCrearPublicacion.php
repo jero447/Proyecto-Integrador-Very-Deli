@@ -147,11 +147,11 @@
             <div class="cont-campos-par">
                 <div class="cont-input">
                     <label>Volumen del paquete</label>
-                    <input type="number" name='volumen' >
+                    <input type="number" name='volumen' step="0.01">
                 </div>
                 <div class="cont-input">
                     <label>Peso del paquete</label>
-                    <input type="number" name='peso'>
+                    <input type="number" name='peso' step="0.01">
                 </div> 
             </div>
             <div class="cont-campos-par">
