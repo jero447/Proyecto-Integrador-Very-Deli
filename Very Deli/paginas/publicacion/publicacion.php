@@ -101,16 +101,24 @@
                     echo        "<tr>";
                     echo            "<th>Nombre</th>";
                     echo            "<th>Monto</th>";
+                    echo            "<th>Puntuacion</th>";
+                    echo            "<th>Estado</th>";
                     echo            "<th></th>";
                     echo        "</tr>";
 
-                    $consultaPostulantes = "SELECT postulacion.idPostulacion,postulacion.idUsuario, usuario.nombre, postulacion.monto FROM postulacion JOIN usuario ON postulacion.idUsuario = usuario.idUsuario WHERE postulacion.idPublicacion = $idPublicacion";
+                    $consultaPostulantes = "SELECT postulacion.idPostulacion,postulacion.idUsuario, usuario.nombre, postulacion.monto, usuario.promedio_puntuacion FROM postulacion JOIN usuario ON postulacion.idUsuario = usuario.idUsuario WHERE postulacion.idPublicacion = $idPublicacion";
                     $resultadoConsulta = mysqli_query($conexion,$consultaPostulantes);
                     
                     while($fila = mysqli_fetch_array($resultadoConsulta)){
                         echo "<tr class='info-candidatos'>";
                         echo    "<td>". $fila["nombre"] ."</td>";
                         echo    "<td>". $fila["monto"] ."</td>";
+                        echo    "<td>". $fila["promedio_puntuacion"] ."</td>";
+                        if($fila["promedio_puntuacion"] >= 3.5){
+                            echo  "<td>Responsable</td>";
+                        }else{
+                            echo  "<td>No responsable</td>";
+                        }
                         echo    "<td>";
                         echo        "<form action='seleccionCandidato.php'  method='POST'>";
                         echo            "<button class='btn-elegir'>Elegir candidato</button>";
