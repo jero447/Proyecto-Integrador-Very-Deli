@@ -127,7 +127,7 @@
                 }
             }elseif($fila["estado_envio"] == "finalizada"){
 
-                $consulta = "SELECT * FROM calificacion JOIN usuario AS usuario_calificado ON calificacion.idUsuarioCalificado = usuario_calificado.idUsuario JOIN usuario AS usuario_calificador ON calificacion.idUsuarioCalificador = usuario_calificador.idUsuario JOIN publicacion ON calificacion.idPublicacion = publicacion.idPublicacion WHERE (calificacion.idUsuarioCalificado = $idUsuario OR calificacion.idUsuarioCalificador = $idUsuario) AND calificacion.idPublicacion = $idPublicacion";
+                $consulta = "SELECT * FROM calificacion JOIN usuario AS usuario_calificado ON calificacion.idUsuarioCalificado = usuario_calificado.idUsuario JOIN usuario AS usuario_calificador ON calificacion.idUsuarioCalificador = usuario_calificador.idUsuario JOIN publicacion ON calificacion.idPublicacion = publicacion.idPublicacion WHERE calificacion.idUsuarioCalificador = $idUsuario AND calificacion.idPublicacion = $idPublicacion";
                 $resultado = mysqli_query($conexion,$consulta);
                 if(mysqli_num_rows($resultado) > 0){
 
